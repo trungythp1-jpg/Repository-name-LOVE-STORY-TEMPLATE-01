@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Tạo món quà ❤️</title>
+
+<style>
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+
+  font-family:Arial,Helvetica,sans-serif;
+
+  color:white;
+
+  background:
+    radial-gradient(
+      circle at top,
+      #68162f,
+      #210914 45%,
+      #080308 100%
+    );
+
+  padding:25px 16px 60px;
+}
+
+.container{
+  max-width:600px;
+  margin:auto;
+}
+
+.card{
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.10),
+      rgba(255,255,255,.035)
+    );
+
+  border:1px solid rgba(255,255,255,.18);
+
+  border-radius:30px;
+
+  padding:30px 22px;
+
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.5);
+}
+
+h1{
+  text-align:center;
+
+  font-family:Georgia,serif;
+
+  font-size:38px;
+
+  margin:10px 0 8px;
+}
+
+.subtitle{
+  text-align:center;
+
+  color:#e7b3c3;
+
+  line-height:1.6;
+
+  margin-bottom:30px;
+}
+
+.heart{
+  text-align:center;
+
+  font-size:65px;
+
+  margin-bottom:10px;
+}
+
+label{
+  display:block;
+
+  margin:
+    18px 0 8px;
+
+  color:#efb4c6;
+
+  font-size:13px;
+
+  letter-spacing:1px;
+}
+
+input,
+textarea{
+  width:100%;
+
+  padding:15px;
+
+  border-radius:15px;
+
+  border:1px solid
+    rgba(255,255,255,.15);
+
+  background:
+    rgba(0,0,0,.25);
+
+  color:white;
+
+  font-size:16px;
+
+  outline:none;
+}
+
+input:focus,
+textarea:focus{
+  border-color:#ff3b78;
+}
+
+textarea{
+  min-height:150px;
+
+  resize:vertical;
+
+  line-height:1.6;
+}
+
+button{
+  width:100%;
+
+  margin-top:28px;
+
+  padding:17px;
+
+  border:0;
+
+  border-radius:50px;
+
+  color:white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff1970,
+      #c91652
+    );
+
+  font-size:17px;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+  box-shadow:
+    0 15px 35px
+    rgba(255,0,100,.25);
+}
+
+.result{
+  display:none;
+
+  margin-top:30px;
+
+  padding:22px;
+
+  border-radius:22px;
+
+  background:
+    rgba(255,255,255,.06);
+
+  border:
+    1px solid
+    rgba(255,255,255,.15);
+}
+
+.result h2{
+  font-family:Georgia,serif;
+
+  text-align:center;
+
+  margin-top:0;
+}
+
+.link-box{
+  word-break:break-all;
+
+  padding:15px;
+
+  border-radius:14px;
+
+  background:
+    rgba(0,0,0,.3);
+
+  color:#ffbfd2;
+
+  font-size:14px;
+
+  line-height:1.6;
+}
+
+.copy{
+  margin-top:12px;
+
+  background:
+    rgba(255,255,255,.10);
+
+  box-shadow:none;
+
+  font-size:15px;
+}
+
+.open{
+  display:block;
+
+  text-align:center;
+
+  text-decoration:none;
+
+  margin-top:12px;
+
+  padding:15px;
+
+  border-radius:50px;
+
+  background:
+    rgba(255,255,255,.08);
+
+  color:white;
+}
+
+.note{
+  text-align:center;
+
+  margin-top:25px;
+
+  color:#9f7886;
+
+  font-size:12px;
+
+  line-height:1.6;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+  <div class="card">
+
+    <div class="heart">
+      ❤️
+    </div>
+
+    <h1>
+      Tạo món quà
+    </h1>
+
+    <div class="subtitle">
+      Tạo một Love Story riêng dành cho người bạn yêu.
+    </div>
+
+
+    <!-- COUPLE -->
+
+    <label>
+      TÊN HAI NGƯỜI
+    </label>
+
+    <input
+      id="couple"
+      type="text"
+      placeholder="Ví dụ: MINH ❤️ LAN"
+    >
+
+
+    <!-- RECIPIENT -->
+
+    <label>
+      TÊN NGƯỜI NHẬN
+    </label>
+
+    <input
+      id="recipient"
+      type="text"
+      placeholder="Ví dụ: Lan"
+    >
+
+
+    <!-- DATE -->
+
+    <label>
+      NGÀY BẮT ĐẦU YÊU
+    </label>
+
+    <input
+      id="date"
+      type="date"
+    >
+
+
+    <!-- MUSIC -->
+
+    <label>
+      LINK BÀI HÁT YOUTUBE
+    </label>
+
+    <input
+      id="music"
+      type="url"
+      placeholder="https://youtu.be/..."
+    >
+
+
+    <!-- LETTER -->
+
+    <label>
+      LỜI NHẮN TÌNH YÊU
+    </label>
+
+    <textarea
+      id="letter"
+      placeholder="Viết lời nhắn dành riêng cho người ấy...
+
+Mỗi đoạn cách nhau bằng một dòng trống."
+    ></textarea>
+
+
+    <button
+      onclick="createGift()"
+    >
+      TẠO MÓN QUÀ ❤️
+    </button>
+
+
+    <!-- RESULT -->
+
+    <div
+      class="result"
+      id="result"
+    >
+
+      <h2>
+        🎁 Đã tạo món quà
+      </h2>
+
+      <div
+        class="link-box"
+        id="generatedLink"
+      ></div>
+
+
+      <button
+        class="copy"
+        onclick="copyLink()"
+      >
+        📋 SAO CHÉP LINK
+      </button>
+
+
+      <a
+        id="openLink"
+        class="open"
+        href="#"
+        target="_blank"
+      >
+        ❤️ MỞ TRANG QUÀ
+      </a>
+
+    </div>
+
+
+    <div class="note">
+      Mỗi lần tạo sẽ sinh một đường link riêng
+      dựa trên thông tin bạn nhập.
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+
+function createGift(){
+
+  const couple =
+    document
+      .getElementById("couple")
+      .value
+      .trim();
+
+
+  const recipient =
+    document
+      .getElementById("recipient")
+      .value
+      .trim();
+
+
+  const date =
+    document
+      .getElementById("date")
+      .value;
+
+
+  const music =
+    document
+      .getElementById("music")
+      .value
+      .trim();
+
+
+  const letter =
+    document
+      .getElementById("letter")
+      .value
+      .trim();
+
+
+  if(
+    !couple ||
+    !recipient ||
+    !date
+  ){
+
+    alert(
+      "Vui lòng nhập tên hai người, tên người nhận và ngày bắt đầu yêu."
+    );
+
+    return;
+
+  }
+
+
+  /*
+    Tách các đoạn thư.
+    Mỗi đoạn cách nhau bằng dòng trống.
+  */
+
+  const paragraphs =
+    letter
+      .split(/\n\s*\n/)
+      .map(
+        p => p.trim()
+      )
+      .filter(Boolean);
+
+
+  /*
+    URL website chính
+  */
+
+  const baseURL =
+    window.location.href
+      .replace(
+        /tao-qua\.html.*$/,
+        ""
+      );
+
+
+  /*
+    Tạo tham số URL
+  */
+
+  const params =
+    new URLSearchParams();
+
+
+  params.set(
+    "couple",
+    couple
+  );
+
+
+  params.set(
+    "to",
+    recipient
+  );
+
+
+  params.set(
+    "date",
+    date
+  );
+
+
+  if(music){
+
+    params.set(
+      "music",
+      music
+    );
+
+  }
+
+
+  if(paragraphs.length){
+
+    params.set(
+      "letter",
+      paragraphs.join("|")
+    );
+
+  }
+
+
+  /*
+    Link tới index.html
+  */
+
+  const giftURL =
+    baseURL +
+    "?" +
+    params.toString();
+
+
+  /*
+    Hiển thị kết quả
+  */
+
+  document
+    .getElementById(
+      "generatedLink"
+    )
+    .textContent =
+    giftURL;
+
+
+  document
+    .getElementById(
+      "openLink"
+    )
+    .href =
+    giftURL;
+
+
+  document
+    .getElementById(
+      "result"
+    )
+    .style.display =
+    "block";
+
+
+  /*
+    Cuộn xuống kết quả
+  */
+
+  document
+    .getElementById(
+      "result"
+    )
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+}
+
+
+async function copyLink(){
+
+  const link =
+    document
+      .getElementById(
+        "generatedLink"
+      )
+      .textContent;
+
+
+  try{
+
+    await navigator.clipboard.writeText(
+      link
+    );
+
+    alert(
+      "Đã sao chép link ❤️"
+    );
+
+  }catch(e){
+
+    alert(
+      "Không thể sao chép tự động. Hãy nhấn giữ vào link để sao chép."
+    );
+
+  }
+
+}
+
+</script>
+
+</body>
+</html>
