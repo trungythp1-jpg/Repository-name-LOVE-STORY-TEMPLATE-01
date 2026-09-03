@@ -3,13 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#160914">
+<meta name="theme-color" content="#180c18">
+
 <title>Love Story • Digital Gift</title>
 
 <style>
+
 /* =========================================================
-   RESET
+   1. RESET
 ========================================================= */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -22,114 +25,177 @@ html {
 
 body {
     min-height: 100vh;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                 Roboto, Helvetica, Arial, sans-serif;
-    color: #fff;
     overflow-x: hidden;
-    transition: background 0.6s ease;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+    color: #ffffff;
+
+    --bg1: #160914;
+    --bg2: #3d1836;
+    --accent: #ff6b9d;
+    --accent2: #ffc0d8;
+    --soft: #f1cbdc;
+    --card: rgba(35, 18, 37, 0.72);
+    --border: rgba(255, 170, 210, 0.25);
+    --glow: rgba(255, 77, 145, 0.30);
+
+    background:
+        radial-gradient(
+            circle at 15% 10%,
+            var(--glow),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 85%,
+            var(--glow),
+            transparent 32%
+        ),
+        linear-gradient(
+            135deg,
+            var(--bg1),
+            var(--bg2)
+        );
+
+    transition:
+        background 0.6s ease,
+        color 0.4s ease;
 }
 
+
 /* =========================================================
-   THEME SYSTEM
+   2. THEMES
 ========================================================= */
+
+/* PINK */
 
 body.theme-pink {
     --bg1: #160914;
-    --bg2: #3b102c;
-    --accent: #ff5c9a;
-    --accent2: #ff9bc3;
-    --text-soft: #f5cddd;
-    --card: rgba(45, 13, 36, 0.72);
-    --border: rgba(255, 130, 180, 0.22);
-    --glow: rgba(255, 75, 145, 0.35);
+    --bg2: #431b3d;
+    --accent: #ff6098;
+    --accent2: #ffc1d9;
+    --soft: #f4cede;
+    --card: rgba(39, 19, 40, 0.73);
+    --border: rgba(255, 156, 199, 0.28);
+    --glow: rgba(255, 75, 145, 0.32);
 }
+
+
+/* MIDNIGHT */
 
 body.theme-midnight {
-    --bg1: #070a18;
-    --bg2: #17133e;
-    --accent: #8b7cff;
-    --accent2: #c6bfff;
-    --text-soft: #d9d5ff;
-    --card: rgba(15, 15, 43, 0.76);
-    --border: rgba(139, 124, 255, 0.25);
-    --glow: rgba(111, 91, 255, 0.35);
+    --bg1: #060817;
+    --bg2: #211b54;
+    --accent: #8175ff;
+    --accent2: #c9c5ff;
+    --soft: #d9d6ff;
+    --card: rgba(14, 15, 42, 0.75);
+    --border: rgba(140, 130, 255, 0.28);
+    --glow: rgba(91, 79, 255, 0.32);
 }
 
+
+/* ROSE */
+
 body.theme-rose {
-    --bg1: #170607;
-    --bg2: #451016;
-    --accent: #e94b62;
-    --accent2: #ff9da8;
-    --text-soft: #f7c9ce;
-    --card: rgba(52, 10, 17, 0.75);
-    --border: rgba(239, 94, 112, 0.25);
-    --glow: rgba(215, 49, 70, 0.35);
+    --bg1: #160506;
+    --bg2: #52121c;
+    --accent: #ed4d63;
+    --accent2: #ffabb5;
+    --soft: #f4cbd0;
+    --card: rgba(48, 10, 16, 0.75);
+    --border: rgba(241, 92, 111, 0.30);
+    --glow: rgba(221, 48, 71, 0.32);
 }
+
+
+/* GOLD */
 
 body.theme-gold {
     --bg1: #080807;
-    --bg2: #29200d;
-    --accent: #d9ad52;
-    --accent2: #ffe2a0;
-    --text-soft: #e9d7ae;
-    --card: rgba(27, 24, 16, 0.8);
-    --border: rgba(217, 173, 82, 0.25);
-    --glow: rgba(217, 173, 82, 0.25);
+    --bg2: #322610;
+    --accent: #d6aa50;
+    --accent2: #ffe4a4;
+    --soft: #ead9b1;
+    --card: rgba(28, 25, 17, 0.78);
+    --border: rgba(216, 174, 82, 0.30);
+    --glow: rgba(201, 155, 48, 0.24);
 }
+
+
+/* GREEN */
 
 body.theme-green {
-    --bg1: #06120f;
-    --bg2: #103b32;
-    --accent: #58c8a5;
-    --accent2: #a5ead5;
-    --text-soft: #c5e8dc;
-    --card: rgba(8, 37, 31, 0.76);
-    --border: rgba(88, 200, 165, 0.24);
-    --glow: rgba(54, 189, 148, 0.28);
+    --bg1: #04110d;
+    --bg2: #123c31;
+    --accent: #55c5a1;
+    --accent2: #a6ead6;
+    --soft: #c7e8de;
+    --card: rgba(8, 35, 29, 0.76);
+    --border: rgba(79, 198, 161, 0.28);
+    --glow: rgba(57, 190, 147, 0.28);
 }
+
+
+/* PASTEL */
 
 body.theme-pastel {
-    --bg1: #19131c;
-    --bg2: #402d4a;
-    --accent: #e9a8d1;
-    --accent2: #f6d1e8;
-    --text-soft: #ead8e6;
-    --card: rgba(50, 34, 54, 0.76);
-    --border: rgba(233, 168, 209, 0.25);
-    --glow: rgba(233, 168, 209, 0.3);
+    --bg1: #17121b;
+    --bg2: #46314e;
+    --accent: #e8a8d0;
+    --accent2: #f8d7eb;
+    --soft: #ead9e7;
+    --card: rgba(48, 33, 53, 0.77);
+    --border: rgba(232, 168, 208, 0.28);
+    --glow: rgba(226, 151, 201, 0.28);
 }
 
-body {
-    background:
-        radial-gradient(circle at 15% 15%, var(--glow), transparent 30%),
-        radial-gradient(circle at 85% 80%, var(--glow), transparent 30%),
-        linear-gradient(135deg, var(--bg1), var(--bg2));
-}
 
 /* =========================================================
-   FLOATING HEARTS
+   3. FLOATING HEARTS
 ========================================================= */
 
 .hearts {
     position: fixed;
     inset: 0;
-    pointer-events: none;
+
     overflow: hidden;
+    pointer-events: none;
+
     z-index: 0;
 }
 
 .heart {
     position: absolute;
-    bottom: -50px;
-    opacity: 0;
+    bottom: -60px;
+
     color: var(--accent);
-    animation: floatHeart linear infinite;
-    text-shadow: 0 0 20px var(--glow);
+
+    opacity: 0;
+
+    text-shadow:
+        0 0 12px var(--glow),
+        0 0 25px var(--glow);
+
+    animation:
+        floatingHeart linear infinite;
 }
 
-@keyframes floatHeart {
+@keyframes floatingHeart {
+
     0% {
-        transform: translateY(0) rotate(0deg) scale(.8);
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(.7);
+
         opacity: 0;
     }
 
@@ -138,25 +204,38 @@ body {
     }
 
     80% {
-        opacity: .3;
+        opacity: .28;
     }
 
     100% {
-        transform: translateY(-110vh) rotate(35deg) scale(1.25);
+        transform:
+            translateY(-115vh)
+            rotate(35deg)
+            scale(1.25);
+
         opacity: 0;
     }
 }
 
+
 /* =========================================================
-   COMMON
+   4. PAGE SYSTEM
 ========================================================= */
 
 .page {
     position: relative;
+
     z-index: 2;
-    min-height: 100vh;
+
     display: none;
-    padding: 35px 18px 60px;
+
+    width: 100%;
+    min-height: 100vh;
+
+    padding:
+        30px
+        18px
+        60px;
 }
 
 .page.active {
@@ -171,537 +250,1010 @@ body {
     margin: auto;
 }
 
+
+/* =========================================================
+   5. GLASS CARD
+========================================================= */
+
 .card {
-    background: var(--card);
-    border: 1px solid var(--border);
+    width: 100%;
+
+    background:
+        var(--card);
+
+    border:
+        1px solid var(--border);
+
     border-radius: 28px;
-    padding: 32px;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+
+    padding: 30px;
+
+    backdrop-filter:
+        blur(22px);
+
+    -webkit-backdrop-filter:
+        blur(22px);
+
     box-shadow:
         0 25px 80px rgba(0,0,0,.35),
         0 0 50px var(--glow);
+
+    transition:
+        border-color .4s ease,
+        box-shadow .4s ease;
 }
 
-h1,
-h2,
-h3 {
-    line-height: 1.2;
-}
-
-p {
-    line-height: 1.7;
-}
 
 /* =========================================================
-   CREATE PAGE
+   6. CREATE PAGE
 ========================================================= */
 
 .logo {
     text-align: center;
-    font-size: 14px;
-    letter-spacing: 4px;
+
     color: var(--accent2);
-    margin-bottom: 15px;
+
+    font-size: 12px;
+
+    letter-spacing: 5px;
+
     text-transform: uppercase;
+
+    margin-bottom: 16px;
 }
 
 .create-title {
     text-align: center;
-    font-size: clamp(32px, 7vw, 54px);
-    margin-bottom: 12px;
+
+    font-size:
+        clamp(34px, 8vw, 58px);
+
+    line-height: 1.1;
+
+    margin-bottom: 14px;
 }
 
 .create-subtitle {
     text-align: center;
-    color: var(--text-soft);
+
+    color: var(--soft);
+
+    line-height: 1.7;
+
     margin-bottom: 35px;
 }
+
+
+/* =========================================================
+   7. FORM
+========================================================= */
 
 .form-group {
     margin-bottom: 22px;
 }
 
-label {
+.form-label {
     display: block;
-    margin-bottom: 9px;
+
+    color: var(--soft);
+
     font-size: 14px;
-    color: var(--text-soft);
+
+    margin-bottom: 9px;
 }
 
 input,
-textarea,
-select {
+textarea {
     width: 100%;
-    border: 1px solid var(--border);
-    background: rgba(0,0,0,.25);
-    color: #fff;
-    border-radius: 14px;
-    padding: 14px 16px;
-    font-size: 16px;
+
+    border:
+        1px solid var(--border);
+
     outline: none;
-    transition: .25s;
+
+    border-radius: 14px;
+
+    background:
+        rgba(0,0,0,.23);
+
+    color: #fff;
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    padding:
+        14px
+        16px;
+
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: rgba(255,255,255,.45);
 }
 
 input:focus,
-textarea:focus,
-select:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--glow);
+textarea:focus {
+    border-color:
+        var(--accent);
+
+    box-shadow:
+        0 0 0 3px var(--glow);
+
+    background:
+        rgba(0,0,0,.30);
 }
 
 textarea {
-    min-height: 160px;
+    min-height: 170px;
+
     resize: vertical;
+
+    line-height: 1.7;
 }
 
-select option {
-    background: #1c121c;
-    color: white;
-}
 
 /* =========================================================
-   THEME SELECTOR
+   8. THEME SELECTOR
 ========================================================= */
+
+.theme-title {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 10px;
+}
+
+.theme-title small {
+    color: var(--accent2);
+
+    font-size: 12px;
+}
 
 .theme-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
     gap: 12px;
 }
 
 .theme-option {
     position: relative;
+
     cursor: pointer;
 }
 
 .theme-option input {
     position: absolute;
+
     opacity: 0;
+
     pointer-events: none;
 }
 
 .theme-card {
-    min-height: 105px;
-    border-radius: 18px;
-    padding: 13px;
-    border: 2px solid transparent;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    overflow: hidden;
     position: relative;
-    transition: .25s;
+
+    min-height: 112px;
+
+    overflow: hidden;
+
+    border:
+        2px solid transparent;
+
+    border-radius: 18px;
+
+    padding: 13px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
 }
 
-.theme-card::before {
-    content: "";
+.theme-card:hover {
+    transform:
+        translateY(-3px);
+}
+
+.theme-option input:checked
++ .theme-card {
+    border-color:
+        var(--accent);
+
+    box-shadow:
+        0 0 28px var(--glow);
+
+    transform:
+        translateY(-3px);
+}
+
+.theme-card .theme-icon {
     position: absolute;
-    inset: 0;
-    opacity: .9;
+
+    top: 13px;
+    left: 13px;
+
+    font-size: 26px;
 }
 
 .theme-card span {
     position: relative;
+
     z-index: 2;
+
     font-size: 13px;
-    font-weight: 600;
-    text-shadow: 0 2px 5px rgba(0,0,0,.5);
+
+    font-weight: 700;
+
+    text-shadow:
+        0 2px 7px rgba(0,0,0,.7);
 }
 
-.theme-pink-preview {
-    background: linear-gradient(135deg,#1a0715,#9d285d);
+
+/* Theme preview backgrounds */
+
+.preview-pink {
+    background:
+        radial-gradient(circle at 20% 20%, #ff83b1, transparent 30%),
+        linear-gradient(135deg,#210817,#9c275d);
 }
 
-.theme-midnight-preview {
-    background: linear-gradient(135deg,#050719,#4033a3);
+.preview-midnight {
+    background:
+        radial-gradient(circle at 80% 20%, #7770ff, transparent 30%),
+        linear-gradient(135deg,#050718,#4335a4);
 }
 
-.theme-rose-preview {
-    background: linear-gradient(135deg,#180507,#a52236);
+.preview-rose {
+    background:
+        radial-gradient(circle at 20% 20%, #ff6679, transparent 30%),
+        linear-gradient(135deg,#190507,#a52135);
 }
 
-.theme-gold-preview {
-    background: linear-gradient(135deg,#050505,#87621c);
+.preview-gold {
+    background:
+        radial-gradient(circle at 80% 20%, #e6bd68, transparent 30%),
+        linear-gradient(135deg,#050505,#85621e);
 }
 
-.theme-green-preview {
-    background: linear-gradient(135deg,#04100d,#287b65);
+.preview-green {
+    background:
+        radial-gradient(circle at 20% 20%, #63d2b0, transparent 30%),
+        linear-gradient(135deg,#03100c,#287b65);
 }
 
-.theme-pastel-preview {
-    background: linear-gradient(135deg,#1d1520,#9a5f8b);
+.preview-pastel {
+    background:
+        radial-gradient(circle at 80% 20%, #e9a9d1, transparent 30%),
+        linear-gradient(135deg,#1d1421,#985d89);
 }
 
-.theme-option input:checked + .theme-card {
-    border-color: var(--accent);
-    transform: translateY(-3px);
-    box-shadow: 0 0 25px var(--glow);
-}
-
-.theme-icon {
-    position: relative;
-    z-index: 2;
-    font-size: 25px;
-    margin-bottom: 8px;
-}
 
 /* =========================================================
-   BUTTON
+   9. MAIN BUTTON
 ========================================================= */
 
 .main-button {
     width: 100%;
+
     border: 0;
+
     border-radius: 16px;
+
     padding: 17px 20px;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
+
     color: #fff;
+
+    font-family: inherit;
+
     font-size: 17px;
+
     font-weight: 700;
+
     cursor: pointer;
-    box-shadow: 0 12px 30px var(--glow);
-    transition: .25s;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent),
+            var(--accent2)
+        );
+
+    box-shadow:
+        0 12px 35px var(--glow);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        opacity .2s ease;
 }
 
 .main-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 16px 38px var(--glow);
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 17px 42px var(--glow);
 }
 
 .main-button:active {
-    transform: scale(.98);
+    transform:
+        scale(.98);
 }
 
+.main-button:disabled {
+    opacity: .6;
+    cursor: wait;
+}
+
+
 /* =========================================================
-   RESULT
+   10. GENERATED RESULT
 ========================================================= */
 
 .result {
     display: none;
-    margin-top: 28px;
-    padding-top: 28px;
-    border-top: 1px solid var(--border);
+
+    margin-top: 30px;
+
+    padding-top: 30px;
+
+    border-top:
+        1px solid var(--border);
 }
 
 .result.show {
     display: block;
 }
 
-.result h3 {
+.result-title {
     text-align: center;
+
+    color: var(--accent2);
+
+    font-size: 21px;
+
     margin-bottom: 18px;
 }
 
 .generated-link {
     display: block;
+
     width: 100%;
-    padding: 13px;
-    background: rgba(0,0,0,.25);
-    border: 1px solid var(--border);
-    border-radius: 12px;
+
+    padding: 14px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 13px;
+
+    background:
+        rgba(0,0,0,.24);
+
     color: var(--accent2);
-    word-break: break-all;
+
     font-size: 13px;
-    margin-bottom: 18px;
+
+    line-height: 1.6;
+
+    word-break: break-all;
+
+    margin-bottom: 20px;
 }
 
 .qr-wrap {
     display: flex;
+
     justify-content: center;
-    margin: 20px 0;
+
+    margin:
+        20px 0 25px;
 }
 
 .qr-wrap img {
-    width: 220px;
-    height: 220px;
+    width: 230px;
+    height: 230px;
+
     padding: 10px;
-    background: white;
-    border-radius: 16px;
+
+    background: #fff;
+
+    border-radius: 17px;
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.35);
 }
 
 .button-row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
     gap: 10px;
 }
 
 .secondary-button {
-    border: 1px solid var(--border);
-    border-radius: 13px;
-    background: rgba(255,255,255,.06);
+    border:
+        1px solid var(--border);
+
+    border-radius: 14px;
+
+    background:
+        rgba(255,255,255,.06);
+
     color: #fff;
-    padding: 13px;
-    cursor: pointer;
+
+    padding: 14px;
+
+    font-family: inherit;
+
     font-size: 14px;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
 }
 
 .secondary-button:hover {
-    background: rgba(255,255,255,.1);
+    background:
+        rgba(255,255,255,.11);
+
+    transform:
+        translateY(-1px);
 }
 
+.qr-note {
+    text-align: center;
+
+    color: var(--soft);
+
+    opacity: .7;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+
+    margin-top: 10px;
+}
+
+
 /* =========================================================
-   OPENING PAGE
+   11. OPENING PAGE
 ========================================================= */
 
 .opening {
     text-align: center;
-    padding: 50px 25px;
+
+    padding:
+        55px 25px;
 }
 
 .opening-small {
     color: var(--accent2);
-    font-size: 13px;
-    letter-spacing: 4px;
+
+    font-size: 12px;
+
+    letter-spacing: 5px;
+
     text-transform: uppercase;
-    margin-bottom: 25px;
+
+    margin-bottom: 28px;
+}
+
+.opening-heart {
+    font-size:
+        clamp(60px, 15vw, 100px);
+
+    line-height: 1;
+
+    margin-bottom: 20px;
+
+    filter:
+        drop-shadow(
+            0 0 25px var(--glow)
+        );
+
+    animation:
+        heartbeat 1.8s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
 }
 
 .opening-title {
-    font-size: clamp(38px, 9vw, 70px);
-    margin-bottom: 15px;
+    font-size:
+        clamp(34px, 8vw, 60px);
+
+    line-height: 1.1;
+
+    margin-bottom: 12px;
 }
 
 .opening-to {
     color: var(--accent2);
-    font-size: clamp(22px, 5vw, 32px);
-    margin-bottom: 30px;
+
+    font-size:
+        clamp(22px, 5vw, 31px);
+
+    margin-bottom: 28px;
 }
 
 .opening-message {
-    color: var(--text-soft);
+    color: var(--soft);
+
     max-width: 500px;
-    margin: auto auto 35px;
+
+    margin:
+        0 auto 35px;
+
+    line-height: 1.8;
 }
 
-.heart-button {
+.opening-button {
     display: inline-flex;
+
     align-items: center;
     justify-content: center;
+
     gap: 10px;
-    padding: 17px 30px;
+
     border: 0;
+
     border-radius: 50px;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    color: white;
+
+    padding:
+        16px 30px;
+
+    color: #fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent),
+            var(--accent2)
+        );
+
+    font-family: inherit;
+
     font-size: 17px;
+
     font-weight: 700;
+
     cursor: pointer;
-    box-shadow: 0 12px 35px var(--glow);
+
+    box-shadow:
+        0 12px 35px var(--glow);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
 }
 
+.opening-button:hover {
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 18px 45px var(--glow);
+}
+
+
 /* =========================================================
-   STORY PAGE
+   12. STORY HEADER
 ========================================================= */
 
 .story-header {
     text-align: center;
-    padding: 20px 0 40px;
+
+    padding:
+        15px 0 38px;
 }
 
 .story-label {
     color: var(--accent2);
-    letter-spacing: 4px;
+
     font-size: 12px;
+
+    letter-spacing: 5px;
+
     text-transform: uppercase;
-    margin-bottom: 15px;
+
+    margin-bottom: 18px;
 }
 
 .story-title {
-    font-size: clamp(36px, 8vw, 60px);
-    margin-bottom: 12px;
+    font-size:
+        clamp(38px, 9vw, 64px);
+
+    line-height: 1.1;
+
+    margin-bottom: 13px;
+
+    text-shadow:
+        0 5px 30px var(--glow);
 }
 
 .story-date {
-    color: var(--text-soft);
+    color: var(--soft);
+
+    font-size: 17px;
 }
+
+
+/* =========================================================
+   13. STORY CARDS
+========================================================= */
 
 .story-card {
     margin-bottom: 22px;
 }
 
-.story-card h2 {
-    margin-bottom: 18px;
+.story-heading {
     color: var(--accent2);
+
+    font-size: 23px;
+
+    margin-bottom: 22px;
+}
+
+.quote-card {
+    padding:
+        42px 28px;
 }
 
 .quote {
-    font-size: 20px;
-    line-height: 1.7;
-    color: var(--text-soft);
+    color: var(--soft);
+
+    font-size:
+        clamp(18px, 4.5vw, 23px);
+
+    line-height: 1.8;
+
     font-style: italic;
+
     text-align: center;
-    padding: 15px;
 }
 
-.counter-title {
+
+/* =========================================================
+   14. LOVE COUNTER
+========================================================= */
+
+.counter-heading {
     text-align: center;
-    color: var(--text-soft);
-    margin-bottom: 18px;
+
+    color: var(--accent2);
+
+    font-size:
+        clamp(23px, 6vw, 30px);
+
+    margin-bottom: 7px;
+}
+
+.counter-subtitle {
+    text-align: center;
+
+    color: var(--soft);
+
+    opacity: .75;
+
+    font-size: 13px;
+
+    margin-bottom: 24px;
 }
 
 .counter-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
 }
 
 .counter-box {
-    text-align: center;
-    padding: 17px 8px;
-    background: rgba(0,0,0,.2);
-    border: 1px solid var(--border);
-    border-radius: 15px;
+    min-height: 105px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.035),
+            rgba(0,0,0,.18)
+        );
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.04);
+
+    transition:
+        border-color .4s ease,
+        box-shadow .4s ease;
 }
 
 .counter-number {
-    display: block;
-    font-size: clamp(22px, 5vw, 34px);
-    font-weight: 800;
     color: var(--accent2);
+
+    font-size:
+        clamp(27px, 7vw, 39px);
+
+    line-height: 1;
+
+    font-weight: 800;
+
+    font-variant-numeric:
+        tabular-nums;
+
+    text-shadow:
+        0 0 22px var(--glow);
 }
 
 .counter-label {
-    display: block;
-    font-size: 11px;
-    color: var(--text-soft);
-    margin-top: 5px;
+    color: var(--soft);
+
+    font-size: 12px;
+
+    margin-top: 10px;
+
+    letter-spacing: .5px;
+}
+
+
+/* =========================================================
+   15. YOUTUBE
+========================================================= */
+
+.youtube-card {
+    overflow: hidden;
 }
 
 .youtube-wrap {
-    position: relative;
     width: 100%;
+
     aspect-ratio: 16 / 9;
+
     overflow: hidden;
-    border-radius: 18px;
+
     background: #000;
+
+    border-radius: 18px;
 }
 
 .youtube-wrap iframe {
     width: 100%;
     height: 100%;
+
     border: 0;
 }
 
+
+/* =========================================================
+   16. LETTER
+========================================================= */
+
 .letter {
-    white-space: pre-line;
-    line-height: 2;
-    color: #f5e7ee;
+    color: #f6eaf0;
+
     font-size: 17px;
+
+    line-height: 2;
+
+    white-space: pre-line;
 }
 
 .signature {
     text-align: right;
-    margin-top: 30px;
+
     color: var(--accent2);
+
     font-size: 20px;
+
     font-style: italic;
+
+    margin-top: 30px;
 }
+
+
+/* =========================================================
+   17. FOOTER
+========================================================= */
 
 .footer {
     text-align: center;
-    color: var(--text-soft);
+
+    color: var(--soft);
+
+    opacity: .55;
+
     font-size: 12px;
+
     margin-top: 35px;
-    opacity: .7;
 }
 
+
 /* =========================================================
-   MOBILE
+   18. MOBILE
 ========================================================= */
 
 @media (max-width: 600px) {
 
     .page {
-        padding: 20px 12px 40px;
+        padding:
+            18px
+            12px
+            45px;
     }
 
     .card {
-        padding: 23px 18px;
-        border-radius: 22px;
+        padding:
+            23px 17px;
+
+        border-radius: 23px;
     }
 
     .theme-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 
     .counter-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .counter-box {
+        min-height: 100px;
     }
 
     .button-row {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
 
     .opening {
-        padding: 35px 15px;
+        padding:
+            45px 18px;
+    }
+
+    .quote-card {
+        padding:
+            35px 20px;
     }
 }
+
 </style>
 </head>
 
+
 <body class="theme-pink">
 
-<!-- =======================================================
+
+<!-- =========================================================
      FLOATING HEARTS
-======================================================= -->
+========================================================= -->
 
-<div class="hearts" id="hearts"></div>
+<div
+    class="hearts"
+    id="hearts"
+></div>
 
-<!-- =======================================================
+
+<!-- =========================================================
      CREATE PAGE
-======================================================= -->
+========================================================= -->
 
-<section class="page active" id="createPage">
+<section
+    class="page active"
+    id="createPage"
+>
 
     <div class="container">
 
         <div class="card">
 
-            <div class="logo">Love Story • Digital Gift</div>
+            <div class="logo">
+                Love Story • Digital Gift
+            </div>
 
             <h1 class="create-title">
                 Tạo một món quà
             </h1>
 
             <p class="create-subtitle">
-                Tạo một câu chuyện tình yêu nhỏ dành riêng cho người bạn yêu ❤️
+                Tạo một câu chuyện nhỏ dành riêng
+                cho người bạn yêu ❤️
             </p>
 
-            <!-- Couple -->
+
+            <!-- TÊN HAI NGƯỜI -->
 
             <div class="form-group">
-                <label for="couple">
+
+                <label
+                    class="form-label"
+                    for="couple"
+                >
                     Tên hai người
                 </label>
 
                 <input
                     id="couple"
                     type="text"
-                    placeholder="Ví dụ: Anh & Em"
                     maxlength="80"
+                    placeholder="Ví dụ: Trung & Trang"
                 >
+
             </div>
 
-            <!-- Receiver -->
+
+            <!-- NGƯỜI NHẬN -->
 
             <div class="form-group">
-                <label for="receiver">
+
+                <label
+                    class="form-label"
+                    for="receiver"
+                >
                     Món quà dành cho
                 </label>
 
                 <input
                     id="receiver"
                     type="text"
-                    placeholder="Ví dụ: Em yêu"
                     maxlength="60"
+                    placeholder="Ví dụ: Trang"
                 >
+
             </div>
 
-            <!-- Date -->
+
+            <!-- NGÀY -->
 
             <div class="form-group">
-                <label for="date">
+
+                <label
+                    class="form-label"
+                    for="date"
+                >
                     Ngày bắt đầu câu chuyện
                 </label>
 
@@ -709,33 +1261,60 @@ select option {
                     id="date"
                     type="date"
                 >
+
             </div>
 
-            <!-- Music -->
+
+            <!-- YOUTUBE -->
 
             <div class="form-group">
-                <label for="music">
-                    Link bài hát YouTube
+
+                <label
+                    class="form-label"
+                    for="music"
+                >
+                    Bài hát YouTube
+                    <span style="opacity:.6">
+                        (không bắt buộc)
+                    </span>
                 </label>
 
                 <input
                     id="music"
                     type="text"
-                    placeholder="https://www.youtube.com/watch?v=..."
+                    placeholder="Dán link YouTube vào đây..."
                 >
+
             </div>
 
-            <!-- Theme -->
+
+            <!-- GIAO DIỆN -->
 
             <div class="form-group">
 
-                <label>
-                    Chọn giao diện quà tặng
-                </label>
+                <div class="theme-title">
+
+                    <label
+                        class="form-label"
+                        style="margin-bottom:0"
+                    >
+                        Chọn giao diện quà tặng
+                    </label>
+
+                    <small>
+                        Thử bấm từng mẫu
+                    </small>
+
+                </div>
+
 
                 <div class="theme-grid">
 
+
+                    <!-- PINK -->
+
                     <label class="theme-option">
+
                         <input
                             type="radio"
                             name="theme"
@@ -743,97 +1322,183 @@ select option {
                             checked
                         >
 
-                        <div class="theme-card theme-pink-preview">
-                            <div class="theme-icon">💗</div>
-                            <span>Romantic Pink</span>
+                        <div
+                            class="theme-card preview-pink"
+                        >
+
+                            <div class="theme-icon">
+                                💗
+                            </div>
+
+                            <span>
+                                Romantic Pink
+                            </span>
+
                         </div>
+
                     </label>
 
+
+                    <!-- MIDNIGHT -->
+
                     <label class="theme-option">
+
                         <input
                             type="radio"
                             name="theme"
                             value="midnight"
                         >
 
-                        <div class="theme-card theme-midnight-preview">
-                            <div class="theme-icon">🌌</div>
-                            <span>Midnight Love</span>
+                        <div
+                            class="theme-card preview-midnight"
+                        >
+
+                            <div class="theme-icon">
+                                🌌
+                            </div>
+
+                            <span>
+                                Midnight Love
+                            </span>
+
                         </div>
+
                     </label>
 
+
+                    <!-- ROSE -->
+
                     <label class="theme-option">
+
                         <input
                             type="radio"
                             name="theme"
                             value="rose"
                         >
 
-                        <div class="theme-card theme-rose-preview">
-                            <div class="theme-icon">🌹</div>
-                            <span>Rose Red</span>
+                        <div
+                            class="theme-card preview-rose"
+                        >
+
+                            <div class="theme-icon">
+                                🌹
+                            </div>
+
+                            <span>
+                                Rose Red
+                            </span>
+
                         </div>
+
                     </label>
 
+
+                    <!-- GOLD -->
+
                     <label class="theme-option">
+
                         <input
                             type="radio"
                             name="theme"
                             value="gold"
                         >
 
-                        <div class="theme-card theme-gold-preview">
-                            <div class="theme-icon">✨</div>
-                            <span>Elegant Gold</span>
+                        <div
+                            class="theme-card preview-gold"
+                        >
+
+                            <div class="theme-icon">
+                                ✨
+                            </div>
+
+                            <span>
+                                Elegant Gold
+                            </span>
+
                         </div>
+
                     </label>
 
+
+                    <!-- GREEN -->
+
                     <label class="theme-option">
+
                         <input
                             type="radio"
                             name="theme"
                             value="green"
                         >
 
-                        <div class="theme-card theme-green-preview">
-                            <div class="theme-icon">🌿</div>
-                            <span>Dreamy Green</span>
+                        <div
+                            class="theme-card preview-green"
+                        >
+
+                            <div class="theme-icon">
+                                🌿
+                            </div>
+
+                            <span>
+                                Dreamy Green
+                            </span>
+
                         </div>
+
                     </label>
 
+
+                    <!-- PASTEL -->
+
                     <label class="theme-option">
+
                         <input
                             type="radio"
                             name="theme"
                             value="pastel"
                         >
 
-                        <div class="theme-card theme-pastel-preview">
-                            <div class="theme-icon">🌸</div>
-                            <span>Pastel Love</span>
+                        <div
+                            class="theme-card preview-pastel"
+                        >
+
+                            <div class="theme-icon">
+                                🌸
+                            </div>
+
+                            <span>
+                                Pastel Love
+                            </span>
+
                         </div>
+
                     </label>
 
                 </div>
+
             </div>
 
-            <!-- Letter -->
+
+            <!-- LỜI NHẮN -->
 
             <div class="form-group">
 
-                <label for="letter">
+                <label
+                    class="form-label"
+                    for="letter"
+                >
                     Lời nhắn dành cho người ấy
                 </label>
 
                 <textarea
                     id="letter"
-                    placeholder="Viết điều bạn muốn nói..."
                     maxlength="3000"
+                    placeholder="Viết những điều bạn muốn nói..."
                 ></textarea>
 
             </div>
 
-            <!-- Create -->
+
+            <!-- CREATE -->
 
             <button
                 class="main-button"
@@ -844,33 +1509,45 @@ select option {
                 💝 Tạo món quà
             </button>
 
-            <!-- Result -->
+
+            <!-- RESULT -->
 
             <div
                 class="result"
                 id="result"
             >
 
-                <h3>
-                    🎁 Món quà đã được tạo
-                </h3>
+                <div class="result-title">
+                    🎁 Món quà đã sẵn sàng
+                </div>
+
 
                 <div
                     class="generated-link"
                     id="generatedLink"
                 ></div>
 
+
                 <div
                     class="qr-wrap"
                     id="qrWrap"
                 >
+
                     <img
                         id="qrCode"
-                        alt="QR Code"
+                        alt="QR Code món quà"
                     >
+
                 </div>
 
-                <div class="button-row">
+
+                <div class="qr-note">
+                    Quét mã QR để mở món quà
+                </div>
+
+
+                <div class="button-row"
+                     style="margin-top:20px">
 
                     <button
                         class="secondary-button"
@@ -885,7 +1562,7 @@ select option {
                         type="button"
                         onclick="openGift()"
                     >
-                        💌 Mở thử món quà
+                        💌 Mở thử
                     </button>
 
                 </div>
@@ -898,9 +1575,10 @@ select option {
 
 </section>
 
-<!-- =======================================================
+
+<!-- =========================================================
      OPENING PAGE
-======================================================= -->
+========================================================= -->
 
 <section
     class="page"
@@ -915,16 +1593,24 @@ select option {
                 Một món quà đặc biệt
             </div>
 
-            <h1 class="opening-title">
+
+            <div class="opening-heart">
                 💝
+            </div>
+
+
+            <h1 class="opening-title">
+                Dành cho
             </h1>
+
 
             <div
                 class="opening-to"
                 id="openingReceiver"
             >
-                Dành cho em
+                Em
             </div>
+
 
             <p class="opening-message">
                 Có một câu chuyện anh muốn kể lại cho em...
@@ -932,8 +1618,9 @@ select option {
                 Một câu chuyện về chúng ta ❤️
             </p>
 
+
             <button
-                class="heart-button"
+                class="opening-button"
                 type="button"
                 onclick="openStory()"
             >
@@ -946,9 +1633,10 @@ select option {
 
 </section>
 
-<!-- =======================================================
+
+<!-- =========================================================
      STORY PAGE
-======================================================= -->
+========================================================= -->
 
 <section
     class="page"
@@ -957,7 +1645,10 @@ select option {
 
     <div class="container">
 
-        <div class="story-header">
+
+        <!-- HEADER -->
+
+        <header class="story-header">
 
             <div class="story-label">
                 Our Love Story
@@ -967,77 +1658,144 @@ select option {
                 class="story-title"
                 id="storyCouple"
             >
-                Anh & Em
+                Trung & Trang
             </h1>
 
             <p
                 class="story-date"
                 id="storyDate"
-            ></p>
+            >
+                05/12/2022
+            </p>
 
-        </div>
+        </header>
 
-        <!-- Counter -->
+
+        <!-- =================================================
+             COUNTER
+        ================================================= -->
 
         <div class="card story-card">
 
-            <h2 class="counter-title">
+            <h2 class="counter-heading">
                 Chúng ta đã bên nhau
             </h2>
 
+            <p class="counter-subtitle">
+                Và thời gian vẫn đang tiếp tục... ❤️
+            </p>
+
+
             <div class="counter-grid">
 
+
                 <div class="counter-box">
+
                     <span
                         class="counter-number"
                         id="years"
-                    >0</span>
+                    >
+                        0
+                    </span>
 
                     <span class="counter-label">
                         Năm
                     </span>
+
                 </div>
 
+
                 <div class="counter-box">
+
                     <span
                         class="counter-number"
                         id="months"
-                    >0</span>
+                    >
+                        0
+                    </span>
 
                     <span class="counter-label">
                         Tháng
                     </span>
+
                 </div>
 
+
                 <div class="counter-box">
+
                     <span
                         class="counter-number"
                         id="days"
-                    >0</span>
+                    >
+                        0
+                    </span>
 
                     <span class="counter-label">
                         Ngày
                     </span>
+
                 </div>
 
+
                 <div class="counter-box">
+
                     <span
                         class="counter-number"
                         id="hours"
-                    >0</span>
+                    >
+                        0
+                    </span>
 
                     <span class="counter-label">
                         Giờ
                     </span>
+
+                </div>
+
+
+                <div class="counter-box">
+
+                    <span
+                        class="counter-number"
+                        id="minutes"
+                    >
+                        0
+                    </span>
+
+                    <span class="counter-label">
+                        0 phút
+                    </span>
+
+                </div>
+
+
+                <div class="counter-box">
+
+                    <span
+                        class="counter-number"
+                        id="seconds"
+                    >
+                        0
+                    </span>
+
+                    <span class="counter-label">
+                        Giây
+                    </span>
+
                 </div>
 
             </div>
 
         </div>
 
-        <!-- Quote -->
 
-        <div class="card story-card">
+        <!-- =================================================
+             QUOTE
+        ================================================= -->
+
+        <div
+            class="card story-card quote-card"
+        >
 
             <p class="quote">
                 “Có những người xuất hiện trong cuộc đời ta
@@ -1046,24 +1804,32 @@ select option {
 
         </div>
 
-        <!-- Music -->
+
+        <!-- =================================================
+             MUSIC
+        ================================================= -->
 
         <div
-            class="card story-card"
+            class="card story-card youtube-card"
             id="musicCard"
         >
 
-            <h2>
+            <h2 class="story-heading">
                 🎵 Bài hát của chúng ta
             </h2>
+
 
             <div class="youtube-wrap">
 
                 <iframe
                     id="youtubeFrame"
                     src=""
-                    title="Love Story Music"
-                    allow="autoplay; encrypted-media; picture-in-picture"
+                    title="Bài hát của chúng ta"
+                    allow="
+                        autoplay;
+                        encrypted-media;
+                        picture-in-picture
+                    "
                     allowfullscreen
                 ></iframe>
 
@@ -1071,18 +1837,23 @@ select option {
 
         </div>
 
-        <!-- Letter -->
+
+        <!-- =================================================
+             LETTER
+        ================================================= -->
 
         <div class="card story-card">
 
-            <h2>
+            <h2 class="story-heading">
                 💌 Điều anh muốn nói
             </h2>
+
 
             <div
                 class="letter"
                 id="storyLetter"
             ></div>
+
 
             <div
                 class="signature"
@@ -1092,6 +1863,9 @@ select option {
             </div>
 
         </div>
+
+
+        <!-- FOOTER -->
 
         <div class="footer">
             Made with ❤️ for someone special
@@ -1105,7 +1879,7 @@ select option {
 <script>
 
 /* =========================================================
-   CONFIG
+   CONFIGURATION
 ========================================================= */
 
 const QR_API =
@@ -1139,22 +1913,37 @@ Anh yêu em. ❤️`;
 
 function createHearts() {
 
-    const container = document.getElementById("hearts");
+    const container =
+        document.getElementById("hearts");
 
     if (!container) return;
 
     container.innerHTML = "";
 
-    const symbols = ["♥", "♡", "❤", "💗"];
+    const symbols = [
+        "♥",
+        "♡",
+        "❤",
+        "💗",
+        "💖"
+    ];
 
-    for (let i = 0; i < 18; i++) {
 
-        const heart = document.createElement("div");
+    for (let i = 0; i < 22; i++) {
 
-        heart.className = "heart";
+        const heart =
+            document.createElement("div");
+
+        heart.className =
+            "heart";
 
         heart.textContent =
-            symbols[Math.floor(Math.random() * symbols.length)];
+            symbols[
+                Math.floor(
+                    Math.random() *
+                    symbols.length
+                )
+            ];
 
         heart.style.left =
             Math.random() * 100 + "%";
@@ -1163,12 +1952,14 @@ function createHearts() {
             (12 + Math.random() * 20) + "px";
 
         heart.style.animationDuration =
-            (10 + Math.random() * 15) + "s";
+            (10 + Math.random() * 16) + "s";
 
         heart.style.animationDelay =
-            (-Math.random() * 20) + "s";
+            (-Math.random() * 22) + "s";
 
-        container.appendChild(heart);
+        container.appendChild(
+            heart
+        );
     }
 }
 
@@ -1177,31 +1968,21 @@ function createHearts() {
    THEME
 ========================================================= */
 
-function getSelectedTheme() {
-
-    const selected =
-        document.querySelector(
-            'input[name="theme"]:checked'
-        );
-
-    return selected
-        ? selected.value
-        : "pink";
-}
+const validThemes = [
+    "pink",
+    "midnight",
+    "rose",
+    "gold",
+    "green",
+    "pastel"
+];
 
 
 function setTheme(theme) {
 
-    const validThemes = [
-        "pink",
-        "midnight",
-        "rose",
-        "gold",
-        "green",
-        "pastel"
-    ];
-
-    if (!validThemes.includes(theme)) {
+    if (
+        !validThemes.includes(theme)
+    ) {
         theme = "pink";
     }
 
@@ -1212,24 +1993,51 @@ function setTheme(theme) {
 }
 
 
-/* Live preview */
+/* =========================================================
+   LIVE THEME PREVIEW
+========================================================= */
 
-document.querySelectorAll(
-    'input[name="theme"]'
-).forEach(input => {
+document
+    .querySelectorAll(
+        'input[name="theme"]'
+    )
+    .forEach(function(input) {
 
-    input.addEventListener(
-        "change",
-        function () {
-            setTheme(this.value);
-        }
-    );
+        input.addEventListener(
+            "change",
+            function() {
 
-});
+                setTheme(
+                    this.value
+                );
+
+            }
+        );
+
+    });
 
 
 /* =========================================================
-   GET GIFT DATA FROM URL
+   GET SELECTED THEME
+========================================================= */
+
+function getSelectedTheme() {
+
+    const selected =
+        document.querySelector(
+            'input[name="theme"]:checked'
+        );
+
+    if (!selected) {
+        return "pink";
+    }
+
+    return selected.value;
+}
+
+
+/* =========================================================
+   GET GIFT DATA
 ========================================================= */
 
 function getGiftData() {
@@ -1239,11 +2047,19 @@ function getGiftData() {
             window.location.search
         );
 
-    if (!params.has("c") &&
-        !params.has("couple")) {
 
+    /*
+       Nếu URL không có dữ liệu
+       thì đây là trang tạo quà.
+    */
+
+    if (
+        !params.has("c") &&
+        !params.has("couple")
+    ) {
         return null;
     }
+
 
     return {
 
@@ -1286,17 +2102,31 @@ function getGiftData() {
 
 function showPage(pageId) {
 
-    document.querySelectorAll(".page")
-        .forEach(page => {
-            page.classList.remove("active");
+    document
+        .querySelectorAll(".page")
+        .forEach(function(page) {
+
+            page.classList.remove(
+                "active"
+            );
+
         });
 
+
     const page =
-        document.getElementById(pageId);
+        document.getElementById(
+            pageId
+        );
+
 
     if (page) {
-        page.classList.add("active");
+
+        page.classList.add(
+            "active"
+        );
+
     }
+
 
     window.scrollTo({
         top: 0,
@@ -1311,14 +2141,20 @@ function showPage(pageId) {
 
 function showOpening(data) {
 
-    setTheme(data.theme);
+    setTheme(
+        data.theme
+    );
+
 
     document.getElementById(
         "openingReceiver"
     ).textContent =
-        "Dành cho " + data.receiver;
+        data.receiver;
 
-    showPage("openingPage");
+
+    showPage(
+        "openingPage"
+    );
 }
 
 
@@ -1328,103 +2164,166 @@ function showOpening(data) {
 
 function openStory() {
 
-    const data = getGiftData();
+    const data =
+        getGiftData();
+
 
     if (!data) {
-        showPage("createPage");
+
+        showPage(
+            "createPage"
+        );
+
         return;
     }
 
-    loadStory(data);
 
-    showPage("storyPage");
+    loadStory(
+        data
+    );
+
+
+    showPage(
+        "storyPage"
+    );
 }
 
 
 /* =========================================================
-   YOUTUBE ID
+   YOUTUBE ID PARSER
 ========================================================= */
 
 function getYoutubeId(value) {
 
-    if (!value) return "";
+    if (!value) {
+        return "";
+    }
 
-    value = value.trim();
+
+    value =
+        value.trim();
+
 
     /*
-       Cho phép nhập trực tiếp ID YouTube
+       Cho phép nhập trực tiếp ID
     */
 
-    if (/^[a-zA-Z0-9_-]{11}$/.test(value)) {
+    if (
+        /^[a-zA-Z0-9_-]{11}$/
+            .test(value)
+    ) {
+
         return value;
+
     }
+
 
     try {
 
-        const url = new URL(value);
+        const url =
+            new URL(value);
 
         const host =
             url.hostname
                 .replace("www.", "")
                 .toLowerCase();
 
-        /* youtu.be */
 
-        if (host === "youtu.be") {
+        /*
+           youtu.be/ID
+        */
 
-            const id =
+        if (
+            host === "youtu.be"
+        ) {
+
+            return (
                 url.pathname
                     .split("/")
-                    .filter(Boolean)[0];
+                    .filter(Boolean)[0]
+                || ""
+            );
 
-            return id || "";
         }
 
-        /* youtube.com */
+
+        /*
+           youtube.com
+        */
 
         if (
             host === "youtube.com" ||
             host === "m.youtube.com"
         ) {
 
-            /* watch?v= */
 
-            const v =
-                url.searchParams.get("v");
+            /*
+               watch?v=ID
+            */
 
-            if (v) {
-                return v;
+            const videoId =
+                url.searchParams.get(
+                    "v"
+                );
+
+            if (videoId) {
+                return videoId;
             }
 
-            /* shorts */
+
+            /*
+               shorts/ID
+            */
 
             if (
-                url.pathname.startsWith("/shorts/")
+                url.pathname
+                    .startsWith("/shorts/")
             ) {
 
-                return url.pathname
-                    .split("/")[2] || "";
+                return (
+                    url.pathname
+                        .split("/")[2]
+                    || ""
+                );
+
             }
 
-            /* embed */
+
+            /*
+               embed/ID
+            */
 
             if (
-                url.pathname.startsWith("/embed/")
+                url.pathname
+                    .startsWith("/embed/")
             ) {
 
-                return url.pathname
-                    .split("/")[2] || "";
+                return (
+                    url.pathname
+                        .split("/")[2]
+                    || ""
+                );
+
             }
 
-            /* live */
+
+            /*
+               live/ID
+            */
 
             if (
-                url.pathname.startsWith("/live/")
+                url.pathname
+                    .startsWith("/live/")
             ) {
 
-                return url.pathname
-                    .split("/")[2] || "";
+                return (
+                    url.pathname
+                        .split("/")[2]
+                    || ""
+                );
+
             }
+
         }
 
     } catch (error) {
@@ -1433,71 +2332,8 @@ function getYoutubeId(value) {
 
     }
 
+
     return "";
-}
-
-
-/* =========================================================
-   LOAD STORY
-========================================================= */
-
-function loadStory(data) {
-
-    setTheme(data.theme);
-
-    document.getElementById(
-        "storyCouple"
-    ).textContent =
-        data.couple;
-
-    document.getElementById(
-        "storyDate"
-    ).textContent =
-        formatDate(data.date);
-
-    const letter =
-        data.letter.trim()
-            ? data.letter
-            : DEFAULT_LETTER;
-
-    document.getElementById(
-        "storyLetter"
-    ).textContent =
-        letter;
-
-    document.getElementById(
-        "signature"
-    ).textContent =
-        "— " + data.couple.split("&")[0].trim() + " ❤️";
-
-    const youtubeId =
-        getYoutubeId(data.music);
-
-    const musicCard =
-        document.getElementById("musicCard");
-
-    const frame =
-        document.getElementById("youtubeFrame");
-
-    if (youtubeId) {
-
-        frame.src =
-            "https://www.youtube.com/embed/" +
-            encodeURIComponent(youtubeId) +
-            "?autoplay=1&rel=0";
-
-        musicCard.style.display =
-            "block";
-
-    } else {
-
-        frame.src = "";
-
-        musicCard.style.display =
-            "none";
-    }
-
-    startCounter(data.date);
 }
 
 
@@ -1511,14 +2347,24 @@ function formatDate(dateString) {
         return "";
     }
 
+
     const date =
         new Date(
-            dateString + "T00:00:00"
+            dateString +
+            "T00:00:00"
         );
 
-    if (isNaN(date.getTime())) {
+
+    if (
+        isNaN(
+            date.getTime()
+        )
+    ) {
+
         return "";
+
     }
+
 
     return date.toLocaleDateString(
         "vi-VN",
@@ -1532,16 +2378,152 @@ function formatDate(dateString) {
 
 
 /* =========================================================
-   COUNTER
+   LOAD STORY
+========================================================= */
+
+function loadStory(data) {
+
+    setTheme(
+        data.theme
+    );
+
+
+    /*
+       Couple
+    */
+
+    document.getElementById(
+        "storyCouple"
+    ).textContent =
+        data.couple;
+
+
+    /*
+       Date
+    */
+
+    document.getElementById(
+        "storyDate"
+    ).textContent =
+        formatDate(
+            data.date
+        );
+
+
+    /*
+       Letter
+    */
+
+    const letter =
+        data.letter &&
+        data.letter.trim()
+            ? data.letter
+            : DEFAULT_LETTER;
+
+
+    document.getElementById(
+        "storyLetter"
+    ).textContent =
+        letter;
+
+
+    /*
+       Signature
+    */
+
+    let sender =
+        data.couple
+            .split("&")[0]
+            .trim();
+
+
+    if (!sender) {
+        sender = "Anh";
+    }
+
+
+    document.getElementById(
+        "signature"
+    ).textContent =
+        "— " +
+        sender +
+        " ❤️";
+
+
+    /*
+       YouTube
+    */
+
+    const youtubeId =
+        getYoutubeId(
+            data.music
+        );
+
+
+    const musicCard =
+        document.getElementById(
+            "musicCard"
+        );
+
+
+    const frame =
+        document.getElementById(
+            "youtubeFrame"
+        );
+
+
+    if (youtubeId) {
+
+        frame.src =
+            "https://www.youtube.com/embed/" +
+            encodeURIComponent(
+                youtubeId
+            ) +
+            "?autoplay=1&rel=0";
+
+        musicCard.style.display =
+            "block";
+
+    } else {
+
+        frame.src = "";
+
+        musicCard.style.display =
+            "none";
+    }
+
+
+    /*
+       Counter
+    */
+
+    startCounter(
+        data.date
+    );
+}
+
+
+/* =========================================================
+   REAL-TIME LOVE COUNTER
 ========================================================= */
 
 function startCounter(dateString) {
 
+    /*
+       Không tạo nhiều interval
+    */
+
     if (counterTimer) {
-        clearInterval(counterTimer);
+
+        clearInterval(
+            counterTimer
+        );
+
+        counterTimer = null;
     }
 
-    function update() {
+
+    function updateCounter() {
 
         if (!dateString) {
 
@@ -1549,22 +2531,54 @@ function startCounter(dateString) {
                 0,
                 0,
                 0,
+                0,
+                0,
                 0
             );
 
             return;
         }
 
+
         const start =
             new Date(
-                dateString + "T00:00:00"
+                dateString +
+                "T00:00:00"
             );
+
 
         const now =
             new Date();
 
+
+        /*
+           Ngày không hợp lệ
+        */
+
         if (
-            isNaN(start.getTime()) ||
+            isNaN(
+                start.getTime()
+            )
+        ) {
+
+            setCounter(
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            );
+
+            return;
+        }
+
+
+        /*
+           Ngày trong tương lai
+        */
+
+        if (
             start > now
         ) {
 
@@ -1572,27 +2586,35 @@ function startCounter(dateString) {
                 0,
                 0,
                 0,
+                0,
+                0,
                 0
             );
 
             return;
         }
 
+
         /*
-           Tính chính xác:
-           Năm → Tháng → Ngày → Giờ
+           ================================================
+           TÍNH NĂM
+           ================================================
         */
 
         let years =
             now.getFullYear() -
             start.getFullYear();
 
+
         let cursor =
             new Date(start);
 
+
         cursor.setFullYear(
-            cursor.getFullYear() + years
+            cursor.getFullYear() +
+            years
         );
+
 
         if (cursor > now) {
 
@@ -1602,25 +2624,43 @@ function startCounter(dateString) {
                 new Date(start);
 
             cursor.setFullYear(
-                cursor.getFullYear() + years
+                cursor.getFullYear() +
+                years
             );
         }
 
+
+        /*
+           ================================================
+           TÍNH THÁNG
+           ================================================
+        */
+
         let months =
-            (now.getFullYear() -
-             cursor.getFullYear()) * 12
+            (
+                now.getFullYear() -
+                cursor.getFullYear()
+            ) * 12
             +
-            (now.getMonth() -
-             cursor.getMonth());
+            (
+                now.getMonth() -
+                cursor.getMonth()
+            );
+
 
         let monthCursor =
             new Date(cursor);
 
+
         monthCursor.setMonth(
-            monthCursor.getMonth() + months
+            monthCursor.getMonth() +
+            months
         );
 
-        if (monthCursor > now) {
+
+        if (
+            monthCursor > now
+        ) {
 
             months--;
 
@@ -1628,60 +2668,137 @@ function startCounter(dateString) {
                 new Date(cursor);
 
             monthCursor.setMonth(
-                monthCursor.getMonth() + months
+                monthCursor.getMonth() +
+                months
             );
         }
+
 
         cursor =
             monthCursor;
 
-        const remaining =
+
+        /*
+           ================================================
+           THỜI GIAN CÒN LẠI
+           ================================================
+        */
+
+        let remaining =
             now.getTime() -
             cursor.getTime();
 
-        const dayMs =
+
+        const DAY =
             24 * 60 * 60 * 1000;
 
-        const hourMs =
+        const HOUR =
             60 * 60 * 1000;
 
-        const minuteMs =
+        const MINUTE =
             60 * 1000;
+
+        const SECOND =
+            1000;
+
+
+        /*
+           Ngày
+        */
 
         const days =
             Math.floor(
-                remaining / dayMs
+                remaining / DAY
             );
+
+
+        remaining =
+            remaining % DAY;
+
+
+        /*
+           Giờ
+        */
 
         const hours =
             Math.floor(
-                (remaining % dayMs) /
-                hourMs
+                remaining / HOUR
             );
+
+
+        remaining =
+            remaining % HOUR;
+
+
+        /*
+           Phút
+        */
+
+        const minutes =
+            Math.floor(
+                remaining / MINUTE
+            );
+
+
+        remaining =
+            remaining % MINUTE;
+
+
+        /*
+           Giây
+        */
+
+        const seconds =
+            Math.floor(
+                remaining / SECOND
+            );
+
+
+        /*
+           Cập nhật giao diện
+        */
 
         setCounter(
             years,
             months,
             days,
-            hours
+            hours,
+            minutes,
+            seconds
         );
     }
 
-    update();
+
+    /*
+       Chạy ngay lập tức
+    */
+
+    updateCounter();
+
+
+    /*
+       Sau đó cập nhật mỗi giây
+    */
 
     counterTimer =
         setInterval(
-            update,
+            updateCounter,
             1000
         );
 }
 
 
+/* =========================================================
+   SET COUNTER VALUES
+========================================================= */
+
 function setCounter(
     years,
     months,
     days,
-    hours
+    hours,
+    minutes,
+    seconds
 ) {
 
     document.getElementById(
@@ -1689,20 +2806,37 @@ function setCounter(
     ).textContent =
         years;
 
+
     document.getElementById(
         "months"
     ).textContent =
         months;
+
 
     document.getElementById(
         "days"
     ).textContent =
         days;
 
+
     document.getElementById(
         "hours"
     ).textContent =
         hours;
+
+
+    document.getElementById(
+        "minutes"
+    ).textContent =
+        String(minutes)
+            .padStart(2, "0");
+
+
+    document.getElementById(
+        "seconds"
+    ).textContent =
+        String(seconds)
+            .padStart(2, "0");
 }
 
 
@@ -1717,31 +2851,40 @@ function createGift() {
             "couple"
         ).value.trim();
 
+
     const receiver =
         document.getElementById(
             "receiver"
         ).value.trim();
+
 
     const date =
         document.getElementById(
             "date"
         ).value;
 
+
     const music =
         document.getElementById(
             "music"
         ).value.trim();
+
 
     const letter =
         document.getElementById(
             "letter"
         ).value.trim();
 
+
     const theme =
         getSelectedTheme();
 
 
-    /* Validation */
+    /*
+       ================================================
+       VALIDATION
+       ================================================
+    */
 
     if (!couple) {
 
@@ -1785,15 +2928,17 @@ function createGift() {
     }
 
 
-    /* Check date */
-
     const selectedDate =
         new Date(
-            date + "T00:00:00"
+            date +
+            "T00:00:00"
         );
 
+
     if (
-        isNaN(selectedDate.getTime())
+        isNaN(
+            selectedDate.getTime()
+        )
     ) {
 
         alert(
@@ -1817,7 +2962,9 @@ function createGift() {
     }
 
 
-    /* Check YouTube */
+    /*
+       Kiểm tra YouTube
+    */
 
     if (
         music &&
@@ -1825,8 +2972,8 @@ function createGift() {
     ) {
 
         alert(
-            "Link YouTube chưa đúng định dạng.\n\n" +
-            "Bạn có thể nhập link YouTube hoặc ID video."
+            "Link YouTube chưa đúng.\n\n" +
+            "Bạn có thể dán link YouTube thông thường."
         );
 
         document.getElementById(
@@ -1838,30 +2985,37 @@ function createGift() {
 
 
     /*
-       Tạo URL
+       ================================================
+       TẠO URL
+       ================================================
     */
 
     const baseUrl =
         window.location.origin +
         window.location.pathname;
 
+
     const params =
         new URLSearchParams();
+
 
     params.set(
         "c",
         couple
     );
 
+
     params.set(
         "t",
         receiver
     );
 
+
     params.set(
         "d",
         date
     );
+
 
     if (music) {
 
@@ -1871,6 +3025,7 @@ function createGift() {
         );
     }
 
+
     if (letter) {
 
         params.set(
@@ -1878,6 +3033,11 @@ function createGift() {
             letter
         );
     }
+
+
+    /*
+       Lưu giao diện
+    */
 
     params.set(
         "theme",
@@ -1892,7 +3052,9 @@ function createGift() {
 
 
     /*
-       Hiển thị link
+       ================================================
+       HIỂN THỊ LINK
+       ================================================
     */
 
     document.getElementById(
@@ -1902,7 +3064,9 @@ function createGift() {
 
 
     /*
-       QR Code
+       ================================================
+       TẠO QR
+       ================================================
     */
 
     const qrCode =
@@ -1910,10 +3074,15 @@ function createGift() {
             "qrCode"
         );
 
+
     qrCode.src =
         QR_API +
-        "?size=700x700&margin=25&data=" +
-        encodeURIComponent(giftUrl);
+        "?size=700x700" +
+        "&margin=25" +
+        "&data=" +
+        encodeURIComponent(
+            giftUrl
+        );
 
 
     /*
@@ -1928,19 +3097,22 @@ function createGift() {
 
 
     /*
-       Cuộn tới kết quả
+       Cuộn xuống kết quả
     */
 
-    setTimeout(() => {
+    setTimeout(
+        function() {
 
-        document.getElementById(
-            "result"
-        ).scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
+            document.getElementById(
+                "result"
+            ).scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
 
-    }, 100);
+        },
+        100
+    );
 }
 
 
@@ -1955,7 +3127,11 @@ async function copyLink() {
             "generatedLink"
         ).textContent;
 
-    if (!link) return;
+
+    if (!link) {
+        return;
+    }
+
 
     try {
 
@@ -1963,16 +3139,24 @@ async function copyLink() {
             link
         );
 
+
         alert(
             "Đã sao chép link món quà ❤️"
         );
 
     } catch (error) {
 
-        fallbackCopy(link);
+        fallbackCopy(
+            link
+        );
+
     }
 }
 
+
+/* =========================================================
+   FALLBACK COPY
+========================================================= */
 
 function fallbackCopy(text) {
 
@@ -1981,26 +3165,33 @@ function fallbackCopy(text) {
             "textarea"
         );
 
+
     textarea.value =
         text;
+
 
     textarea.style.position =
         "fixed";
 
-    textarea.style.opacity =
-        "0";
+
+    textarea.style.left =
+        "-9999px";
+
 
     document.body.appendChild(
         textarea
     );
 
+
     textarea.select();
+
 
     try {
 
         document.execCommand(
             "copy"
         );
+
 
         alert(
             "Đã sao chép link món quà ❤️"
@@ -2009,9 +3200,12 @@ function fallbackCopy(text) {
     } catch (error) {
 
         alert(
-            "Không thể tự động sao chép. Hãy nhấn giữ vào link để sao chép."
+            "Không thể tự động sao chép.\n" +
+            "Hãy nhấn giữ vào link để sao chép."
         );
+
     }
+
 
     document.body.removeChild(
         textarea
@@ -2020,7 +3214,7 @@ function fallbackCopy(text) {
 
 
 /* =========================================================
-   OPEN GENERATED GIFT
+   OPEN GIFT
 ========================================================= */
 
 function openGift() {
@@ -2030,7 +3224,11 @@ function openGift() {
             "generatedLink"
         ).textContent;
 
-    if (!link) return;
+
+    if (!link) {
+        return;
+    }
+
 
     window.open(
         link,
@@ -2045,33 +3243,44 @@ function openGift() {
 
 document.addEventListener(
     "DOMContentLoaded",
-    function () {
+    function() {
 
         createHearts();
+
 
         const data =
             getGiftData();
 
-        /*
-           Nếu URL có dữ liệu quà:
-           → hiện trang "Một món quà đặc biệt"
 
-           Nếu không:
-           → hiện trang tạo quà
+        /*
+           Có dữ liệu trong URL
+           → Đây là link quà
+           → Hiện trang mở quà
         */
 
         if (data) {
 
-            showOpening(data);
+            showOpening(
+                data
+            );
 
         } else {
 
-            setTheme("pink");
+            /*
+               Không có dữ liệu
+               → Trang tạo quà
+            */
+
+            setTheme(
+                "pink"
+            );
 
             showPage(
                 "createPage"
             );
+
         }
+
     }
 );
 
