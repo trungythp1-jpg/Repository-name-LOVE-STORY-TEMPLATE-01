@@ -1,0 +1,356 @@
+/* ================================
+   OPENING
+================================ */
+
+.opening-card {
+
+    text-align: center;
+
+    padding:
+        55px 25px;
+}
+
+.opening-label {
+
+    color: var(--accent2);
+
+    font-size: 12px;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 30px;
+}
+
+.opening-heart {
+
+    font-size:
+        clamp(65px,15vw,105px);
+
+    line-height: 1;
+
+    margin-bottom: 22px;
+
+    animation:
+        heartbeat 1.8s
+        ease-in-out
+        infinite;
+
+    filter:
+        drop-shadow(
+            0 0 25px var(--glow)
+        );
+}
+
+@keyframes heartbeat {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+.opening-card h1 {
+
+    font-size:
+        clamp(35px,8vw,58px);
+
+    margin-bottom: 10px;
+}
+
+.opening-receiver {
+
+    color: var(--accent2);
+
+    font-size:
+        clamp(24px,6vw,34px);
+
+    margin-bottom: 28px;
+}
+
+.opening-text {
+
+    color: var(--text-soft);
+
+    line-height: 1.8;
+
+    max-width: 500px;
+
+    margin:
+        0 auto 35px;
+}
+
+
+/* ================================
+   STORY HEADER
+================================ */
+
+.story-header {
+
+    text-align: center;
+
+    padding:
+        10px 0 38px;
+}
+
+.story-label {
+
+    color: var(--accent2);
+
+    font-size: 12px;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 18px;
+}
+
+.story-title {
+
+    font-size:
+        clamp(38px,9vw,64px);
+
+    line-height: 1.1;
+
+    margin-bottom: 13px;
+
+    text-shadow:
+        0 5px 30px var(--glow);
+}
+
+.story-date {
+
+    color: var(--text-soft);
+
+    font-size: 17px;
+}
+
+
+/* ================================
+   STORY CARD
+================================ */
+
+.story-card {
+
+    margin-bottom: 22px;
+}
+
+.story-card h2 {
+
+    color: var(--accent2);
+
+    font-size: 23px;
+
+    margin-bottom: 22px;
+}
+
+
+/* ================================
+   COUNTER
+================================ */
+
+.counter-title {
+
+    text-align: center;
+
+    color: var(--accent2);
+
+    font-size:
+        clamp(23px,6vw,30px);
+
+    margin-bottom: 7px;
+}
+
+.counter-description {
+
+    text-align: center;
+
+    color: var(--text-soft);
+
+    opacity: .75;
+
+    font-size: 13px;
+
+    margin-bottom: 24px;
+}
+
+.counter-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 12px;
+}
+
+.counter-box {
+
+    min-height: 105px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 18px;
+
+    background:
+        rgba(0,0,0,.14);
+
+    transition:
+        border-color .3s ease;
+}
+
+.counter-number {
+
+    color: var(--accent2);
+
+    font-size:
+        clamp(28px,7vw,40px);
+
+    line-height: 1;
+
+    font-weight: 800;
+
+    font-variant-numeric:
+        tabular-nums;
+
+    text-shadow:
+        0 0 22px var(--glow);
+}
+
+.counter-label {
+
+    color: var(--text-soft);
+
+    font-size: 12px;
+
+    margin-top: 10px;
+}
+
+
+/* ================================
+   QUOTE
+================================ */
+
+.quote-card {
+
+    padding:
+        42px 28px;
+}
+
+.quote-card p {
+
+    color: var(--text-soft);
+
+    font-size:
+        clamp(18px,4.5vw,23px);
+
+    line-height: 1.8;
+
+    font-style: italic;
+
+    text-align: center;
+}
+
+
+/* ================================
+   YOUTUBE
+================================ */
+
+.youtube-container {
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background: black;
+}
+
+.youtube-container iframe {
+
+    width: 100%;
+
+    height: 100%;
+
+    border: 0;
+}
+
+
+/* ================================
+   LETTER
+================================ */
+
+.story-letter {
+
+    color: #f6eaf0;
+
+    font-size: 17px;
+
+    line-height: 2;
+
+    white-space: pre-line;
+}
+
+.signature {
+
+    text-align: right;
+
+    color: var(--accent2);
+
+    font-size: 20px;
+
+    font-style: italic;
+
+    margin-top: 30px;
+}
+
+
+/* ================================
+   FOOTER
+================================ */
+
+.footer {
+
+    text-align: center;
+
+    color: var(--text-soft);
+
+    opacity: .5;
+
+    font-size: 12px;
+
+    margin-top: 35px;
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media(max-width:600px) {
+
+    .counter-grid {
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .counter-box {
+
+        min-height: 100px;
+    }
+
+}
