@@ -9,6 +9,8 @@
 <style>
 *{
   box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 html{
@@ -16,339 +18,201 @@ html{
 }
 
 body{
-  margin:0;
   min-height:100vh;
   min-height:100svh;
   overflow-x:hidden;
   overflow-y:auto;
-
-  font-family:Arial, Helvetica, sans-serif;
+  font-family:Georgia, "Times New Roman", serif;
   color:#fff;
-
   background:
-    radial-gradient(circle at 20% 10%, rgba(255,50,110,.25), transparent 35%),
-    radial-gradient(circle at 80% 30%, rgba(190,30,100,.20), transparent 35%),
-    linear-gradient(145deg,#350916,#12040c 55%,#050207);
+    radial-gradient(circle at 50% 20%, #641b35 0%, #280c19 45%, #090308 100%);
 }
 
-.page{
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,40,110,.12), transparent 30%),
+    radial-gradient(circle at 80% 70%, rgba(255,0,80,.10), transparent 30%);
+  z-index:0;
+}
+
+.container{
+  position:relative;
+  z-index:1;
   width:100%;
   max-width:760px;
   margin:auto;
-  padding:
-    22px
-    16px
-    calc(90px + env(safe-area-inset-bottom));
+  padding:24px 18px calc(100px + env(safe-area-inset-bottom));
 }
 
 .card{
-  position:relative;
-  overflow:hidden;
-
-  border:1px solid rgba(255,255,255,.18);
-  border-radius:32px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.09),
-      rgba(255,255,255,.035)
-    );
-
+  width:100%;
+  padding:42px 22px 45px;
+  border:1px solid rgba(255,255,255,.20);
+  border-radius:34px;
+  background:rgba(255,255,255,.075);
   backdrop-filter:blur(18px);
   -webkit-backdrop-filter:blur(18px);
-
   box-shadow:
-    0 30px 90px rgba(0,0,0,.45);
-
-  padding:34px 22px 44px;
-}
-
-.card::before{
-  content:"";
-  position:absolute;
-  width:280px;
-  height:280px;
-  top:-100px;
-  right:-100px;
-
-  background:#ff2b72;
-  opacity:.12;
-
-  border-radius:50%;
-  filter:blur(60px);
+    0 30px 80px rgba(0,0,0,.45),
+    inset 0 1px 0 rgba(255,255,255,.10);
 }
 
 .top-label{
   display:inline-block;
-
-  padding:10px 20px;
-
-  border:1px solid rgba(255,255,255,.20);
+  padding:12px 24px;
+  border:1px solid rgba(255,255,255,.22);
   border-radius:50px;
-
-  color:#f2b6c9;
-
-  font-size:12px;
-  letter-spacing:4px;
-
-  background:rgba(255,255,255,.05);
-}
-
-.header{
-  text-align:center;
-  position:relative;
-  z-index:2;
-}
-
-.hero-heart{
-  font-size:82px;
-  line-height:1;
-
-  margin:
-    45px 0 30px;
-
-  filter:
-    drop-shadow(0 12px 25px rgba(255,0,60,.35));
-
-  animation:
-    heartbeat 2s ease-in-out infinite;
-}
-
-@keyframes heartbeat{
-  0%,100%{
-    transform:scale(1);
-  }
-
-  50%{
-    transform:scale(1.08);
-  }
-}
-
-h1{
-  margin:0;
-
-  font-family:Georgia, "Times New Roman", serif;
-
-  font-size:clamp(38px,9vw,72px);
-  line-height:1.05;
-
-  letter-spacing:-1px;
-
-  word-break:break-word;
-}
-
-.story-title{
-  margin-top:20px;
-
-  color:#e8b0c2;
-
-  font-size:15px;
-  letter-spacing:6px;
-}
-
-.start-date{
-  margin-top:50px;
-
-  color:#eeb6c8;
-
-  font-size:14px;
-  letter-spacing:4px;
-}
-
-.counter{
-  margin-top:42px;
-}
-
-.days{
-  padding:32px 20px;
-
-  text-align:center;
-
-  border:
-    1px solid rgba(255,70,130,.35);
-
-  border-radius:26px;
-
-  background:
-    rgba(255,30,100,.07);
-}
-
-.days-number{
-  font-size:58px;
-  font-weight:700;
-  line-height:1;
-}
-
-.days-label{
-  margin-top:14px;
-
-  color:#dca7b9;
-
-  font-size:12px;
+  color:#efbfd0;
+  font-family:Arial,sans-serif;
+  font-size:13px;
   letter-spacing:5px;
 }
 
-.units{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-
-  margin-top:14px;
+.big-heart{
+  font-size:92px;
+  line-height:1;
+  margin:38px 0 28px;
+  filter:drop-shadow(0 10px 15px rgba(255,0,70,.35));
 }
 
-.unit{
-  min-height:130px;
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-
-  border:
-    1px solid rgba(255,255,255,.14);
-
-  border-radius:24px;
-
-  background:
-    rgba(255,255,255,.035);
+h1{
+  font-size:clamp(44px,10vw,82px);
+  line-height:1;
+  font-weight:700;
+  letter-spacing:-2px;
+  margin-bottom:20px;
 }
 
-.unit-number{
-  font-size:42px;
+.subtitle{
+  font-family:Arial,sans-serif;
+  font-size:16px;
+  letter-spacing:6px;
+  color:#e7b7c7;
+  margin-bottom:52px;
+}
+
+.start-date{
+  font-family:Arial,sans-serif;
+  font-size:16px;
+  letter-spacing:5px;
+  color:#e8b4c7;
+  margin-bottom:34px;
+}
+
+.days{
+  padding:35px 15px;
+  border:1px solid rgba(255,50,120,.35);
+  border-radius:28px;
+  background:rgba(255,20,80,.07);
+  margin-bottom:18px;
+}
+
+.days-number{
+  font-family:Arial,sans-serif;
+  font-size:clamp(58px,15vw,88px);
   font-weight:700;
 }
 
+.days-label,
 .unit-label{
-  margin-top:10px;
+  margin-top:8px;
+  color:#dba5b8;
+  font-family:Arial,sans-serif;
+  font-size:13px;
+  letter-spacing:5px;
+}
 
-  color:#c999aa;
+.counter{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
 
-  font-size:12px;
-  letter-spacing:3px;
+.unit{
+  padding:28px 10px;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:26px;
+  background:rgba(255,255,255,.045);
+}
+
+.unit-number{
+  font-family:Arial,sans-serif;
+  font-size:48px;
+  font-weight:700;
 }
 
 .quote{
-  margin:
-    45px 10px 35px;
-
-  text-align:center;
-
-  color:#e7bdcb;
-
-  font-family:Georgia, "Times New Roman", serif;
-
-  font-size:22px;
+  margin:42px 10px 35px;
+  color:#e5bfca;
+  font-size:25px;
+  line-height:1.65;
   font-style:italic;
-
-  line-height:1.7;
 }
 
-/* MUSIC */
-
 .music{
-  margin-top:30px;
+  margin-top:35px;
+  margin-bottom:35px;
 }
 
 .section-title{
-  margin-bottom:20px;
-
-  font-family:Georgia, "Times New Roman", serif;
-
-  font-size:30px;
-  line-height:1.3;
-
-  text-align:center;
+  font-size:36px;
+  margin-bottom:22px;
 }
 
 .youtube{
-  position:relative;
-
   width:100%;
   aspect-ratio:16/9;
-
   overflow:hidden;
-
-  border-radius:22px;
-
-  background:#080308;
-
-  box-shadow:
-    0 18px 45px rgba(0,0,0,.35);
+  border-radius:25px;
+  background:#111;
+  box-shadow:0 15px 35px rgba(0,0,0,.35);
 }
 
 .youtube iframe{
   width:100%;
   height:100%;
-
   border:0;
 }
 
-/* LETTER */
-
 .letter{
-  margin-top:40px;
-
-  padding:
-    35px
-    26px
-    40px;
-
-  border:
-    1px solid rgba(255,255,255,.15);
-
-  border-radius:28px;
-
-  background:
-    rgba(255,255,255,.035);
+  margin-top:38px;
+  padding:38px 28px;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:30px;
+  background:rgba(0,0,0,.13);
+  text-align:left;
 }
 
-.letter-title{
-  margin:0 0 28px;
-
+.letter h2{
   text-align:center;
-
-  font-family:Georgia, "Times New Roman", serif;
-
-  font-size:30px;
+  font-size:34px;
+  margin-bottom:32px;
 }
 
-.letter-text{
-  color:#e4c3cd;
-
-  font-family:Georgia, "Times New Roman", serif;
-
-  font-size:20px;
-  line-height:1.85;
-}
-
-.letter-text p{
-  margin:
-    0 0 24px;
+.letter p{
+  color:#e4c4ce;
+  font-size:21px;
+  line-height:1.9;
+  margin-bottom:22px;
 }
 
 .signature{
-  margin-top:30px;
-
   text-align:right;
-
-  color:#f2b0c4;
-
-  font-family:Georgia, "Times New Roman", serif;
-
-  font-size:25px;
+  font-size:27px;
+  color:#f0bdcc;
+  margin-top:30px;
 }
 
-/* FOOTER */
-
 .footer{
-  margin-top:40px;
-
+  margin-top:50px;
   text-align:center;
-
-  color:#9d7181;
-
-  font-size:11px;
+  color:#9e7181;
+  font-family:Arial,sans-serif;
+  font-size:12px;
   letter-spacing:4px;
 }
 
@@ -356,117 +220,193 @@ h1{
 
 .heart{
   position:fixed;
-
-  z-index:5;
-
+  bottom:-50px;
+  z-index:2;
   pointer-events:none;
-
-  opacity:.75;
-
-  animation:
-    floatHeart linear forwards;
+  animation:floatUp linear forwards;
+  opacity:.8;
 }
 
-@keyframes floatHeart{
-
+@keyframes floatUp{
   0%{
-    transform:
-      translateY(0)
-      rotate(0deg)
-      scale(.7);
-
+    transform:translateY(0) rotate(0deg);
     opacity:0;
   }
-
-  15%{
-    opacity:.75;
+  10%{
+    opacity:.8;
   }
-
   100%{
-    transform:
-      translateY(-110vh)
-      rotate(25deg)
-      scale(1.15);
-
+    transform:translateY(-115vh) rotate(25deg);
     opacity:0;
   }
+}
+
+/* OPENING */
+
+.opening{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  background:
+    radial-gradient(circle at 50% 25%, #7d2546 0%, #321020 45%, #080208 100%);
+  transition:opacity .7s ease, visibility .7s ease;
+}
+
+.opening.hide{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+.opening-card{
+  width:100%;
+  max-width:650px;
+  padding:55px 28px 48px;
+  text-align:center;
+  border-radius:38px;
+  border:1px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  box-shadow:0 30px 90px rgba(0,0,0,.5);
+}
+
+.opening-heart{
+  font-size:95px;
+  line-height:1;
+  margin-bottom:35px;
+  filter:drop-shadow(0 10px 20px rgba(255,0,60,.4));
+}
+
+.opening-small{
+  font-family:Arial,sans-serif;
+  font-size:14px;
+  letter-spacing:6px;
+  color:#efc2cf;
+  margin-bottom:28px;
+}
+
+.opening-title{
+  font-size:clamp(48px,11vw,80px);
+  line-height:1.05;
+  margin-bottom:25px;
+}
+
+.opening-text{
+  font-family:Arial,sans-serif;
+  color:#e7c5cf;
+  font-size:18px;
+  line-height:1.65;
+  margin-bottom:38px;
+}
+
+.open-button{
+  width:100%;
+  max-width:430px;
+  padding:20px 25px;
+  border:0;
+  border-radius:60px;
+  color:#fff;
+  background:linear-gradient(135deg,#ff176f,#d50d55);
+  font-family:Arial,sans-serif;
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:1px;
+  box-shadow:0 15px 35px rgba(255,0,90,.28);
+  cursor:pointer;
 }
 
 /* MOBILE */
 
-@media(max-width:500px){
+@media(max-width:520px){
 
-  .page{
-    padding:
-      12px
-      12px
-      calc(80px + env(safe-area-inset-bottom));
+  .container{
+    padding:18px 14px calc(100px + env(safe-area-inset-bottom));
   }
 
   .card{
-    border-radius:28px;
-    padding:28px 16px 36px;
+    padding:34px 18px 38px;
+    border-radius:30px;
   }
 
-  .hero-heart{
-    font-size:70px;
-    margin-top:40px;
+  .big-heart{
+    font-size:80px;
+    margin:30px 0 25px;
   }
 
   h1{
-    font-size:42px;
+    font-size:48px;
   }
 
-  .story-title{
-    font-size:12px;
+  .subtitle{
+    font-size:13px;
     letter-spacing:4px;
+    margin-bottom:44px;
   }
 
   .start-date{
-    margin-top:40px;
-    font-size:12px;
-    letter-spacing:3px;
+    font-size:14px;
+    letter-spacing:4px;
   }
 
   .days{
-    padding:30px 15px;
+    padding:30px 10px;
   }
 
   .days-number{
-    font-size:54px;
+    font-size:64px;
   }
 
   .unit{
-    min-height:120px;
+    padding:25px 8px;
   }
 
   .unit-number{
-    font-size:38px;
+    font-size:42px;
   }
 
   .quote{
-    font-size:20px;
+    font-size:21px;
     margin-left:4px;
     margin-right:4px;
   }
 
   .section-title{
-    font-size:27px;
+    font-size:31px;
   }
 
   .letter{
-    padding:
-      30px
-      22px
-      34px;
+    padding:30px 22px;
   }
 
-  .letter-title{
-    font-size:28px;
+  .letter h2{
+    font-size:30px;
   }
 
-  .letter-text{
+  .letter p{
     font-size:19px;
+  }
+
+  .opening-card{
+    padding:45px 22px 38px;
+    border-radius:32px;
+  }
+
+  .opening-heart{
+    font-size:78px;
+  }
+
+  .opening-small{
+    font-size:12px;
+    letter-spacing:4px;
+  }
+
+  .opening-title{
+    font-size:52px;
   }
 }
 </style>
@@ -474,144 +414,107 @@ h1{
 
 <body>
 
-<div class="page">
+<!-- MÀN HÌNH MỞ QUÀ -->
+
+<div class="opening" id="opening">
+
+  <div class="opening-card">
+
+    <div class="opening-heart">❤️</div>
+
+    <div class="opening-small">
+      MỘT MÓN QUÀ ĐẶC BIỆT
+    </div>
+
+    <h2 class="opening-title">
+      Dành cho <span id="receiver">em</span>
+    </h2>
+
+    <div class="opening-text">
+      Có một câu chuyện anh muốn kể lại cho em...<br>
+      Hãy mở nó nhé ❤️
+    </div>
+
+    <button class="open-button" onclick="openStory()">
+      MỞ CÂU CHUYỆN ❤️
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- NỘI DUNG LOVE STORY -->
+
+<div class="container">
 
   <main class="card">
 
-    <header class="header">
+    <div class="top-label">
+      OUR LOVE STORY
+    </div>
 
-      <div class="top-label">
-        OUR LOVE STORY
+    <div class="big-heart">
+      ❤️
+    </div>
+
+    <h1 id="couple">
+      CHUN ❤️ CHAN
+    </h1>
+
+    <div class="subtitle">
+      CÂU CHUYỆN CỦA CHÚNG TA
+    </div>
+
+    <div class="start-date" id="dateText">
+      BẮT ĐẦU TỪ 05 • 12 • 2022
+    </div>
+
+
+    <div class="days">
+
+      <div class="days-number" id="totalDays">
+        0
       </div>
 
-      <div class="hero-heart">
-        ❤️
+      <div class="days-label">
+        NGÀY BÊN NHAU
       </div>
 
-      <h1 id="couple">
-        CHUN ❤️ CHAN
-      </h1>
+    </div>
 
-      <div class="story-title">
-        CÂU CHUYỆN CỦA CHÚNG TA
+
+    <div class="counter">
+
+      <div class="unit">
+        <div class="unit-number" id="years">0</div>
+        <div class="unit-label">NĂM</div>
       </div>
 
-      <div class="start-date" id="startDate">
-        BẮT ĐẦU TỪ 05 • 12 • 2022
+      <div class="unit">
+        <div class="unit-number" id="months">0</div>
+        <div class="unit-label">THÁNG</div>
       </div>
 
-    </header>
-
-
-    <!-- COUNTER -->
-
-    <section class="counter">
-
-      <div class="days">
-
-        <div
-          class="days-number"
-          id="totalDays"
-        >
-          0
-        </div>
-
-        <div class="days-label">
-          NGÀY BÊN NHAU
-        </div>
-
+      <div class="unit">
+        <div class="unit-number" id="days">0</div>
+        <div class="unit-label">NGÀY</div>
       </div>
 
-
-      <div class="units">
-
-        <div class="unit">
-
-          <div
-            class="unit-number"
-            id="years"
-          >
-            0
-          </div>
-
-          <div class="unit-label">
-            NĂM
-          </div>
-
-        </div>
-
-
-        <div class="unit">
-
-          <div
-            class="unit-number"
-            id="months"
-          >
-            0
-          </div>
-
-          <div class="unit-label">
-            THÁNG
-          </div>
-
-        </div>
-
-
-        <div class="unit">
-
-          <div
-            class="unit-number"
-            id="days"
-          >
-            0
-          </div>
-
-          <div class="unit-label">
-            NGÀY
-          </div>
-
-        </div>
-
-
-        <div class="unit">
-
-          <div
-            class="unit-number"
-            id="hours"
-          >
-            0
-          </div>
-
-          <div class="unit-label">
-            GIỜ
-          </div>
-
-        </div>
-
-
-        <div class="unit">
-
-          <div
-            class="unit-number"
-            id="minutes"
-          >
-            0
-          </div>
-
-          <div class="unit-label">
-            PHÚT
-          </div>
-
-        </div>
-
+      <div class="unit">
+        <div class="unit-number" id="hours">0</div>
+        <div class="unit-label">GIỜ</div>
       </div>
 
-    </section>
+      <div class="unit">
+        <div class="unit-number" id="minutes">0</div>
+        <div class="unit-label">PHÚT</div>
+      </div>
+
+    </div>
 
 
-    <!-- QUOTE -->
-
-    <div class="quote">
+    <div class="quote" id="quote">
       “Mỗi ngày bên em đều là một ngày đáng nhớ.
       Và anh muốn câu chuyện này kéo dài mãi mãi.” ❤️
     </div>
@@ -619,89 +522,68 @@ h1{
 
     <!-- MUSIC -->
 
-    <section
-      class="music"
-      id="musicSection"
-    >
+    <div class="music">
 
-      <h2 class="section-title">
+      <div class="section-title">
         🎵 Bài hát của chúng ta
-      </h2>
+      </div>
 
       <div class="youtube">
 
         <iframe
-          id="youtubePlayer"
-          src="https://www.youtube.com/embed/QCr4Wf_eJHo?rel=0"
+          id="youtubeFrame"
+          src=""
           title="Bài hát của chúng ta"
-          allow="
-            accelerometer;
-            autoplay;
-            clipboard-write;
-            encrypted-media;
-            gyroscope;
-            picture-in-picture;
-            web-share
-          "
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen>
         </iframe>
 
       </div>
 
-    </section>
+    </div>
 
 
     <!-- LETTER -->
 
-    <section class="letter">
+    <div class="letter">
 
-      <h2 class="letter-title">
+      <h2>
         💌 Gửi người anh yêu
       </h2>
 
-      <div
-        class="letter-text"
-        id="letterText"
-      >
+      <div id="letterContent">
 
         <p>
-          Có những người bước vào cuộc đời chúng ta
-          rất nhẹ nhàng...
+          Có những người bước vào cuộc đời chúng ta rất nhẹ nhàng...
         </p>
 
         <p>
           Nhưng rồi chẳng biết từ lúc nào,
-          họ trở thành một phần không thể thiếu
-          trong mỗi ngày.
+          họ trở thành một phần không thể thiếu trong mỗi ngày.
         </p>
 
         <p>
           Cảm ơn em vì đã xuất hiện,
-          vì đã ở lại và cùng anh viết tiếp
-          câu chuyện này.
+          vì đã ở lại và cùng anh viết tiếp câu chuyện này.
         </p>
 
         <p>
-          Anh không biết tương lai sẽ có bao nhiêu
-          ngày nữa... nhưng anh biết mình muốn
-          những ngày đó có em.
+          Anh không biết tương lai sẽ có bao nhiêu ngày nữa...
+          nhưng anh biết mình muốn những ngày đó có em.
         </p>
 
       </div>
 
-      <div
-        class="signature"
-        id="signature"
-      >
+      <div class="signature">
         Mãi bên em ❤️
       </div>
 
-    </section>
+    </div>
 
 
-    <footer class="footer">
+    <div class="footer">
       LOVE STORY • DIGITAL GIFT
-    </footer>
+    </div>
 
   </main>
 
@@ -710,529 +592,351 @@ h1{
 
 <script>
 
-/* =====================================================
-   DEFAULT
-===================================================== */
+/* =========================================
+   ĐỌC THÔNG TIN TỪ LINK TẠO QUÀ
+   ========================================= */
 
-const DEFAULT_CONFIG = {
+const params = new URLSearchParams(window.location.search);
 
-  couple: "CHUN ❤️ CHAN",
-
-  recipient: "em",
-
-  startDate: "2022-12-05",
-
-  music:
-    "https://www.youtube.com/watch?v=QCr4Wf_eJHo",
-
-  letter: [
-
-    "Có những người bước vào cuộc đời chúng ta rất nhẹ nhàng...",
-
-    "Nhưng rồi chẳng biết từ lúc nào, họ trở thành một phần không thể thiếu trong mỗi ngày.",
-
-    "Cảm ơn em vì đã xuất hiện, vì đã ở lại và cùng anh viết tiếp câu chuyện này.",
-
-    "Anh không biết tương lai sẽ có bao nhiêu ngày nữa... nhưng anh biết mình muốn những ngày đó có em."
-
-  ]
-
-};
+const coupleParam = params.get("couple");
+const receiverParam = params.get("to");
+const dateParam = params.get("date");
+const musicParam = params.get("music");
+const letterParam = params.get("letter");
 
 
-/* =====================================================
-   GET URL DATA
-===================================================== */
-
-const params =
-  new URLSearchParams(
-    window.location.search
-  );
-
+/* =========================================
+   DỮ LIỆU MẶC ĐỊNH
+   ========================================= */
 
 const couple =
-  params.get("couple") ||
-  DEFAULT_CONFIG.couple;
+  coupleParam ||
+  "CHUN ❤️ CHAN";
 
+const receiver =
+  receiverParam ||
+  "em";
 
-const recipient =
-  params.get("to") ||
-  DEFAULT_CONFIG.recipient;
-
-
-const startDate =
-  params.get("date") ||
-  DEFAULT_CONFIG.startDate;
-
+const date =
+  dateParam ||
+  "2022-12-05";
 
 const music =
-  params.get("music") ||
-  DEFAULT_CONFIG.music;
+  musicParam ||
+  "https://youtu.be/QCr4Wf_eJHo";
 
+const defaultLetter = `
+Có những người bước vào cuộc đời chúng ta rất nhẹ nhàng...
 
-const letterParam =
-  params.get("letter");
+Nhưng rồi chẳng biết từ lúc nào,
+họ trở thành một phần không thể thiếu trong mỗi ngày.
 
+Cảm ơn em vì đã xuất hiện,
+vì đã ở lại và cùng anh viết tiếp câu chuyện này.
+
+Anh không biết tương lai sẽ có bao nhiêu ngày nữa...
+nhưng anh biết mình muốn những ngày đó có em.
+`;
 
 const letter =
-  letterParam
-    ? letterParam
-        .split("|")
-        .filter(Boolean)
-    : DEFAULT_CONFIG.letter;
+  letterParam ||
+  defaultLetter;
 
 
-/* =====================================================
-   DISPLAY TEXT
-===================================================== */
+/* =========================================
+   HIỂN THỊ THÔNG TIN
+   ========================================= */
 
-document
-  .getElementById("couple")
-  .textContent =
-  couple;
+document.getElementById("couple").textContent = couple;
 
-
-document
-  .getElementById("startDate")
-  .textContent =
-  "BẮT ĐẦU TỪ " +
-  formatDate(startDate);
+document.getElementById("receiver").textContent = receiver;
 
 
-/* =====================================================
-   LETTER
-===================================================== */
-
-const letterText =
-  document.getElementById(
-    "letterText"
-  );
-
-
-letterText.innerHTML = "";
-
-
-letter.forEach(function(text){
-
-  const p =
-    document.createElement("p");
-
-  p.textContent = text;
-
-  letterText.appendChild(p);
-
-});
-
-
-document
-  .getElementById("signature")
-  .textContent =
-  "Mãi bên " +
-  recipient +
-  " ❤️";
-
-
-/* =====================================================
-   YOUTUBE
-===================================================== */
-
-const videoId =
-  getYoutubeId(music);
-
-
-if(videoId){
-
-  document
-    .getElementById("youtubePlayer")
-    .src =
-    "https://www.youtube.com/embed/" +
-    videoId +
-    "?rel=0";
-
-}
-
-
-/* =====================================================
-   DATE
-===================================================== */
+/* =========================================
+   NGÀY BẮT ĐẦU
+   ========================================= */
 
 function parseDate(value){
 
-  const parts =
-    value.split("-");
+  if(!value) return new Date(2022,11,5,0,0,0);
 
-  if(parts.length !== 3){
-    return null;
+  const parts = value.split("-");
+
+  if(parts.length === 3){
+
+    const year = Number(parts[0]);
+    const month = Number(parts[1]) - 1;
+    const day = Number(parts[2]);
+
+    return new Date(year,month,day,0,0,0);
   }
 
-  const year =
-    Number(parts[0]);
-
-  const month =
-    Number(parts[1]);
-
-  const day =
-    Number(parts[2]);
-
-  const date =
-    new Date(
-      year,
-      month - 1,
-      day,
-      0,
-      0,
-      0
-    );
-
-  if(
-    date.getFullYear() !== year ||
-    date.getMonth() !== month - 1 ||
-    date.getDate() !== day
-  ){
-
-    return null;
-
-  }
-
-  return date;
-
+  return new Date(2022,11,5,0,0,0);
 }
 
-
-const start =
-  parseDate(startDate) ||
-  new Date(
-    2022,
-    11,
-    5
-  );
+const startDate = parseDate(date);
 
 
-/* =====================================================
-   COUNTER
-===================================================== */
+/* =========================================
+   HIỂN THỊ NGÀY ĐẸP
+   ========================================= */
+
+function formatDate(date){
+
+  const d = String(date.getDate()).padStart(2,"0");
+  const m = String(date.getMonth()+1).padStart(2,"0");
+  const y = date.getFullYear();
+
+  return `BẮT ĐẦU TỪ ${d} • ${m} • ${y}`;
+}
+
+document.getElementById("dateText").textContent =
+  formatDate(startDate);
+
+
+/* =========================================
+   TÍNH THỜI GIAN YÊU
+   ========================================= */
 
 function updateCounter(){
 
-  const now =
-    new Date();
+  const now = new Date();
+
+  let diff = now - startDate;
+
+  if(diff < 0){
+    diff = 0;
+  }
+
+
+  /* Tổng ngày */
+
+  const totalDays =
+    Math.floor(diff / 86400000);
+
+  document.getElementById("totalDays").textContent =
+    totalDays.toLocaleString("vi-VN");
+
+
+  /* Năm / tháng / ngày / giờ / phút */
 
   let years =
     now.getFullYear() -
-    start.getFullYear();
+    startDate.getFullYear();
 
   let months =
     now.getMonth() -
-    start.getMonth();
+    startDate.getMonth();
 
-  let temp =
-    new Date(start);
+  let days =
+    now.getDate() -
+    startDate.getDate();
 
-  temp.setFullYear(
-    temp.getFullYear() + years
-  );
+  let hours =
+    now.getHours() -
+    startDate.getHours();
 
-  temp.setMonth(
-    temp.getMonth() + months
-  );
+  let minutes =
+    now.getMinutes() -
+    startDate.getMinutes();
 
-  if(temp > now){
 
-    months--;
+  if(minutes < 0){
 
-    temp =
-      new Date(start);
+    minutes += 60;
+    hours--;
+  }
 
-    temp.setFullYear(
-      temp.getFullYear() + years
-    );
+  if(hours < 0){
 
-    temp.setMonth(
-      temp.getMonth() + months
-    );
-
+    hours += 24;
+    days--;
   }
 
 
-  let remaining =
-    now - temp;
+  if(days < 0){
+
+    const previousMonth =
+      new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        0
+      ).getDate();
+
+    days += previousMonth;
+    months--;
+  }
 
 
-  const dayMs =
-    24 *
-    60 *
-    60 *
-    1000;
+  if(months < 0){
+
+    months += 12;
+    years--;
+  }
 
 
-  const hourMs =
-    60 *
-    60 *
-    1000;
+  if(years < 0){
+    years = 0;
+  }
 
 
-  const minuteMs =
-    60 *
-    1000;
-
-
-  const days =
-    Math.floor(
-      remaining / dayMs
-    );
-
-
-  remaining %=
-    dayMs;
-
-
-  const hours =
-    Math.floor(
-      remaining / hourMs
-    );
-
-
-  remaining %=
-    hourMs;
-
-
-  const minutes =
-    Math.floor(
-      remaining / minuteMs
-    );
-
-
-  /*
-    Tổng số ngày
-  */
-
-  const totalDays =
-    Math.floor(
-      (
-        now - start
-      ) / dayMs
-    );
-
-
-  document
-    .getElementById("totalDays")
-    .textContent =
-    formatNumber(totalDays);
-
-
-  document
-    .getElementById("years")
-    .textContent =
+  document.getElementById("years").textContent =
     years;
 
-
-  document
-    .getElementById("months")
-    .textContent =
+  document.getElementById("months").textContent =
     months;
 
-
-  document
-    .getElementById("days")
-    .textContent =
+  document.getElementById("days").textContent =
     days;
 
-
-  document
-    .getElementById("hours")
-    .textContent =
+  document.getElementById("hours").textContent =
     hours;
 
-
-  document
-    .getElementById("minutes")
-    .textContent =
+  document.getElementById("minutes").textContent =
     minutes;
+}
+
+updateCounter();
+
+setInterval(updateCounter,1000);
+
+
+/* =========================================
+   LỜI NHẮN
+   ========================================= */
+
+function displayLetter(text){
+
+  const box =
+    document.getElementById("letterContent");
+
+  box.innerHTML = "";
+
+  const paragraphs =
+    text.split(/\n\s*\n/);
+
+  paragraphs.forEach(function(paragraph){
+
+    if(paragraph.trim() === "") return;
+
+    const p =
+      document.createElement("p");
+
+    p.textContent =
+      paragraph.trim();
+
+    box.appendChild(p);
+
+  });
 
 }
 
-
-function formatNumber(number){
-
-  return number
-    .toLocaleString("vi-VN");
-
-}
+displayLetter(letter);
 
 
-function formatDate(value){
-
-  const parts =
-    value.split("-");
-
-  if(parts.length !== 3){
-    return "05 • 12 • 2022";
-  }
-
-  return (
-    parts[2] +
-    " • " +
-    parts[1] +
-    " • " +
-    parts[0]
-  );
-
-}
-
-
-/* =====================================================
-   YOUTUBE ID
-===================================================== */
+/* =========================================
+   YOUTUBE
+   ========================================= */
 
 function getYoutubeId(url){
 
-  if(!url){
-    return null;
-  }
+  if(!url) return "";
 
   try{
 
     const parsed =
       new URL(url);
 
-
-    if(
-      parsed.hostname.includes(
-        "youtu.be"
-      )
-    ){
-
-      return parsed
-        .pathname
-        .replace("/", "");
-
+    if(parsed.hostname.includes("youtu.be")){
+      return parsed.pathname.substring(1);
     }
 
-
-    if(
-      parsed.hostname.includes(
-        "youtube.com"
-      )
-    ){
-
-      return (
-        parsed.searchParams
-          .get("v")
-        ||
-        parsed.pathname
-          .split("/")
-          .filter(Boolean)
-          .pop()
-      );
-
+    if(parsed.hostname.includes("youtube.com")){
+      return parsed.searchParams.get("v") || "";
     }
 
   }catch(e){
 
-    return null;
-
+    return "";
   }
 
-  return null;
+  return "";
+}
+
+const youtubeId =
+  getYoutubeId(music);
+
+if(youtubeId){
+
+  document.getElementById("youtubeFrame").src =
+    `https://www.youtube.com/embed/${youtubeId}?rel=0`;
 
 }
 
 
-/* =====================================================
-   FLOATING HEARTS
-===================================================== */
+/* =========================================
+   MỞ CÂU CHUYỆN
+   ========================================= */
 
-const hearts = [
-  "❤️",
-  "💕",
-  "💗",
-  "💖",
-  "💓",
-  "💘",
-  "💞",
-  "💝"
-];
+function openStory(){
 
+  const opening =
+    document.getElementById("opening");
+
+  opening.classList.add("hide");
+
+  setTimeout(function(){
+
+    opening.style.display = "none";
+
+  },700);
+
+}
+
+
+/* =========================================
+   TRÁI TIM BAY
+   ========================================= */
 
 function createHeart(){
 
   const heart =
-    document.createElement(
-      "div"
-    );
+    document.createElement("div");
 
   heart.className =
     "heart";
 
+  const hearts =
+    ["❤️","💗","💖","💕","💓","💞"];
 
   heart.textContent =
-    hearts[
-      Math.floor(
-        Math.random() *
-        hearts.length
-      )
-    ];
-
+    hearts[Math.floor(Math.random()*hearts.length)];
 
   heart.style.left =
-    Math.random() *
-    100 +
-    "vw";
-
-
-  heart.style.bottom =
-    "-30px";
-
+    Math.random()*100 + "vw";
 
   heart.style.fontSize =
-    (
-      18 +
-      Math.random() * 24
-    ) +
-    "px";
-
+    (18 + Math.random()*22) + "px";
 
   heart.style.animationDuration =
-    (
-      6 +
-      Math.random() * 7
-    ) +
-    "s";
+    (7 + Math.random()*7) + "s";
 
+  document.body.appendChild(heart);
 
-  document.body
-    .appendChild(heart);
+  setTimeout(function(){
 
+    heart.remove();
 
-  setTimeout(
-    function(){
-
-      heart.remove();
-
-    },
-    14000
-  );
+  },15000);
 
 }
 
-
-setInterval(
-  createHeart,
-  1200
-);
+setInterval(createHeart,900);
 
 
-/* =====================================================
-   START
-===================================================== */
-
-updateCounter();
-
-
-setInterval(
-  updateCounter,
-  1000
-);
+/* =========================================
+   KHÔNG CÓ PARAMETER → VẪN LÀ DEMO
+   ========================================= */
 
 </script>
 
