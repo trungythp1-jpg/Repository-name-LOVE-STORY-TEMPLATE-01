@@ -1,1455 +1,3057 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport"
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+      content="width=device-width, initial-scale=1.0,
+      viewport-fit=cover">
 
 <title>Love Story • Digital Gift</title>
 
 <style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 html{
-  scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-  min-height:100vh;
-  min-height:100svh;
-  overflow-x:hidden;
-  overflow-y:auto;
-  font-family:Arial, Helvetica, sans-serif;
-  color:#fff;
-  background:
-    radial-gradient(circle at 50% 15%, #7d2345 0%, transparent 35%),
-    radial-gradient(circle at 20% 80%, #42152b 0%, transparent 40%),
-    #090308;
+
+    min-height:100vh;
+    min-height:100svh;
+
+    overflow-x:hidden;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    color:#ffffff;
+
+    background:
+        radial-gradient(
+            circle at 50% 10%,
+            #7b2045 0%,
+            transparent 38%
+        ),
+        radial-gradient(
+            circle at 15% 80%,
+            #45152c 0%,
+            transparent 40%
+        ),
+        #090308;
 }
 
-body:before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  background:
-    radial-gradient(circle at 50% 50%, rgba(255,20,100,.10), transparent 55%);
+
+/* =====================================================
+   BACKGROUND GLOW
+===================================================== */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,30,110,.08),
+            transparent 55%
+        );
+
+    z-index:0;
 }
 
-.container{
-  width:100%;
-  max-width:760px;
-  margin:auto;
-  padding:25px 16px calc(100px + env(safe-area-inset-bottom));
-  position:relative;
-  z-index:2;
-}
 
-.card{
-  width:100%;
-  padding:42px 24px 48px;
-  border:1px solid rgba(255,255,255,.20);
-  border-radius:34px;
-  background:
-    linear-gradient(
-      145deg,
-      rgba(125,35,69,.62),
-      rgba(24,12,20,.78)
-    );
-  backdrop-filter:blur(20px);
-  -webkit-backdrop-filter:blur(20px);
-  box-shadow:
-    0 30px 80px rgba(0,0,0,.55),
-    inset 0 1px 0 rgba(255,255,255,.08);
-}
-
-.hidden{
-  display:none !important;
-}
-
-/* HEARTS */
+/* =====================================================
+   FLOATING HEARTS
+===================================================== */
 
 .hearts{
-  position:fixed;
-  inset:0;
-  overflow:hidden;
-  pointer-events:none;
-  z-index:1;
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:1;
 }
 
 .heart{
-  position:absolute;
-  bottom:-60px;
-  font-size:28px;
-  animation:floatUp linear infinite;
-  opacity:.8;
+
+    position:absolute;
+
+    bottom:-70px;
+
+    font-size:28px;
+
+    opacity:0;
+
+    animation:
+        floatHeart
+        linear
+        infinite;
 }
 
-.heart:nth-child(1){left:8%;animation-duration:9s}
-.heart:nth-child(2){left:22%;animation-duration:12s;animation-delay:2s}
-.heart:nth-child(3){left:42%;animation-duration:10s;animation-delay:4s}
-.heart:nth-child(4){left:62%;animation-duration:13s;animation-delay:1s}
-.heart:nth-child(5){left:80%;animation-duration:11s;animation-delay:3s}
-.heart:nth-child(6){left:92%;animation-duration:14s;animation-delay:5s}
-
-@keyframes floatUp{
-  0%{
-    transform:translateY(0) scale(.7) rotate(0deg);
-    opacity:0;
-  }
-  15%{opacity:.85}
-  100%{
-    transform:translateY(-115vh) scale(1.3) rotate(25deg);
-    opacity:0;
-  }
+.heart:nth-child(1){
+    left:8%;
+    animation-duration:10s;
 }
 
-/* COMMON */
+.heart:nth-child(2){
+    left:23%;
+    animation-duration:13s;
+    animation-delay:2s;
+}
+
+.heart:nth-child(3){
+    left:42%;
+    animation-duration:11s;
+    animation-delay:4s;
+}
+
+.heart:nth-child(4){
+    left:61%;
+    animation-duration:14s;
+    animation-delay:1s;
+}
+
+.heart:nth-child(5){
+    left:80%;
+    animation-duration:12s;
+    animation-delay:3s;
+}
+
+.heart:nth-child(6){
+    left:92%;
+    animation-duration:15s;
+    animation-delay:5s;
+}
+
+@keyframes floatHeart{
+
+    0%{
+
+        transform:
+            translateY(0)
+            scale(.7)
+            rotate(0deg);
+
+        opacity:0;
+    }
+
+    15%{
+        opacity:.8;
+    }
+
+    100%{
+
+        transform:
+            translateY(-115vh)
+            scale(1.25)
+            rotate(25deg);
+
+        opacity:0;
+    }
+}
+
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+
+.container{
+
+    position:relative;
+
+    z-index:2;
+
+    width:100%;
+
+    max-width:760px;
+
+    margin:0 auto;
+
+    padding:
+        18px
+        14px
+        calc(100px + env(safe-area-inset-bottom));
+}
+
+
+/* =====================================================
+   GLASS CARD
+===================================================== */
+
+.card{
+
+    width:100%;
+
+    padding:
+        42px
+        24px
+        48px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
+    border-radius:34px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(123,32,69,.70),
+            rgba(26,10,19,.82)
+        );
+
+    backdrop-filter:blur(22px);
+
+    -webkit-backdrop-filter:blur(22px);
+
+    box-shadow:
+
+        0 30px 80px
+        rgba(0,0,0,.55),
+
+        inset 0 1px 0
+        rgba(255,255,255,.08);
+}
+
+
+/* =====================================================
+   HIDDEN
+===================================================== */
+
+.hidden{
+    display:none !important;
+}
+
+
+/* =====================================================
+   HEART ICON
+===================================================== */
 
 .big-heart{
-  font-size:90px;
-  line-height:1;
-  text-align:center;
-  filter:drop-shadow(0 10px 18px rgba(255,0,50,.35));
-  margin-bottom:28px;
+
+    text-align:center;
+
+    font-size:82px;
+
+    line-height:1;
+
+    margin-bottom:28px;
+
+    filter:
+        drop-shadow(
+            0 10px 20px
+            rgba(255,0,70,.35)
+        );
 }
 
+
+/* =====================================================
+   BADGE
+===================================================== */
+
 .badge{
-  display:inline-block;
-  padding:12px 24px;
-  border:1px solid rgba(255,255,255,.18);
-  border-radius:999px;
-  background:rgba(255,255,255,.06);
-  color:#f6bdcf;
-  letter-spacing:5px;
-  font-size:12px;
+
+    display:inline-block;
+
+    padding:
+        11px
+        22px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
+    border-radius:999px;
+
+    background:
+        rgba(255,255,255,.05);
+
+    color:#f5bdce;
+
+    letter-spacing:5px;
+
+    font-size:12px;
+}
+
+
+/* =====================================================
+   TEXT
+===================================================== */
+
+.center{
+    text-align:center;
 }
 
 h1{
-  font-family:Georgia,serif;
-  font-size:58px;
-  line-height:1.05;
-  margin:24px 0 18px;
-  text-align:center;
-}
 
-h2{
-  font-family:Georgia,serif;
-  font-size:40px;
-  line-height:1.15;
+    text-align:center;
+
+    font-family:Georgia,serif;
+
+    font-size:56px;
+
+    line-height:1.08;
+
+    margin:
+        25px
+        0
+        18px;
 }
 
 .subtitle{
-  text-align:center;
-  color:#f0bfd0;
-  font-size:19px;
-  line-height:1.7;
+
+    text-align:center;
+
+    color:#f0bdce;
+
+    font-size:19px;
+
+    line-height:1.7;
 }
 
-.center{
-  text-align:center;
-}
 
-/* BUTTON */
+/* =====================================================
+   BUTTON
+===================================================== */
 
 .btn{
-  display:block;
-  width:100%;
-  border:0;
-  border-radius:999px;
-  padding:20px 24px;
-  margin-top:30px;
-  background:linear-gradient(135deg,#ff1680,#d90052);
-  color:white;
-  font-size:20px;
-  font-weight:800;
-  letter-spacing:.5px;
-  box-shadow:0 15px 35px rgba(255,0,100,.28);
-  cursor:pointer;
+
+    display:block;
+
+    width:100%;
+
+    margin-top:30px;
+
+    padding:
+        19px
+        22px;
+
+    border:0;
+
+    border-radius:999px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff1680,
+            #d90052
+        );
+
+    color:#ffffff;
+
+    font-size:19px;
+
+    font-weight:800;
+
+    letter-spacing:.5px;
+
+    box-shadow:
+        0 15px 35px
+        rgba(255,0,100,.28);
+
+    cursor:pointer;
+
+    -webkit-tap-highlight-color:transparent;
 }
 
 .btn:active{
-  transform:scale(.98);
+
+    transform:scale(.985);
 }
 
-/* CREATE FORM */
+
+/* =====================================================
+   CREATE PAGE
+===================================================== */
 
 .form-title{
-  text-align:center;
-  font-family:Georgia,serif;
-  font-size:48px;
-  margin:20px 0 12px;
+
+    text-align:center;
+
+    font-family:Georgia,serif;
+
+    font-size:48px;
+
+    margin:
+        20px
+        0
+        12px;
 }
 
 .form-description{
-  text-align:center;
-  color:#edbdce;
-  font-size:18px;
-  line-height:1.6;
-  margin-bottom:35px;
+
+    text-align:center;
+
+    color:#edbdce;
+
+    font-size:18px;
+
+    line-height:1.65;
+
+    margin-bottom:34px;
 }
 
+
+/* =====================================================
+   FORM FIELD
+===================================================== */
+
 .field{
-  margin-bottom:24px;
+
+    margin-bottom:24px;
 }
 
 .field label{
-  display:block;
-  margin-bottom:10px;
-  color:#f2b6c9;
-  font-size:15px;
-  font-weight:600;
-  letter-spacing:1.5px;
-  text-transform:uppercase;
+
+    display:block;
+
+    margin-bottom:10px;
+
+    color:#f2b6c9;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    letter-spacing:1.5px;
 }
 
 .field input,
 .field textarea{
-  width:100%;
-  border:1px solid rgba(255,255,255,.20);
-  outline:none;
-  border-radius:22px;
-  background:rgba(10,4,9,.38);
-  color:#fff;
-  padding:18px 20px;
-  font-size:17px;
+
+    width:100%;
+
+    border:
+        1px solid
+        rgba(255,255,255,.20);
+
+    outline:none;
+
+    border-radius:22px;
+
+    background:
+        rgba(10,4,9,.42);
+
+    color:#ffffff;
+
+    padding:
+        18px
+        20px;
+
+    font-size:17px;
+
+    -webkit-appearance:none;
 }
 
 .field input::placeholder,
 .field textarea::placeholder{
-  color:#aaa0a7;
+
+    color:#a99da4;
 }
 
 .field input:focus,
 .field textarea:focus{
-  border-color:#ff4b94;
-  box-shadow:0 0 0 3px rgba(255,50,130,.10);
+
+    border-color:#ff4b94;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(255,50,130,.10);
 }
 
 .field textarea{
-  min-height:160px;
-  resize:vertical;
-  line-height:1.7;
+
+    min-height:160px;
+
+    resize:vertical;
+
+    line-height:1.7;
 }
 
-/* PHOTO */
+
+/* =====================================================
+   DATE INPUT
+===================================================== */
+
+.field input[type="date"]{
+
+    color-scheme:dark;
+}
+
+
+/* =====================================================
+   PHOTO UPLOAD
+===================================================== */
 
 .photo-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:14px;
 }
 
 .photo-box{
-  position:relative;
-  height:190px;
-  border-radius:22px;
-  border:1px dashed rgba(255,255,255,.25);
-  background:rgba(10,4,9,.35);
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  color:#bdaeb6;
+
+    position:relative;
+
+    height:190px;
+
+    overflow:hidden;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    border:
+        1px dashed
+        rgba(255,255,255,.28);
+
+    border-radius:22px;
+
+    background:
+        rgba(10,4,9,.38);
+
+    color:#c6b6be;
 }
 
 .photo-box input{
-  position:absolute;
-  inset:0;
-  opacity:0;
-  cursor:pointer;
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    opacity:0;
+
+    cursor:pointer;
+
+    z-index:3;
 }
 
 .photo-box img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:none;
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:none;
+
+    z-index:2;
 }
 
 .photo-content{
-  padding:15px;
+
+    position:relative;
+
+    z-index:1;
+
+    padding:15px;
 }
 
 .photo-icon{
-  font-size:38px;
-  margin-bottom:8px;
+
+    font-size:40px;
+
+    margin-bottom:8px;
 }
 
 .photo-small{
-  font-size:13px;
-  line-height:1.5;
+
+    margin-top:5px;
+
+    font-size:13px;
+
+    line-height:1.5;
+
+    color:#a99da5;
 }
 
-/* STORY */
 
-.story-header{
-  text-align:center;
-  padding-top:20px;
-}
-
-.story-name{
-  font-family:Georgia,serif;
-  font-size:54px;
-  font-weight:bold;
-  margin:28px 0 15px;
-}
-
-.story-sub{
-  color:#f1b5c8;
-  font-size:17px;
-  letter-spacing:6px;
-}
-
-.date{
-  margin-top:42px;
-  text-align:center;
-  color:#efb7ca;
-  letter-spacing:4px;
-  font-size:16px;
-}
-
-.counter-main{
-  margin-top:55px;
-  padding:42px 20px;
-  border-radius:30px;
-  border:1px solid rgba(255,50,130,.38);
-  background:rgba(255,20,90,.07);
-  text-align:center;
-}
-
-.counter-main .number{
-  font-size:72px;
-  font-weight:800;
-}
-
-.counter-label{
-  margin-top:10px;
-  color:#e9aebe;
-  letter-spacing:5px;
-  font-size:14px;
-}
-
-.counter-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px;
-  margin-top:18px;
-}
-
-.counter-box{
-  padding:30px 15px;
-  min-height:140px;
-  border:1px solid rgba(255,255,255,.16);
-  border-radius:26px;
-  background:rgba(255,255,255,.035);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-}
-
-.counter-box .number{
-  font-size:42px;
-  font-weight:800;
-}
-
-.counter-box .label{
-  margin-top:8px;
-  color:#dba9b9;
-  letter-spacing:3px;
-  font-size:13px;
-}
-
-.quote{
-  margin:55px 10px 45px;
-  text-align:center;
-  color:#f0c3d0;
-  font-family:Georgia,serif;
-  font-size:25px;
-  font-style:italic;
-  line-height:1.8;
-}
-
-/* MUSIC */
-
-.music-title{
-  font-family:Georgia,serif;
-  font-size:38px;
-  margin-bottom:22px;
-}
-
-.youtube{
-  width:100%;
-  aspect-ratio:16/9;
-  overflow:hidden;
-  border-radius:24px;
-  background:#111;
-  box-shadow:0 15px 40px rgba(0,0,0,.35);
-}
-
-.youtube iframe{
-  width:100%;
-  height:100%;
-  border:0;
-}
-
-/* LETTER */
-
-.letter{
-  margin-top:55px;
-  padding:38px 30px;
-  border-radius:30px;
-  border:1px solid rgba(255,255,255,.17);
-  background:rgba(10,5,10,.30);
-}
-
-.letter h2{
-  text-align:center;
-  margin-bottom:35px;
-}
-
-.letter-body{
-  color:#e9c5cf;
-  font-family:Georgia,serif;
-  font-size:21px;
-  line-height:2;
-}
-
-.letter-body p{
-  margin-bottom:25px;
-}
-
-.signature{
-  margin-top:30px;
-  text-align:right;
-  color:#f3a8bf;
-  font-family:Georgia,serif;
-  font-size:25px;
-}
-
-/* PHOTOS IN STORY */
-
-.story-photos{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-  margin-top:45px;
-}
-
-.story-photos img{
-  width:100%;
-  aspect-ratio:1/1;
-  object-fit:cover;
-  border-radius:24px;
-  border:1px solid rgba(255,255,255,.15);
-}
-
-/* RESULT */
+/* =====================================================
+   RESULT
+===================================================== */
 
 .result{
-  margin-top:30px;
-  padding:30px 20px;
-  border-radius:28px;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.15);
+
+    margin-top:32px;
+
+    padding:
+        30px
+        18px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.16);
+
+    border-radius:30px;
+
+    background:
+        rgba(255,255,255,.045);
 }
 
 .result h2{
-  text-align:center;
-  font-size:34px;
-  margin-bottom:22px;
+
+    text-align:center;
+
+    font-family:Georgia,serif;
+
+    font-size:35px;
+
+    line-height:1.2;
+
+    margin-bottom:22px;
 }
+
+
+/* =====================================================
+   GENERATED LINK
+===================================================== */
 
 .link-box{
-  word-break:break-all;
-  padding:20px;
-  border-radius:20px;
-  background:#120910;
-  color:#f1abc2;
-  font-size:14px;
-  line-height:1.7;
+
+    padding:19px;
+
+    border-radius:20px;
+
+    background:#10070d;
+
+    color:#f1abc2;
+
+    font-size:13px;
+
+    line-height:1.7;
+
+    word-break:break-all;
+
+    overflow-wrap:anywhere;
 }
 
+
+/* =====================================================
+   QR
+===================================================== */
+
 .qr{
-  display:flex;
-  justify-content:center;
-  margin:25px 0;
-  padding:20px;
-  border-radius:24px;
-  background:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin:25px auto;
+
+    padding:20px;
+
+    width:max-content;
+
+    max-width:100%;
+
+    border-radius:25px;
+
+    background:#ffffff;
 }
 
 .qr img{
-  width:220px;
-  height:220px;
+
+    display:block;
+
+    width:220px;
+
+    height:220px;
+
+    max-width:100%;
+
+    image-rendering:auto;
 }
+
+
+/* =====================================================
+   SECONDARY BUTTON
+===================================================== */
 
 .secondary-btn{
-  display:block;
-  width:100%;
-  border:1px solid rgba(255,255,255,.14);
-  border-radius:999px;
-  padding:17px;
-  margin-top:14px;
-  background:rgba(255,255,255,.07);
-  color:#fff;
-  font-size:17px;
-  font-weight:700;
-  cursor:pointer;
+
+    display:block;
+
+    width:100%;
+
+    margin-top:13px;
+
+    padding:17px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.16);
+
+    border-radius:999px;
+
+    background:
+        rgba(255,255,255,.07);
+
+    color:#ffffff;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    cursor:pointer;
 }
 
-/* FOOTER */
+
+/* =====================================================
+   STORY
+===================================================== */
+
+.story-header{
+
+    text-align:center;
+
+    padding-top:10px;
+}
+
+.story-name{
+
+    margin:
+        27px
+        0
+        15px;
+
+    font-family:Georgia,serif;
+
+    font-size:52px;
+
+    line-height:1.12;
+
+    font-weight:bold;
+
+    overflow-wrap:anywhere;
+}
+
+.story-sub{
+
+    color:#f1b5c8;
+
+    font-size:15px;
+
+    letter-spacing:5px;
+
+    line-height:1.5;
+}
+
+.date{
+
+    margin-top:40px;
+
+    text-align:center;
+
+    color:#efb7ca;
+
+    letter-spacing:4px;
+
+    font-size:15px;
+}
+
+
+/* =====================================================
+   COUNTER
+===================================================== */
+
+.counter-main{
+
+    margin-top:48px;
+
+    padding:
+        38px
+        18px;
+
+    border:
+        1px solid
+        rgba(255,50,130,.35);
+
+    border-radius:30px;
+
+    background:
+        rgba(255,20,90,.065);
+
+    text-align:center;
+}
+
+.counter-main .number{
+
+    font-size:65px;
+
+    line-height:1.1;
+
+    font-weight:800;
+}
+
+.counter-label{
+
+    margin-top:10px;
+
+    color:#e9aebe;
+
+    letter-spacing:4px;
+
+    font-size:13px;
+}
+
+.counter-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:15px;
+
+    margin-top:16px;
+}
+
+.counter-box{
+
+    min-height:125px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:25px 12px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+
+    border-radius:25px;
+
+    background:
+        rgba(255,255,255,.035);
+}
+
+.counter-box .number{
+
+    font-size:39px;
+
+    font-weight:800;
+}
+
+.counter-box .label{
+
+    margin-top:8px;
+
+    color:#dba9b9;
+
+    letter-spacing:3px;
+
+    font-size:12px;
+}
+
+
+/* =====================================================
+   QUOTE
+===================================================== */
+
+.quote{
+
+    margin:
+        48px
+        8px
+        42px;
+
+    text-align:center;
+
+    color:#f0c3d0;
+
+    font-family:Georgia,serif;
+
+    font-size:23px;
+
+    font-style:italic;
+
+    line-height:1.8;
+}
+
+
+/* =====================================================
+   STORY PHOTOS
+===================================================== */
+
+.story-photos{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:14px;
+
+    margin:
+        0
+        0
+        45px;
+}
+
+.story-photos img{
+
+    width:100%;
+
+    aspect-ratio:1 / 1;
+
+    object-fit:cover;
+
+    border-radius:24px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+}
+
+
+/* =====================================================
+   MUSIC
+===================================================== */
+
+.music-title{
+
+    font-family:Georgia,serif;
+
+    font-size:35px;
+
+    margin-bottom:20px;
+}
+
+.youtube{
+
+    width:100%;
+
+    aspect-ratio:16 / 9;
+
+    overflow:hidden;
+
+    border-radius:24px;
+
+    background:#000;
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,.35);
+}
+
+.youtube iframe{
+
+    width:100%;
+
+    height:100%;
+
+    border:0;
+}
+
+
+/* =====================================================
+   LETTER
+===================================================== */
+
+.letter{
+
+    margin-top:50px;
+
+    padding:
+        35px
+        25px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.16);
+
+    border-radius:30px;
+
+    background:
+        rgba(10,5,10,.30);
+}
+
+.letter h2{
+
+    text-align:center;
+
+    font-family:Georgia,serif;
+
+    font-size:34px;
+
+    margin-bottom:30px;
+}
+
+.letter-body{
+
+    color:#e9c5cf;
+
+    font-family:Georgia,serif;
+
+    font-size:20px;
+
+    line-height:2;
+}
+
+.letter-body p{
+
+    margin-bottom:22px;
+}
+
+.signature{
+
+    margin-top:28px;
+
+    text-align:right;
+
+    color:#f3a8bf;
+
+    font-family:Georgia,serif;
+
+    font-size:24px;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
 
 .footer{
-  text-align:center;
-  margin-top:50px;
-  color:#9d7382;
-  letter-spacing:5px;
-  font-size:11px;
+
+    text-align:center;
+
+    margin-top:45px;
+
+    color:#9d7382;
+
+    letter-spacing:4px;
+
+    font-size:10px;
 }
 
-/* MOBILE */
+
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media(max-width:600px){
 
-  .container{
-    padding:15px 12px calc(100px + env(safe-area-inset-bottom));
-  }
+    .container{
 
-  .card{
-    padding:34px 18px 42px;
-    border-radius:30px;
-  }
+        padding:
+            12px
+            10px
+            calc(90px + env(safe-area-inset-bottom));
+    }
 
-  .big-heart{
-    font-size:78px;
-  }
+    .card{
 
-  h1{
-    font-size:48px;
-  }
+        padding:
+            34px
+            17px
+            40px;
 
-  .form-title{
-    font-size:42px;
-  }
+        border-radius:30px;
+    }
 
-  .story-name{
-    font-size:43px;
-  }
+    .big-heart{
 
-  .story-sub{
-    font-size:13px;
-    letter-spacing:4px;
-  }
+        font-size:76px;
+    }
 
-  .counter-main .number{
-    font-size:62px;
-  }
+    h1{
 
-  .counter-box{
-    min-height:125px;
-  }
+        font-size:46px;
+    }
 
-  .counter-box .number{
-    font-size:38px;
-  }
+    .form-title{
 
-  .quote{
-    font-size:21px;
-  }
+        font-size:42px;
+    }
 
-  .music-title{
-    font-size:32px;
-  }
+    .form-description{
 
-  .letter{
-    padding:30px 22px;
-  }
+        font-size:17px;
+    }
 
-  .letter-body{
-    font-size:19px;
-  }
+    .story-name{
 
-  .photo-box{
-    height:150px;
-  }
+        font-size:42px;
+    }
+
+    .story-sub{
+
+        font-size:12px;
+
+        letter-spacing:3px;
+    }
+
+    .counter-main .number{
+
+        font-size:58px;
+    }
+
+    .counter-box .number{
+
+        font-size:36px;
+    }
+
+    .quote{
+
+        font-size:20px;
+    }
+
+    .music-title{
+
+        font-size:31px;
+    }
+
+    .letter{
+
+        padding:
+            30px
+            20px;
+    }
+
+    .letter-body{
+
+        font-size:18px;
+    }
+
+    .photo-box{
+
+        height:150px;
+    }
+
+    .photo-icon{
+
+        font-size:34px;
+    }
+
+    .qr img{
+
+        width:210px;
+
+        height:210px;
+    }
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
+<!-- =====================================================
+     FLOATING HEARTS
+===================================================== -->
+
 <div class="hearts">
-  <div class="heart">❤️</div>
-  <div class="heart">💗</div>
-  <div class="heart">💕</div>
-  <div class="heart">❤️</div>
-  <div class="heart">💖</div>
-  <div class="heart">💞</div>
+
+    <div class="heart">❤️</div>
+    <div class="heart">💗</div>
+    <div class="heart">💕</div>
+    <div class="heart">❤️</div>
+    <div class="heart">💖</div>
+    <div class="heart">💞</div>
+
 </div>
+
 
 <div class="container">
 
-<!-- =========================
-     TRANG TẠO QUÀ
-========================= -->
 
-<section id="createPage" class="card">
+<!-- =====================================================
+     PAGE 1 — CREATE GIFT
+===================================================== -->
 
-  <div class="big-heart">❤️</div>
+<section
+    id="createPage"
+    class="card"
+>
 
-  <div class="center">
-    <span class="badge">DIGITAL LOVE GIFT</span>
-  </div>
-
-  <div class="form-title">
-    Tạo món quà
-  </div>
-
-  <div class="form-description">
-    Tạo một Love Story riêng dành cho<br>
-    người bạn yêu. ❤️
-  </div>
-
-  <div class="field">
-    <label>Tên hai người</label>
-    <input id="couple"
-           type="text"
-           placeholder="Ví dụ: MINH ❤️ LAN">
-  </div>
-
-  <div class="field">
-    <label>Tên người nhận</label>
-    <input id="receiver"
-           type="text"
-           placeholder="Ví dụ: Lan">
-  </div>
-
-  <div class="field">
-    <label>Ngày bắt đầu yêu</label>
-    <input id="date"
-           type="date">
-  </div>
-
-  <div class="field">
-    <label>Link bài hát YouTube</label>
-    <input id="music"
-           type="url"
-           placeholder="https://youtu.be/...">
-  </div>
-
-  <div class="field">
-    <label>Ảnh kỷ niệm</label>
-
-    <div class="photo-grid">
-
-      <div class="photo-box">
-        <div class="photo-content" id="photoContent1">
-          <div class="photo-icon">📸</div>
-          <div>Thêm ảnh</div>
-          <div class="photo-small">
-            Ảnh kỷ niệm 01
-          </div>
-        </div>
-
-        <img id="preview1">
-
-        <input id="photo1"
-               type="file"
-               accept="image/*">
-      </div>
-
-      <div class="photo-box">
-        <div class="photo-content" id="photoContent2">
-          <div class="photo-icon">📸</div>
-          <div>Thêm ảnh</div>
-          <div class="photo-small">
-            Ảnh kỷ niệm 02
-          </div>
-        </div>
-
-        <img id="preview2">
-
-        <input id="photo2"
-               type="file"
-               accept="image/*">
-      </div>
-
-    </div>
-  </div>
-
-  <div class="field">
-    <label>Lời nhắn tình yêu</label>
-
-    <textarea id="letter"
-      placeholder="Viết lời nhắn dành riêng cho người ấy...
-
-Mỗi đoạn cách nhau bằng một dòng trống."></textarea>
-  </div>
-
-  <button class="btn"
-          onclick="createGift()">
-    TẠO MÓN QUÀ ❤️
-  </button>
-
-  <div id="result" class="result hidden">
-
-    <h2>🎁 Đã tạo món quà</h2>
-
-    <div class="link-box"
-         id="generatedLink"></div>
-
-    <div class="qr">
-      <img id="qrImage" alt="QR Code">
+    <div class="big-heart">
+        ❤️
     </div>
 
-    <button class="secondary-btn"
-            onclick="copyLink()">
-      📋 SAO CHÉP LINK
-    </button>
-
-    <button class="secondary-btn"
-            onclick="openGift()">
-      ❤️ MỞ TRANG QUÀ
-    </button>
-
-  </div>
-
-  <div class="footer">
-    LOVE STORY • DIGITAL GIFT
-  </div>
-
-</section>
-
-
-<!-- =========================
-     TRANG MỞ QUÀ
-========================= -->
-
-<section id="openingPage" class="card hidden">
-
-  <div class="big-heart">❤️</div>
-
-  <div class="center">
-    <span class="badge">
-      MỘT MÓN QUÀ ĐẶC BIỆT
-    </span>
-  </div>
-
-  <h1>
-    Dành cho <span id="openingReceiver">em</span>
-  </h1>
-
-  <div class="subtitle">
-    Có một câu chuyện anh muốn kể lại<br>
-    cho em...
-    <br><br>
-    Hãy mở nó nhé ❤️
-  </div>
-
-  <button class="btn"
-          onclick="openStory()">
-    MỞ CÂU CHUYỆN ❤️
-  </button>
-
-  <div class="footer">
-    MADE WITH LOVE ❤️
-  </div>
-
-</section>
-
-
-<!-- =========================
-     TRANG LOVE STORY
-========================= -->
-
-<section id="storyPage" class="card hidden">
-
-  <div class="story-header">
 
     <div class="center">
-      <span class="badge">
-        OUR LOVE STORY
-      </span>
-    </div>
 
-    <div class="big-heart" style="margin-top:30px">
-      ❤️
-    </div>
-
-    <div id="storyCouple"
-         class="story-name">
-      CHUN ❤️ CHAN
-    </div>
-
-    <div class="story-sub">
-      CÂU CHUYỆN CỦA CHÚNG TA
-    </div>
-
-    <div id="storyDate"
-         class="date">
-      BẮT ĐẦU TỪ 05 • 12 • 2022
-    </div>
-
-  </div>
-
-
-  <div class="counter-main">
-
-    <div id="totalDays"
-         class="number">
-      0
-    </div>
-
-    <div class="counter-label">
-      NGÀY BÊN NHAU
-    </div>
-
-  </div>
-
-
-  <div class="counter-grid">
-
-    <div class="counter-box">
-      <div id="years"
-           class="number">0</div>
-      <div class="label">NĂM</div>
-    </div>
-
-    <div class="counter-box">
-      <div id="months"
-           class="number">0</div>
-      <div class="label">THÁNG</div>
-    </div>
-
-    <div class="counter-box">
-      <div id="days"
-           class="number">0</div>
-      <div class="label">NGÀY</div>
-    </div>
-
-    <div class="counter-box">
-      <div id="hours"
-           class="number">0</div>
-      <div class="label">GIỜ</div>
-    </div>
-
-    <div class="counter-box">
-      <div id="minutes"
-           class="number">0</div>
-      <div class="label">PHÚT</div>
-    </div>
-
-    <div class="counter-box">
-      <div id="seconds"
-           class="number">0</div>
-      <div class="label">GIÂY</div>
-    </div>
-
-  </div>
-
-
-  <div class="quote">
-    “Mỗi ngày bên em đều là một ngày đáng nhớ.
-    Và anh muốn câu chuyện này kéo dài mãi mãi.” ❤️
-  </div>
-
-
-  <!-- PHOTOS -->
-
-  <div id="storyPhotos"
-       class="story-photos hidden">
-
-    <img id="storyPhoto1">
-    <img id="storyPhoto2">
-
-  </div>
-
-
-  <!-- MUSIC -->
-
-  <div id="musicSection">
-
-    <div class="music-title">
-      🎵 Bài hát của chúng ta
-    </div>
-
-    <div class="youtube">
-      <iframe id="youtubeFrame"
-              title="Bài hát của chúng ta"
-              allow="
-                accelerometer;
-                autoplay;
-                clipboard-write;
-                encrypted-media;
-                gyroscope;
-                picture-in-picture;
-                web-share"
-              allowfullscreen>
-      </iframe>
-    </div>
-
-  </div>
-
-
-  <!-- LETTER -->
-
-  <div class="letter">
-
-    <h2>
-      💌 Gửi người anh yêu
-    </h2>
-
-    <div id="letterBody"
-         class="letter-body">
-
-      <p>
-        Có những người bước vào cuộc đời chúng ta
-        rất nhẹ nhàng...
-      </p>
-
-      <p>
-        Nhưng rồi chẳng biết từ lúc nào,
-        họ trở thành một phần không thể thiếu
-        trong mỗi ngày.
-      </p>
-
-      <p>
-        Cảm ơn em vì đã xuất hiện,
-        vì đã ở lại và cùng anh viết tiếp
-        câu chuyện này.
-      </p>
-
-      <p>
-        Anh không biết tương lai sẽ có bao nhiêu
-        ngày nữa... nhưng anh biết mình muốn
-        những ngày đó có em.
-      </p>
+        <span class="badge">
+            DIGITAL LOVE GIFT
+        </span>
 
     </div>
 
-    <div class="signature">
-      Mãi bên em ❤️
+
+    <div class="form-title">
+        Tạo món quà
     </div>
 
-  </div>
+
+    <div class="form-description">
+
+        Tạo một Love Story riêng dành cho<br>
+        người bạn yêu. ❤️
+
+    </div>
 
 
-  <div class="footer">
-    LOVE STORY • DIGITAL GIFT
-  </div>
+    <!-- NAME -->
+
+    <div class="field">
+
+        <label>
+            TÊN HAI NGƯỜI
+        </label>
+
+        <input
+            id="couple"
+            type="text"
+            placeholder="Ví dụ: CHUN ❤️ CHAN"
+        >
+
+    </div>
+
+
+    <!-- RECEIVER -->
+
+    <div class="field">
+
+        <label>
+            TÊN NGƯỜI NHẬN
+        </label>
+
+        <input
+            id="receiver"
+            type="text"
+            placeholder="Ví dụ: Chan"
+        >
+
+    </div>
+
+
+    <!-- DATE -->
+
+    <div class="field">
+
+        <label>
+            NGÀY BẮT ĐẦU YÊU
+        </label>
+
+        <input
+            id="date"
+            type="date"
+        >
+
+    </div>
+
+
+    <!-- YOUTUBE -->
+
+    <div class="field">
+
+        <label>
+            LINK BÀI HÁT YOUTUBE
+        </label>
+
+        <input
+            id="music"
+            type="url"
+            placeholder="https://youtu.be/..."
+        >
+
+    </div>
+
+
+    <!-- PHOTOS -->
+
+    <div class="field">
+
+        <label>
+            ẢNH KỶ NIỆM
+        </label>
+
+
+        <div class="photo-grid">
+
+
+            <!-- PHOTO 1 -->
+
+            <div class="photo-box">
+
+                <div
+                    id="photoContent1"
+                    class="photo-content"
+                >
+
+                    <div class="photo-icon">
+                        📸
+                    </div>
+
+                    <div>
+                        Thêm ảnh
+                    </div>
+
+                    <div class="photo-small">
+                        Ảnh kỷ niệm 01
+                    </div>
+
+                </div>
+
+
+                <img
+                    id="preview1"
+                    alt="Ảnh kỷ niệm 01"
+                >
+
+
+                <input
+                    id="photo1"
+                    type="file"
+                    accept="image/*"
+                >
+
+            </div>
+
+
+            <!-- PHOTO 2 -->
+
+            <div class="photo-box">
+
+                <div
+                    id="photoContent2"
+                    class="photo-content"
+                >
+
+                    <div class="photo-icon">
+                        📸
+                    </div>
+
+                    <div>
+                        Thêm ảnh
+                    </div>
+
+                    <div class="photo-small">
+                        Ảnh kỷ niệm 02
+                    </div>
+
+                </div>
+
+
+                <img
+                    id="preview2"
+                    alt="Ảnh kỷ niệm 02"
+                >
+
+
+                <input
+                    id="photo2"
+                    type="file"
+                    accept="image/*"
+                >
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- LETTER -->
+
+    <div class="field">
+
+        <label>
+            LỜI NHẮN TÌNH YÊU
+        </label>
+
+
+        <textarea
+            id="letter"
+            placeholder="Viết lời nhắn dành riêng cho người ấy...
+
+Mỗi đoạn cách nhau bằng một dòng trống."
+        ></textarea>
+
+    </div>
+
+
+    <!-- CREATE -->
+
+    <button
+        class="btn"
+        onclick="createGift()"
+    >
+
+        TẠO MÓN QUÀ ❤️
+
+    </button>
+
+
+    <!-- RESULT -->
+
+    <div
+        id="result"
+        class="result hidden"
+    >
+
+        <h2>
+            🎁 Đã tạo món quà
+        </h2>
+
+
+        <div
+            id="generatedLink"
+            class="link-box"
+        ></div>
+
+
+        <div class="qr">
+
+            <img
+                id="qrImage"
+                alt="QR Code"
+            >
+
+        </div>
+
+
+        <button
+            class="secondary-btn"
+            onclick="copyLink()"
+        >
+
+            📋 SAO CHÉP LINK
+
+        </button>
+
+
+        <button
+            class="secondary-btn"
+            onclick="openGift()"
+        >
+
+            ❤️ MỞ TRANG QUÀ
+
+        </button>
+
+    </div>
+
+
+    <div class="footer">
+
+        LOVE STORY • DIGITAL GIFT
+
+    </div>
 
 </section>
 
+
+
+<!-- =====================================================
+     PAGE 2 — OPENING GIFT
+===================================================== -->
+
+<section
+    id="openingPage"
+    class="card hidden"
+>
+
+    <div class="big-heart">
+        ❤️
+    </div>
+
+
+    <div class="center">
+
+        <span class="badge">
+            MỘT MÓN QUÀ ĐẶC BIỆT
+        </span>
+
+    </div>
+
+
+    <h1>
+
+        Dành cho
+        <span id="openingReceiver">
+            em
+        </span>
+
+    </h1>
+
+
+    <div class="subtitle">
+
+        Có một câu chuyện anh muốn kể lại
+        <br>
+        cho em...
+
+        <br><br>
+
+        Hãy mở nó nhé ❤️
+
+    </div>
+
+
+    <button
+        class="btn"
+        onclick="openStory()"
+    >
+
+        MỞ CÂU CHUYỆN ❤️
+
+    </button>
+
+
+    <div class="footer">
+
+        MADE WITH LOVE ❤️
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PAGE 3 — LOVE STORY
+===================================================== -->
+
+<section
+    id="storyPage"
+    class="card hidden"
+>
+
+
+    <!-- HEADER -->
+
+    <div class="story-header">
+
+
+        <div class="center">
+
+            <span class="badge">
+                OUR LOVE STORY
+            </span>
+
+        </div>
+
+
+        <div
+            class="big-heart"
+            style="margin-top:30px"
+        >
+
+            ❤️
+
+        </div>
+
+
+        <div
+            id="storyCouple"
+            class="story-name"
+        >
+
+            CHUN ❤️ CHAN
+
+        </div>
+
+
+        <div class="story-sub">
+
+            CÂU CHUYỆN CỦA CHÚNG TA
+
+        </div>
+
+
+        <div
+            id="storyDate"
+            class="date"
+        >
+
+            BẮT ĐẦU TỪ
+            05 • 12 • 2022
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- TOTAL DAYS -->
+
+    <div class="counter-main">
+
+        <div
+            id="totalDays"
+            class="number"
+        >
+            0
+        </div>
+
+
+        <div class="counter-label">
+
+            NGÀY BÊN NHAU
+
+        </div>
+
+    </div>
+
+
+
+    <!-- COUNTER -->
+
+    <div class="counter-grid">
+
+
+        <div class="counter-box">
+
+            <div
+                id="years"
+                class="number"
+            >
+                0
+            </div>
+
+            <div class="label">
+                NĂM
+            </div>
+
+        </div>
+
+
+        <div class="counter-box">
+
+            <div
+                id="months"
+                class="number"
+            >
+                0
+            </div>
+
+            <div class="label">
+                THÁNG
+            </div>
+
+        </div>
+
+
+        <div class="counter-box">
+
+            <div
+                id="days"
+                class="number"
+            >
+                0
+            </div>
+
+            <div class="label">
+                NGÀY
+            </div>
+
+        </div>
+
+
+        <div class="counter-box">
+
+            <div
+                id="hours"
+                class="number"
+            >
+                0
+            </div>
+
+            <div class="label">
+                GIỜ
+            </div>
+
+        </div>
+
+
+        <div class="counter-box">
+
+            <div
+                id="minutes"
+                class="number"
+            >
+                0
+            </div>
+
+            <div class="label">
+                PHÚT
+            </div>
+
+        </div>
+
+
+        <div class="counter-box">
+
+            <div
+                id="seconds"
+                class="number"
+            >
+                0
+            </div>
+
+            <div class="label">
+                GIÂY
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- QUOTE -->
+
+    <div class="quote">
+
+        “Mỗi ngày bên em đều là một ngày đáng nhớ.
+        Và anh muốn câu chuyện này kéo dài mãi mãi.” ❤️
+
+    </div>
+
+
+
+    <!-- PHOTOS -->
+
+    <div
+        id="storyPhotos"
+        class="story-photos hidden"
+    >
+
+        <img
+            id="storyPhoto1"
+            alt="Kỷ niệm 01"
+        >
+
+        <img
+            id="storyPhoto2"
+            alt="Kỷ niệm 02"
+        >
+
+    </div>
+
+
+
+    <!-- MUSIC -->
+
+    <div id="musicSection">
+
+        <div class="music-title">
+
+            🎵 Bài hát của chúng ta
+
+        </div>
+
+
+        <div class="youtube">
+
+            <iframe
+                id="youtubeFrame"
+                title="Bài hát của chúng ta"
+                allow="
+                    accelerometer;
+                    autoplay;
+                    clipboard-write;
+                    encrypted-media;
+                    gyroscope;
+                    picture-in-picture;
+                    web-share
+                "
+                allowfullscreen
+            ></iframe>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- LETTER -->
+
+    <div class="letter">
+
+
+        <h2>
+
+            💌 Gửi người anh yêu
+
+        </h2>
+
+
+        <div
+            id="letterBody"
+            class="letter-body"
+        >
+
+            <p>
+
+                Có những người bước vào cuộc đời
+                chúng ta rất nhẹ nhàng...
+
+            </p>
+
+
+            <p>
+
+                Nhưng rồi chẳng biết từ lúc nào,
+                họ trở thành một phần không thể thiếu
+                trong mỗi ngày.
+
+            </p>
+
+
+            <p>
+
+                Cảm ơn em vì đã xuất hiện,
+                vì đã ở lại và cùng anh viết tiếp
+                câu chuyện này.
+
+            </p>
+
+
+            <p>
+
+                Anh không biết tương lai sẽ có bao
+                nhiêu ngày nữa... nhưng anh biết mình
+                muốn những ngày đó có em.
+
+            </p>
+
+        </div>
+
+
+        <div class="signature">
+
+            Mãi bên em ❤️
+
+        </div>
+
+
+    </div>
+
+
+    <div class="footer">
+
+        LOVE STORY • DIGITAL GIFT
+
+    </div>
+
+
+</section>
+
+
 </div>
+
 
 
 <script>
 
-/* =========================================
-   BIẾN DỮ LIỆU
-========================================= */
+/* =====================================================
+   GLOBAL
+===================================================== */
 
 let giftData = null;
+
 let generatedURL = "";
 
 
-/* =========================================
-   ĐỌC DỮ LIỆU TỪ URL
-========================================= */
+/* =====================================================
+   GET DATA FROM URL
+===================================================== */
 
 function getGiftData(){
 
-  const params = new URLSearchParams(
-    window.location.search
-  );
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
 
-  if(!params.has("couple")){
+
+    /*
+       LINK MỚI
+
+       c = couple
+       t = receiver
+       d = date
+       m = youtube ID
+       l = letter
+    */
+
+    if(params.has("c")){
+
+        return {
+
+            couple:
+                params.get("c")
+                || "CHUN ❤️ CHAN",
+
+            receiver:
+                params.get("t")
+                || "em",
+
+            date:
+                params.get("d")
+                || "2022-12-05",
+
+            music:
+                params.get("m")
+                || "",
+
+            letter:
+                params.get("l")
+                || ""
+
+        };
+
+    }
+
+
+    /*
+       LINK CŨ
+    */
+
+    if(params.has("couple")){
+
+        return {
+
+            couple:
+                params.get("couple")
+                || "CHUN ❤️ CHAN",
+
+            receiver:
+                params.get("to")
+                || "em",
+
+            date:
+                params.get("date")
+                || "2022-12-05",
+
+            music:
+                params.get("music")
+                || "",
+
+            letter:
+                params.get("letter")
+                || ""
+
+        };
+
+    }
+
+
     return null;
-  }
 
-  return {
-    couple: params.get("couple") || "CHUN ❤️ CHAN",
-    receiver: params.get("to") || "em",
-    date: params.get("date") || "2022-12-05",
-    music: params.get("music") || "",
-    letter: params.get("letter") || ""
-  };
 }
 
 
-/* =========================================
-   TRANG MỞ ĐẦU
-========================================= */
+/* =====================================================
+   SHOW OPENING
+===================================================== */
 
 function showOpening(){
 
-  document.getElementById("createPage")
-    .classList.add("hidden");
+    document
+        .getElementById("createPage")
+        .classList
+        .add("hidden");
 
-  document.getElementById("storyPage")
-    .classList.add("hidden");
 
-  document.getElementById("openingPage")
-    .classList.remove("hidden");
+    document
+        .getElementById("storyPage")
+        .classList
+        .add("hidden");
 
-  document.getElementById("openingReceiver")
-    .textContent =
-    giftData.receiver;
+
+    document
+        .getElementById("openingPage")
+        .classList
+        .remove("hidden");
+
+
+    document
+        .getElementById("openingReceiver")
+        .textContent =
+        giftData.receiver;
+
+
+    window.scrollTo(0,0);
+
 }
 
 
-/* =========================================
-   MỞ LOVE STORY
-========================================= */
+/* =====================================================
+   OPEN STORY
+===================================================== */
 
 function openStory(){
 
-  document.getElementById("openingPage")
-    .classList.add("hidden");
+    document
+        .getElementById("openingPage")
+        .classList
+        .add("hidden");
 
-  document.getElementById("storyPage")
-    .classList.remove("hidden");
 
-  loadStory();
+    document
+        .getElementById("storyPage")
+        .classList
+        .remove("hidden");
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+
+    loadStory();
+
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
 }
 
 
-/* =========================================
-   YOUTUBE
-========================================= */
+/* =====================================================
+   YOUTUBE ID
+===================================================== */
 
 function getYoutubeId(url){
 
-  if(!url) return "";
+    if(!url){
 
-  try{
+        return "";
 
-    const parsed =
-      new URL(url);
-
-    if(parsed.hostname.includes("youtu.be")){
-      return parsed.pathname.substring(1);
     }
 
-    if(parsed.hostname.includes("youtube.com")){
-      return parsed.searchParams.get("v") || "";
+
+    try{
+
+        const parsed =
+            new URL(url);
+
+
+        /*
+           youtu.be/VIDEO_ID
+        */
+
+        if(
+            parsed.hostname === "youtu.be" ||
+            parsed.hostname === "www.youtu.be"
+        ){
+
+            return parsed
+                .pathname
+                .replace("/","")
+                .split("/")[0];
+
+        }
+
+
+        /*
+           youtube.com/watch?v=VIDEO_ID
+        */
+
+        if(
+            parsed.hostname.includes(
+                "youtube.com"
+            )
+        ){
+
+            return (
+                parsed.searchParams
+                    .get("v")
+                || ""
+            );
+
+        }
+
+    }
+    catch(error){
+
+        return "";
+
     }
 
-  }catch(e){}
 
-  return "";
+    return "";
+
 }
 
 
-/* =========================================
+/* =====================================================
    LOAD STORY
-========================================= */
+===================================================== */
 
 function loadStory(){
 
-  document.getElementById("storyCouple")
-    .textContent =
-    giftData.couple;
 
-  const dateObj =
-    new Date(giftData.date + "T00:00:00");
+    /*
+       COUPLE
+    */
 
-  const day =
-    String(dateObj.getDate()).padStart(2,"0");
-
-  const month =
-    String(dateObj.getMonth()+1).padStart(2,"0");
-
-  const year =
-    dateObj.getFullYear();
-
-  document.getElementById("storyDate")
-    .textContent =
-    `BẮT ĐẦU TỪ ${day} • ${month} • ${year}`;
+    document
+        .getElementById("storyCouple")
+        .textContent =
+        giftData.couple;
 
 
-  /* LETTER */
 
-  const letter =
-    giftData.letter.trim();
+    /*
+       DATE
+    */
 
-  if(letter){
+    const dateObj =
+        new Date(
+            giftData.date +
+            "T00:00:00"
+        );
 
-    const paragraphs =
-      letter
-        .split(/\n\s*\n/)
-        .filter(x => x.trim());
 
-    document.getElementById("letterBody")
-      .innerHTML =
-      paragraphs
-        .map(p =>
-          `<p>${escapeHTML(p).replace(/\n/g,"<br>")}</p>`
+    const day =
+        String(
+            dateObj.getDate()
+        ).padStart(2,"0");
+
+
+    const month =
+        String(
+            dateObj.getMonth()+1
+        ).padStart(2,"0");
+
+
+    const year =
+        dateObj.getFullYear();
+
+
+    document
+        .getElementById("storyDate")
+        .textContent =
+        `BẮT ĐẦU TỪ ${day} • ${month} • ${year}`;
+
+
+
+    /*
+       LETTER
+    */
+
+    const letter =
+        giftData.letter.trim();
+
+
+    if(letter){
+
+        const paragraphs =
+            letter
+            .split(/\n\s*\n/)
+            .filter(
+                text =>
+                text.trim()
+            );
+
+
+        document
+            .getElementById("letterBody")
+            .innerHTML =
+
+            paragraphs
+            .map(
+                paragraph =>
+
+                `<p>
+                    ${
+                        escapeHTML(
+                            paragraph
+                        )
+                        .replace(
+                            /\n/g,
+                            "<br>"
+                        )
+                    }
+                 </p>`
+            )
+            .join("");
+
+    }
+
+
+
+    /*
+       MUSIC
+    */
+
+    let youtubeId =
+        giftData.music;
+
+
+    /*
+       Nếu link cũ là URL
+       thì lấy ID
+    */
+
+    if(
+        giftData.music.includes(
+            "youtube"
+        ) ||
+        giftData.music.includes(
+            "youtu.be"
         )
-        .join("");
+    ){
 
-  }
+        youtubeId =
+            getYoutubeId(
+                giftData.music
+            );
 
-
-  /* MUSIC */
-
-  const youtubeId =
-    getYoutubeId(giftData.music);
-
-  if(youtubeId){
-
-    document.getElementById("youtubeFrame")
-      .src =
-      `https://www.youtube.com/embed/${youtubeId}?rel=0`;
-
-  }else{
-
-    document.getElementById("musicSection")
-      .classList.add("hidden");
-
-  }
+    }
 
 
-  startCounter(dateObj);
+    if(youtubeId){
+
+        document
+            .getElementById(
+                "youtubeFrame"
+            )
+            .src =
+            `https://www.youtube.com/embed/${youtubeId}?rel=0`;
+
+    }
+    else{
+
+        document
+            .getElementById(
+                "musicSection"
+            )
+            .classList
+            .add("hidden");
+
+    }
+
+
+
+    /*
+       COUNTER
+    */
+
+    startCounter(
+        dateObj
+    );
+
 }
 
 
-/* =========================================
-   BỘ ĐẾM THỜI GIAN
-========================================= */
+/* =====================================================
+   COUNTER
+===================================================== */
 
 function startCounter(startDate){
 
-  function update(){
 
-    const now =
-      new Date();
+    function updateCounter(){
 
-    let diff =
-      now - startDate;
 
-    if(diff < 0){
-      diff = 0;
+        const now =
+            new Date();
+
+
+        let difference =
+            now - startDate;
+
+
+        if(
+            difference < 0
+        ){
+
+            difference = 0;
+
+        }
+
+
+        /*
+           TOTAL DAYS
+        */
+
+        const totalSeconds =
+            Math.floor(
+                difference / 1000
+            );
+
+
+        const totalMinutes =
+            Math.floor(
+                totalSeconds / 60
+            );
+
+
+        const totalHours =
+            Math.floor(
+                totalMinutes / 60
+            );
+
+
+        const totalDays =
+            Math.floor(
+                totalHours / 24
+            );
+
+
+
+        /*
+           YEAR / MONTH / DAY
+        */
+
+        let years =
+            now.getFullYear()
+            -
+            startDate.getFullYear();
+
+
+        let months =
+            now.getMonth()
+            -
+            startDate.getMonth();
+
+
+        let days =
+            now.getDate()
+            -
+            startDate.getDate();
+
+
+        if(days < 0){
+
+            months--;
+
+
+            const previousMonth =
+                new Date(
+                    now.getFullYear(),
+                    now.getMonth(),
+                    0
+                );
+
+
+            days +=
+                previousMonth
+                .getDate();
+
+        }
+
+
+        if(months < 0){
+
+            years--;
+
+            months += 12;
+
+        }
+
+
+
+        /*
+           GIỜ / PHÚT / GIÂY
+        */
+
+        const hours =
+            now.getHours();
+
+
+        const minutes =
+            now.getMinutes();
+
+
+        const seconds =
+            now.getSeconds();
+
+
+
+        /*
+           DISPLAY
+        */
+
+        document
+            .getElementById("totalDays")
+            .textContent =
+            totalDays
+            .toLocaleString("vi-VN");
+
+
+        document
+            .getElementById("years")
+            .textContent =
+            years;
+
+
+        document
+            .getElementById("months")
+            .textContent =
+            months;
+
+
+        document
+            .getElementById("days")
+            .textContent =
+            days;
+
+
+        document
+            .getElementById("hours")
+            .textContent =
+            hours;
+
+
+        document
+            .getElementById("minutes")
+            .textContent =
+            minutes;
+
+
+        document
+            .getElementById("seconds")
+            .textContent =
+            seconds;
+
     }
 
-    const totalSeconds =
-      Math.floor(diff / 1000);
 
-    const totalMinutes =
-      Math.floor(totalSeconds / 60);
-
-    const totalHours =
-      Math.floor(totalMinutes / 60);
-
-    const totalDays =
-      Math.floor(totalHours / 24);
+    updateCounter();
 
 
-    let years =
-      now.getFullYear() -
-      startDate.getFullYear();
+    setInterval(
+        updateCounter,
+        1000
+    );
 
-    let months =
-      now.getMonth() -
-      startDate.getMonth();
-
-    let days =
-      now.getDate() -
-      startDate.getDate();
-
-    if(days < 0){
-
-      months--;
-
-      const previousMonth =
-        new Date(
-          now.getFullYear(),
-          now.getMonth(),
-          0
-        );
-
-      days +=
-        previousMonth.getDate();
-    }
-
-    if(months < 0){
-
-      years--;
-      months += 12;
-    }
-
-
-    const hours =
-      now.getHours();
-
-    const minutes =
-      now.getMinutes();
-
-    const seconds =
-      now.getSeconds();
-
-
-    document.getElementById("totalDays")
-      .textContent =
-      totalDays.toLocaleString("vi-VN");
-
-    document.getElementById("years")
-      .textContent = years;
-
-    document.getElementById("months")
-      .textContent = months;
-
-    document.getElementById("days")
-      .textContent = days;
-
-    document.getElementById("hours")
-      .textContent = hours;
-
-    document.getElementById("minutes")
-      .textContent = minutes;
-
-    document.getElementById("seconds")
-      .textContent = seconds;
-  }
-
-  update();
-
-  setInterval(update,1000);
 }
 
 
-/* =========================================
-   TẠO LINK QUÀ
-========================================= */
+/* =====================================================
+   CREATE GIFT
+===================================================== */
 
 function createGift(){
 
-  const couple =
-    document.getElementById("couple")
-      .value.trim();
 
-  const receiver =
-    document.getElementById("receiver")
-      .value.trim();
+    /*
+       GET FORM DATA
+    */
 
-  const date =
-    document.getElementById("date")
-      .value;
-
-  const music =
-    document.getElementById("music")
-      .value.trim();
-
-  const letter =
-    document.getElementById("letter")
-      .value.trim();
+    const couple =
+        document
+        .getElementById("couple")
+        .value
+        .trim();
 
 
-  if(!couple){
-
-    alert("Vui lòng nhập tên hai người ❤️");
-    return;
-  }
-
-  if(!receiver){
-
-    alert("Vui lòng nhập tên người nhận ❤️");
-    return;
-  }
-
-  if(!date){
-
-    alert("Vui lòng chọn ngày bắt đầu yêu ❤️");
-    return;
-  }
+    const receiver =
+        document
+        .getElementById("receiver")
+        .value
+        .trim();
 
 
-  const baseURL =
-    window.location.origin +
-    window.location.pathname;
+    const date =
+        document
+        .getElementById("date")
+        .value;
 
 
-  const params =
-    new URLSearchParams();
-
-  params.set("couple",couple);
-  params.set("to",receiver);
-  params.set("date",date);
-
-  if(music){
-    params.set("music",music);
-  }
-
-  if(letter){
-    params.set("letter",letter);
-  }
+    const music =
+        document
+        .getElementById("music")
+        .value
+        .trim();
 
 
-  generatedURL =
-    baseURL +
-    "?" +
-    params.toString();
+    const letter =
+        document
+        .getElementById("letter")
+        .value
+        .trim();
 
 
-  document.getElementById("generatedLink")
-    .textContent =
-    generatedURL;
+
+    /*
+       VALIDATION
+    */
+
+    if(!couple){
+
+        alert(
+            "Vui lòng nhập tên hai người ❤️"
+        );
+
+        return;
+
+    }
 
 
-  /* QR */
+    if(!receiver){
 
-  const qrURL =
-    "https://api.qrserver.com/v1/create-qr-code/?size=500x500&margin=20&data=" +
-    encodeURIComponent(generatedURL);
+        alert(
+            "Vui lòng nhập tên người nhận ❤️"
+        );
 
+        return;
 
-  document.getElementById("qrImage")
-    .src = qrURL;
-
-
-  document.getElementById("result")
-    .classList.remove("hidden");
+    }
 
 
-  document.getElementById("result")
-    .scrollIntoView({
-      behavior:"smooth",
-      block:"start"
-    });
+    if(!date){
+
+        alert(
+            "Vui lòng chọn ngày bắt đầu yêu ❤️"
+        );
+
+        return;
+
+    }
+
+
+
+    /*
+       YOUTUBE ID
+    */
+
+    let youtubeId = "";
+
+
+    if(music){
+
+        youtubeId =
+            getYoutubeId(
+                music
+            );
+
+    }
+
+
+
+    /*
+       BASE URL
+    */
+
+    const baseURL =
+        window.location.origin +
+        window.location.pathname;
+
+
+
+    /*
+       SHORT PARAMETERS
+
+       c = couple
+       t = receiver
+       d = date
+       m = music ID
+       l = letter
+    */
+
+    const params =
+        new URLSearchParams();
+
+
+    params.set(
+        "c",
+        couple
+    );
+
+
+    params.set(
+        "t",
+        receiver
+    );
+
+
+    params.set(
+        "d",
+        date
+    );
+
+
+    if(youtubeId){
+
+        params.set(
+            "m",
+            youtubeId
+        );
+
+    }
+
+
+    if(letter){
+
+        params.set(
+            "l",
+            letter
+        );
+
+    }
+
+
+
+    /*
+       FINAL URL
+    */
+
+    generatedURL =
+        baseURL +
+        "?" +
+        params.toString();
+
+
+
+    /*
+       SHOW LINK
+    */
+
+    document
+        .getElementById(
+            "generatedLink"
+        )
+        .textContent =
+        generatedURL;
+
+
+
+    /*
+       CREATE QR
+
+       Dùng link QR server
+    */
+
+    const qrURL =
+        "https://api.qrserver.com/v1/create-qr-code/" +
+        "?size=600x600" +
+        "&margin=25" +
+        "&data=" +
+        encodeURIComponent(
+            generatedURL
+        );
+
+
+    document
+        .getElementById(
+            "qrImage"
+        )
+        .src =
+        qrURL;
+
+
+
+    /*
+       SHOW RESULT
+    */
+
+    document
+        .getElementById(
+            "result"
+        )
+        .classList
+        .remove("hidden");
+
+
+
+    /*
+       SCROLL
+    */
+
+    setTimeout(
+
+        function(){
+
+            document
+                .getElementById(
+                    "result"
+                )
+                .scrollIntoView({
+
+                    behavior:"smooth",
+
+                    block:"start"
+
+                });
+
+        },
+
+        100
+    );
+
 }
 
 
-/* =========================================
+/* =====================================================
    COPY LINK
-========================================= */
+===================================================== */
 
 function copyLink(){
 
-  if(!generatedURL) return;
+    if(!generatedURL){
 
-  navigator.clipboard
-    .writeText(generatedURL)
-    .then(() => {
+        return;
 
-      alert("Đã sao chép link món quà ❤️");
+    }
 
-    })
-    .catch(() => {
 
-      prompt(
-        "Hãy sao chép link này:",
-        generatedURL
-      );
+    if(
+        navigator.clipboard &&
+        navigator.clipboard.writeText
+    ){
 
-    });
+        navigator.clipboard
+            .writeText(
+                generatedURL
+            )
+            .then(
+
+                function(){
+
+                    alert(
+                        "Đã sao chép link món quà ❤️"
+                    );
+
+                }
+
+            )
+            .catch(
+
+                function(){
+
+                    fallbackCopy();
+
+                }
+
+            );
+
+    }
+    else{
+
+        fallbackCopy();
+
+    }
+
 }
 
 
-/* =========================================
-   MỞ QUÀ
-========================================= */
+/* =====================================================
+   FALLBACK COPY
+===================================================== */
+
+function fallbackCopy(){
+
+    const temp =
+        document.createElement(
+            "textarea"
+        );
+
+
+    temp.value =
+        generatedURL;
+
+
+    document
+        .body
+        .appendChild(
+            temp
+        );
+
+
+    temp.select();
+
+
+    try{
+
+        document.execCommand(
+            "copy"
+        );
+
+        alert(
+            "Đã sao chép link món quà ❤️"
+        );
+
+    }
+    catch(error){
+
+        prompt(
+            "Hãy sao chép link:",
+            generatedURL
+        );
+
+    }
+
+
+    document
+        .body
+        .removeChild(
+            temp
+        );
+
+}
+
+
+/* =====================================================
+   OPEN GIFT
+===================================================== */
 
 function openGift(){
 
-  if(!generatedURL) return;
+    if(!generatedURL){
 
-  window.location.href =
-    generatedURL;
+        return;
+
+    }
+
+
+    window.location.href =
+        generatedURL;
 
 }
 
 
-/* =========================================
-   ẢNH XEM TRƯỚC
-========================================= */
+/* =====================================================
+   PHOTO PREVIEW
+===================================================== */
 
-function setupPhoto(inputId,previewId,contentId){
+function setupPhotoPreview(
+    inputId,
+    previewId,
+    contentId
+){
 
-  const input =
-    document.getElementById(inputId);
 
-  input.addEventListener("change",function(){
+    const input =
+        document
+        .getElementById(
+            inputId
+        );
 
-    const file =
-      this.files[0];
 
-    if(!file) return;
+    input.addEventListener(
+        "change",
+        function(){
 
-    const reader =
-      new FileReader();
 
-    reader.onload =
-      function(e){
+            const file =
+                this.files[0];
 
-        const img =
-          document.getElementById(previewId);
 
-        img.src =
-          e.target.result;
+            if(!file){
 
-        img.style.display =
-          "block";
+                return;
 
-        document.getElementById(contentId)
-          .style.display =
-          "none";
-      };
+            }
 
-    reader.readAsDataURL(file);
-  });
+
+            /*
+               Chỉ nhận ảnh
+            */
+
+            if(
+                !file.type.startsWith(
+                    "image/"
+                )
+            ){
+
+                alert(
+                    "Vui lòng chọn file ảnh ❤️"
+                );
+
+                return;
+
+            }
+
+
+            /*
+               Giới hạn 10MB
+            */
+
+            if(
+                file.size >
+                10 * 1024 * 1024
+            ){
+
+                alert(
+                    "Ảnh nên nhỏ hơn 10MB ❤️"
+                );
+
+                return;
+
+            }
+
+
+            const reader =
+                new FileReader();
+
+
+            reader.onload =
+                function(event){
+
+
+                    const img =
+                        document
+                        .getElementById(
+                            previewId
+                        );
+
+
+                    img.src =
+                        event.target.result;
+
+
+                    img.style.display =
+                        "block";
+
+
+                    document
+                        .getElementById(
+                            contentId
+                        )
+                        .style.display =
+                        "none";
+
+                };
+
+
+            reader.readAsDataURL(
+                file
+            );
+
+        }
+    );
+
 }
 
 
-setupPhoto(
-  "photo1",
-  "preview1",
-  "photoContent1"
+/* =====================================================
+   SETUP PHOTO 1
+===================================================== */
+
+setupPhotoPreview(
+    "photo1",
+    "preview1",
+    "photoContent1"
 );
 
-setupPhoto(
-  "photo2",
-  "preview2",
-  "photoContent2"
+
+/* =====================================================
+   SETUP PHOTO 2
+===================================================== */
+
+setupPhotoPreview(
+    "photo2",
+    "preview2",
+    "photoContent2"
 );
 
 
-/* =========================================
-   BẢO VỆ HTML
-========================================= */
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
 
-function escapeHTML(str){
+function escapeHTML(text){
 
-  return str
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+    return text
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
 }
 
 
-/* =========================================
-   KHỞI ĐỘNG
-========================================= */
+/* =====================================================
+   INITIALIZE
+===================================================== */
 
 giftData =
-  getGiftData();
+    getGiftData();
+
+
+/*
+   Nếu URL có dữ liệu quà
+   → hiện trang mở quà
+*/
 
 if(giftData){
 
-  showOpening();
+    showOpening();
 
 }
 
