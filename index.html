@@ -1,3290 +1,365 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#180c18">
-
-<title>Love Story • Digital Gift</title>
-
-<style>
-
-/* =========================================================
-   1. RESET
-========================================================= */
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    min-height: 100vh;
-    overflow-x: hidden;
-
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Helvetica,
-        Arial,
-        sans-serif;
-
-    color: #ffffff;
-
-    --bg1: #160914;
-    --bg2: #3d1836;
-    --accent: #ff6b9d;
-    --accent2: #ffc0d8;
-    --soft: #f1cbdc;
-    --card: rgba(35, 18, 37, 0.72);
-    --border: rgba(255, 170, 210, 0.25);
-    --glow: rgba(255, 77, 145, 0.30);
-
-    background:
-        radial-gradient(
-            circle at 15% 10%,
-            var(--glow),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 85% 85%,
-            var(--glow),
-            transparent 32%
-        ),
-        linear-gradient(
-            135deg,
-            var(--bg1),
-            var(--bg2)
-        );
-
-    transition:
-        background 0.6s ease,
-        color 0.4s ease;
-}
-
-
-/* =========================================================
-   2. THEMES
-========================================================= */
-
-/* PINK */
-
-body.theme-pink {
-    --bg1: #160914;
-    --bg2: #431b3d;
-    --accent: #ff6098;
-    --accent2: #ffc1d9;
-    --soft: #f4cede;
-    --card: rgba(39, 19, 40, 0.73);
-    --border: rgba(255, 156, 199, 0.28);
-    --glow: rgba(255, 75, 145, 0.32);
-}
-
-
-/* MIDNIGHT */
-
-body.theme-midnight {
-    --bg1: #060817;
-    --bg2: #211b54;
-    --accent: #8175ff;
-    --accent2: #c9c5ff;
-    --soft: #d9d6ff;
-    --card: rgba(14, 15, 42, 0.75);
-    --border: rgba(140, 130, 255, 0.28);
-    --glow: rgba(91, 79, 255, 0.32);
-}
-
-
-/* ROSE */
-
-body.theme-rose {
-    --bg1: #160506;
-    --bg2: #52121c;
-    --accent: #ed4d63;
-    --accent2: #ffabb5;
-    --soft: #f4cbd0;
-    --card: rgba(48, 10, 16, 0.75);
-    --border: rgba(241, 92, 111, 0.30);
-    --glow: rgba(221, 48, 71, 0.32);
-}
-
-
-/* GOLD */
-
-body.theme-gold {
-    --bg1: #080807;
-    --bg2: #322610;
-    --accent: #d6aa50;
-    --accent2: #ffe4a4;
-    --soft: #ead9b1;
-    --card: rgba(28, 25, 17, 0.78);
-    --border: rgba(216, 174, 82, 0.30);
-    --glow: rgba(201, 155, 48, 0.24);
-}
-
-
-/* GREEN */
-
-body.theme-green {
-    --bg1: #04110d;
-    --bg2: #123c31;
-    --accent: #55c5a1;
-    --accent2: #a6ead6;
-    --soft: #c7e8de;
-    --card: rgba(8, 35, 29, 0.76);
-    --border: rgba(79, 198, 161, 0.28);
-    --glow: rgba(57, 190, 147, 0.28);
-}
-
-
-/* PASTEL */
-
-body.theme-pastel {
-    --bg1: #17121b;
-    --bg2: #46314e;
-    --accent: #e8a8d0;
-    --accent2: #f8d7eb;
-    --soft: #ead9e7;
-    --card: rgba(48, 33, 53, 0.77);
-    --border: rgba(232, 168, 208, 0.28);
-    --glow: rgba(226, 151, 201, 0.28);
-}
-
-
-/* =========================================================
-   3. FLOATING HEARTS
-========================================================= */
-
-.hearts {
-    position: fixed;
-    inset: 0;
-
-    overflow: hidden;
-    pointer-events: none;
-
-    z-index: 0;
-}
-
-.heart {
-    position: absolute;
-    bottom: -60px;
-
-    color: var(--accent);
-
-    opacity: 0;
-
-    text-shadow:
-        0 0 12px var(--glow),
-        0 0 25px var(--glow);
-
-    animation:
-        floatingHeart linear infinite;
-}
-
-@keyframes floatingHeart {
-
-    0% {
-        transform:
-            translateY(0)
-            rotate(0deg)
-            scale(.7);
-
-        opacity: 0;
-    }
-
-    10% {
-        opacity: .45;
-    }
-
-    80% {
-        opacity: .28;
-    }
-
-    100% {
-        transform:
-            translateY(-115vh)
-            rotate(35deg)
-            scale(1.25);
-
-        opacity: 0;
-    }
-}
-
-
-/* =========================================================
-   4. PAGE SYSTEM
-========================================================= */
-
-.page {
-    position: relative;
-
-    z-index: 2;
-
-    display: none;
-
-    width: 100%;
-    min-height: 100vh;
-
-    padding:
-        30px
-        18px
-        60px;
-}
-
-.page.active {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.container {
-    width: 100%;
-    max-width: 760px;
-    margin: auto;
-}
-
-
-/* =========================================================
-   5. GLASS CARD
-========================================================= */
-
-.card {
-    width: 100%;
-
-    background:
-        var(--card);
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 28px;
-
-    padding: 30px;
-
-    backdrop-filter:
-        blur(22px);
-
-    -webkit-backdrop-filter:
-        blur(22px);
-
-    box-shadow:
-        0 25px 80px rgba(0,0,0,.35),
-        0 0 50px var(--glow);
-
-    transition:
-        border-color .4s ease,
-        box-shadow .4s ease;
-}
-
-
-/* =========================================================
-   6. CREATE PAGE
-========================================================= */
-
-.logo {
-    text-align: center;
-
-    color: var(--accent2);
-
-    font-size: 12px;
-
-    letter-spacing: 5px;
-
-    text-transform: uppercase;
-
-    margin-bottom: 16px;
-}
-
-.create-title {
-    text-align: center;
-
-    font-size:
-        clamp(34px, 8vw, 58px);
-
-    line-height: 1.1;
-
-    margin-bottom: 14px;
-}
-
-.create-subtitle {
-    text-align: center;
-
-    color: var(--soft);
-
-    line-height: 1.7;
-
-    margin-bottom: 35px;
-}
-
-
-/* =========================================================
-   7. FORM
-========================================================= */
-
-.form-group {
-    margin-bottom: 22px;
-}
-
-.form-label {
-    display: block;
-
-    color: var(--soft);
-
-    font-size: 14px;
-
-    margin-bottom: 9px;
-}
-
-input,
-textarea {
-    width: 100%;
-
-    border:
-        1px solid var(--border);
-
-    outline: none;
-
-    border-radius: 14px;
-
-    background:
-        rgba(0,0,0,.23);
-
-    color: #fff;
-
-    font-family: inherit;
-
-    font-size: 16px;
-
-    padding:
-        14px
-        16px;
-
-    transition:
-        border-color .25s ease,
-        box-shadow .25s ease,
-        background .25s ease;
-}
-
-input::placeholder,
-textarea::placeholder {
-    color: rgba(255,255,255,.45);
-}
-
-input:focus,
-textarea:focus {
-    border-color:
-        var(--accent);
-
-    box-shadow:
-        0 0 0 3px var(--glow);
-
-    background:
-        rgba(0,0,0,.30);
-}
-
-textarea {
-    min-height: 170px;
-
-    resize: vertical;
-
-    line-height: 1.7;
-}
-
-
-/* =========================================================
-   8. THEME SELECTOR
-========================================================= */
-
-.theme-title {
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    margin-bottom: 10px;
-}
-
-.theme-title small {
-    color: var(--accent2);
-
-    font-size: 12px;
-}
-
-.theme-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 12px;
-}
-
-.theme-option {
-    position: relative;
-
-    cursor: pointer;
-}
-
-.theme-option input {
-    position: absolute;
-
-    opacity: 0;
-
-    pointer-events: none;
-}
-
-.theme-card {
-    position: relative;
-
-    min-height: 112px;
-
-    overflow: hidden;
-
-    border:
-        2px solid transparent;
-
-    border-radius: 18px;
-
-    padding: 13px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: flex-end;
-
-    transition:
-        transform .25s ease,
-        border-color .25s ease,
-        box-shadow .25s ease;
-}
-
-.theme-card:hover {
-    transform:
-        translateY(-3px);
-}
-
-.theme-option input:checked
-+ .theme-card {
-    border-color:
-        var(--accent);
-
-    box-shadow:
-        0 0 28px var(--glow);
-
-    transform:
-        translateY(-3px);
-}
-
-.theme-card .theme-icon {
-    position: absolute;
-
-    top: 13px;
-    left: 13px;
-
-    font-size: 26px;
-}
-
-.theme-card span {
-    position: relative;
-
-    z-index: 2;
-
-    font-size: 13px;
-
-    font-weight: 700;
-
-    text-shadow:
-        0 2px 7px rgba(0,0,0,.7);
-}
-
-
-/* Theme preview backgrounds */
-
-.preview-pink {
-    background:
-        radial-gradient(circle at 20% 20%, #ff83b1, transparent 30%),
-        linear-gradient(135deg,#210817,#9c275d);
-}
-
-.preview-midnight {
-    background:
-        radial-gradient(circle at 80% 20%, #7770ff, transparent 30%),
-        linear-gradient(135deg,#050718,#4335a4);
-}
-
-.preview-rose {
-    background:
-        radial-gradient(circle at 20% 20%, #ff6679, transparent 30%),
-        linear-gradient(135deg,#190507,#a52135);
-}
-
-.preview-gold {
-    background:
-        radial-gradient(circle at 80% 20%, #e6bd68, transparent 30%),
-        linear-gradient(135deg,#050505,#85621e);
-}
-
-.preview-green {
-    background:
-        radial-gradient(circle at 20% 20%, #63d2b0, transparent 30%),
-        linear-gradient(135deg,#03100c,#287b65);
-}
-
-.preview-pastel {
-    background:
-        radial-gradient(circle at 80% 20%, #e9a9d1, transparent 30%),
-        linear-gradient(135deg,#1d1421,#985d89);
-}
-
-
-/* =========================================================
-   9. MAIN BUTTON
-========================================================= */
-
-.main-button {
-    width: 100%;
-
-    border: 0;
-
-    border-radius: 16px;
-
-    padding: 17px 20px;
-
-    color: #fff;
-
-    font-family: inherit;
-
-    font-size: 17px;
-
-    font-weight: 700;
-
-    cursor: pointer;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--accent),
-            var(--accent2)
-        );
-
-    box-shadow:
-        0 12px 35px var(--glow);
-
-    transition:
-        transform .2s ease,
-        box-shadow .2s ease,
-        opacity .2s ease;
-}
-
-.main-button:hover {
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 17px 42px var(--glow);
-}
-
-.main-button:active {
-    transform:
-        scale(.98);
-}
-
-.main-button:disabled {
-    opacity: .6;
-    cursor: wait;
-}
-
-
-/* =========================================================
-   10. GENERATED RESULT
-========================================================= */
-
-.result {
-    display: none;
-
-    margin-top: 30px;
-
-    padding-top: 30px;
-
-    border-top:
-        1px solid var(--border);
-}
-
-.result.show {
-    display: block;
-}
-
-.result-title {
-    text-align: center;
-
-    color: var(--accent2);
-
-    font-size: 21px;
-
-    margin-bottom: 18px;
-}
-
-.generated-link {
-    display: block;
-
-    width: 100%;
-
-    padding: 14px;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 13px;
-
-    background:
-        rgba(0,0,0,.24);
-
-    color: var(--accent2);
-
-    font-size: 13px;
-
-    line-height: 1.6;
-
-    word-break: break-all;
-
-    margin-bottom: 20px;
-}
-
-.qr-wrap {
-    display: flex;
-
-    justify-content: center;
-
-    margin:
-        20px 0 25px;
-}
-
-.qr-wrap img {
-    width: 230px;
-    height: 230px;
-
-    padding: 10px;
-
-    background: #fff;
-
-    border-radius: 17px;
-
-    box-shadow:
-        0 15px 45px rgba(0,0,0,.35);
-}
-
-.button-row {
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
-    gap: 10px;
-}
-
-.secondary-button {
-    border:
-        1px solid var(--border);
-
-    border-radius: 14px;
-
-    background:
-        rgba(255,255,255,.06);
-
-    color: #fff;
-
-    padding: 14px;
-
-    font-family: inherit;
-
-    font-size: 14px;
-
-    cursor: pointer;
-
-    transition:
-        background .2s ease,
-        transform .2s ease;
-}
-
-.secondary-button:hover {
-    background:
-        rgba(255,255,255,.11);
-
-    transform:
-        translateY(-1px);
-}
-
-.qr-note {
-    text-align: center;
-
-    color: var(--soft);
-
-    opacity: .7;
-
-    font-size: 12px;
-
-    line-height: 1.5;
-
-    margin-top: 10px;
-}
-
-
-/* =========================================================
-   11. OPENING PAGE
-========================================================= */
-
-.opening {
-    text-align: center;
-
-    padding:
-        55px 25px;
-}
-
-.opening-small {
-    color: var(--accent2);
-
-    font-size: 12px;
-
-    letter-spacing: 5px;
-
-    text-transform: uppercase;
-
-    margin-bottom: 28px;
-}
-
-.opening-heart {
-    font-size:
-        clamp(60px, 15vw, 100px);
-
-    line-height: 1;
-
-    margin-bottom: 20px;
-
-    filter:
-        drop-shadow(
-            0 0 25px var(--glow)
-        );
-
-    animation:
-        heartbeat 1.8s ease-in-out infinite;
-}
-
-@keyframes heartbeat {
-
-    0%,100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.08);
-    }
-}
-
-.opening-title {
-    font-size:
-        clamp(34px, 8vw, 60px);
-
-    line-height: 1.1;
-
-    margin-bottom: 12px;
-}
-
-.opening-to {
-    color: var(--accent2);
-
-    font-size:
-        clamp(22px, 5vw, 31px);
-
-    margin-bottom: 28px;
-}
-
-.opening-message {
-    color: var(--soft);
-
-    max-width: 500px;
-
-    margin:
-        0 auto 35px;
-
-    line-height: 1.8;
-}
-
-.opening-button {
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 10px;
-
-    border: 0;
-
-    border-radius: 50px;
-
-    padding:
-        16px 30px;
-
-    color: #fff;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--accent),
-            var(--accent2)
-        );
-
-    font-family: inherit;
-
-    font-size: 17px;
-
-    font-weight: 700;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 12px 35px var(--glow);
-
-    transition:
-        transform .2s ease,
-        box-shadow .2s ease;
-}
-
-.opening-button:hover {
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 18px 45px var(--glow);
-}
-
-
-/* =========================================================
-   12. STORY HEADER
-========================================================= */
-
-.story-header {
-    text-align: center;
-
-    padding:
-        15px 0 38px;
-}
-
-.story-label {
-    color: var(--accent2);
-
-    font-size: 12px;
-
-    letter-spacing: 5px;
-
-    text-transform: uppercase;
-
-    margin-bottom: 18px;
-}
-
-.story-title {
-    font-size:
-        clamp(38px, 9vw, 64px);
-
-    line-height: 1.1;
-
-    margin-bottom: 13px;
-
-    text-shadow:
-        0 5px 30px var(--glow);
-}
-
-.story-date {
-    color: var(--soft);
-
-    font-size: 17px;
-}
-
-
-/* =========================================================
-   13. STORY CARDS
-========================================================= */
-
-.story-card {
-    margin-bottom: 22px;
-}
-
-.story-heading {
-    color: var(--accent2);
-
-    font-size: 23px;
-
-    margin-bottom: 22px;
-}
-
-.quote-card {
-    padding:
-        42px 28px;
-}
-
-.quote {
-    color: var(--soft);
-
-    font-size:
-        clamp(18px, 4.5vw, 23px);
-
-    line-height: 1.8;
-
-    font-style: italic;
-
-    text-align: center;
-}
-
-
-/* =========================================================
-   14. LOVE COUNTER
-========================================================= */
-
-.counter-heading {
-    text-align: center;
-
-    color: var(--accent2);
-
-    font-size:
-        clamp(23px, 6vw, 30px);
-
-    margin-bottom: 7px;
-}
-
-.counter-subtitle {
-    text-align: center;
-
-    color: var(--soft);
-
-    opacity: .75;
-
-    font-size: 13px;
-
-    margin-bottom: 24px;
-}
-
-.counter-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 12px;
-}
-
-.counter-box {
-    min-height: 105px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 18px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.035),
-            rgba(0,0,0,.18)
-        );
-
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.04);
-
-    transition:
-        border-color .4s ease,
-        box-shadow .4s ease;
-}
-
-.counter-number {
-    color: var(--accent2);
-
-    font-size:
-        clamp(27px, 7vw, 39px);
-
-    line-height: 1;
-
-    font-weight: 800;
-
-    font-variant-numeric:
-        tabular-nums;
-
-    text-shadow:
-        0 0 22px var(--glow);
-}
-
-.counter-label {
-    color: var(--soft);
-
-    font-size: 12px;
-
-    margin-top: 10px;
-
-    letter-spacing: .5px;
-}
-
-
-/* =========================================================
-   15. YOUTUBE
-========================================================= */
-
-.youtube-card {
-    overflow: hidden;
-}
-
-.youtube-wrap {
-    width: 100%;
-
-    aspect-ratio: 16 / 9;
-
-    overflow: hidden;
-
-    background: #000;
-
-    border-radius: 18px;
-}
-
-.youtube-wrap iframe {
-    width: 100%;
-    height: 100%;
-
-    border: 0;
-}
-
-
-/* =========================================================
-   16. LETTER
-========================================================= */
-
-.letter {
-    color: #f6eaf0;
-
-    font-size: 17px;
-
-    line-height: 2;
-
-    white-space: pre-line;
-}
-
-.signature {
-    text-align: right;
-
-    color: var(--accent2);
-
-    font-size: 20px;
-
-    font-style: italic;
-
-    margin-top: 30px;
-}
-
-
-/* =========================================================
-   17. FOOTER
-========================================================= */
-
-.footer {
-    text-align: center;
-
-    color: var(--soft);
-
-    opacity: .55;
-
-    font-size: 12px;
-
-    margin-top: 35px;
-}
-
-
-/* =========================================================
-   18. MOBILE
-========================================================= */
-
-@media (max-width: 600px) {
-
-    .page {
-        padding:
-            18px
-            12px
-            45px;
-    }
-
-    .card {
-        padding:
-            23px 17px;
-
-        border-radius: 23px;
-    }
-
-    .theme-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    .counter-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    .counter-box {
-        min-height: 100px;
-    }
-
-    .button-row {
-        grid-template-columns:
-            1fr;
-    }
-
-    .opening {
-        padding:
-            45px 18px;
-    }
-
-    .quote-card {
-        padding:
-            35px 20px;
-    }
-}
-
-</style>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#160914"
+    >
+
+    <title>Love Story</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/story.css">
 </head>
 
 
-<body class="theme-pink">
+<body>
+
+    <!-- Hiệu ứng trái tim -->
+    <div id="hearts" class="hearts"></div>
 
 
-<!-- =========================================================
-     FLOATING HEARTS
-========================================================= -->
+    <!-- ==================================================
+         TRANG MỞ QUÀ
+    =================================================== -->
 
-<div
-    class="hearts"
-    id="hearts"
-></div>
+    <section id="openingPage" class="page active">
 
+        <div class="container">
 
-<!-- =========================================================
-     CREATE PAGE
-========================================================= -->
+            <div class="glass-card opening-card">
 
-<section
-    class="page active"
-    id="createPage"
->
-
-    <div class="container">
-
-        <div class="card">
-
-            <div class="logo">
-                Love Story • Digital Gift
-            </div>
-
-            <h1 class="create-title">
-                Tạo một món quà
-            </h1>
-
-            <p class="create-subtitle">
-                Tạo một câu chuyện nhỏ dành riêng
-                cho người bạn yêu ❤️
-            </p>
-
-
-            <!-- TÊN HAI NGƯỜI -->
-
-            <div class="form-group">
-
-                <label
-                    class="form-label"
-                    for="couple"
-                >
-                    Tên hai người
-                </label>
-
-                <input
-                    id="couple"
-                    type="text"
-                    maxlength="80"
-                    placeholder="Ví dụ: Trung & Trang"
-                >
-
-            </div>
-
-
-            <!-- NGƯỜI NHẬN -->
-
-            <div class="form-group">
-
-                <label
-                    class="form-label"
-                    for="receiver"
-                >
-                    Món quà dành cho
-                </label>
-
-                <input
-                    id="receiver"
-                    type="text"
-                    maxlength="60"
-                    placeholder="Ví dụ: Trang"
-                >
-
-            </div>
-
-
-            <!-- NGÀY -->
-
-            <div class="form-group">
-
-                <label
-                    class="form-label"
-                    for="date"
-                >
-                    Ngày bắt đầu câu chuyện
-                </label>
-
-                <input
-                    id="date"
-                    type="date"
-                >
-
-            </div>
-
-
-            <!-- YOUTUBE -->
-
-            <div class="form-group">
-
-                <label
-                    class="form-label"
-                    for="music"
-                >
-                    Bài hát YouTube
-                    <span style="opacity:.6">
-                        (không bắt buộc)
-                    </span>
-                </label>
-
-                <input
-                    id="music"
-                    type="text"
-                    placeholder="Dán link YouTube vào đây..."
-                >
-
-            </div>
-
-
-            <!-- GIAO DIỆN -->
-
-            <div class="form-group">
-
-                <div class="theme-title">
-
-                    <label
-                        class="form-label"
-                        style="margin-bottom:0"
-                    >
-                        Chọn giao diện quà tặng
-                    </label>
-
-                    <small>
-                        Thử bấm từng mẫu
-                    </small>
-
+                <div class="opening-label">
+                    MỘT MÓN QUÀ ĐẶC BIỆT
                 </div>
 
 
-                <div class="theme-grid">
-
-
-                    <!-- PINK -->
-
-                    <label class="theme-option">
-
-                        <input
-                            type="radio"
-                            name="theme"
-                            value="pink"
-                            checked
-                        >
-
-                        <div
-                            class="theme-card preview-pink"
-                        >
-
-                            <div class="theme-icon">
-                                💗
-                            </div>
-
-                            <span>
-                                Romantic Pink
-                            </span>
-
-                        </div>
-
-                    </label>
-
-
-                    <!-- MIDNIGHT -->
-
-                    <label class="theme-option">
-
-                        <input
-                            type="radio"
-                            name="theme"
-                            value="midnight"
-                        >
-
-                        <div
-                            class="theme-card preview-midnight"
-                        >
-
-                            <div class="theme-icon">
-                                🌌
-                            </div>
-
-                            <span>
-                                Midnight Love
-                            </span>
-
-                        </div>
-
-                    </label>
-
-
-                    <!-- ROSE -->
-
-                    <label class="theme-option">
-
-                        <input
-                            type="radio"
-                            name="theme"
-                            value="rose"
-                        >
-
-                        <div
-                            class="theme-card preview-rose"
-                        >
-
-                            <div class="theme-icon">
-                                🌹
-                            </div>
-
-                            <span>
-                                Rose Red
-                            </span>
-
-                        </div>
-
-                    </label>
-
-
-                    <!-- GOLD -->
-
-                    <label class="theme-option">
-
-                        <input
-                            type="radio"
-                            name="theme"
-                            value="gold"
-                        >
-
-                        <div
-                            class="theme-card preview-gold"
-                        >
-
-                            <div class="theme-icon">
-                                ✨
-                            </div>
-
-                            <span>
-                                Elegant Gold
-                            </span>
-
-                        </div>
-
-                    </label>
-
-
-                    <!-- GREEN -->
-
-                    <label class="theme-option">
-
-                        <input
-                            type="radio"
-                            name="theme"
-                            value="green"
-                        >
-
-                        <div
-                            class="theme-card preview-green"
-                        >
-
-                            <div class="theme-icon">
-                                🌿
-                            </div>
-
-                            <span>
-                                Dreamy Green
-                            </span>
-
-                        </div>
-
-                    </label>
-
-
-                    <!-- PASTEL -->
-
-                    <label class="theme-option">
-
-                        <input
-                            type="radio"
-                            name="theme"
-                            value="pastel"
-                        >
-
-                        <div
-                            class="theme-card preview-pastel"
-                        >
-
-                            <div class="theme-icon">
-                                🌸
-                            </div>
-
-                            <span>
-                                Pastel Love
-                            </span>
-
-                        </div>
-
-                    </label>
-
+                <div class="opening-heart">
+                    💝
                 </div>
 
-            </div>
 
-
-            <!-- LỜI NHẮN -->
-
-            <div class="form-group">
-
-                <label
-                    class="form-label"
-                    for="letter"
-                >
-                    Lời nhắn dành cho người ấy
-                </label>
-
-                <textarea
-                    id="letter"
-                    maxlength="3000"
-                    placeholder="Viết những điều bạn muốn nói..."
-                ></textarea>
-
-            </div>
-
-
-            <!-- CREATE -->
-
-            <button
-                class="main-button"
-                id="createButton"
-                type="button"
-                onclick="createGift()"
-            >
-                💝 Tạo món quà
-            </button>
-
-
-            <!-- RESULT -->
-
-            <div
-                class="result"
-                id="result"
-            >
-
-                <div class="result-title">
-                    🎁 Món quà đã sẵn sàng
-                </div>
+                <h1>
+                    Dành cho
+                </h1>
 
 
                 <div
-                    class="generated-link"
-                    id="generatedLink"
+                    id="openingReceiver"
+                    class="opening-receiver"
+                >
+                    Em
+                </div>
+
+
+                <p class="opening-text">
+
+                    Có một câu chuyện anh muốn
+                    kể lại cho em...
+
+                    <br>
+
+                    Một câu chuyện về chúng ta ❤️
+
+                </p>
+
+
+                <button
+                    id="openStoryButton"
+                    class="primary-button"
+                    type="button"
+                >
+                    Mở món quà ❤️
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         TRANG LOVE STORY
+    =================================================== -->
+
+    <section id="storyPage" class="page">
+
+        <div class="container">
+
+
+            <!-- HEADER -->
+
+            <header class="story-header">
+
+                <div class="story-label">
+                    OUR LOVE STORY
+                </div>
+
+
+                <h1
+                    id="storyCouple"
+                    class="story-title"
+                >
+                    Anh &amp; Em
+                </h1>
+
+
+                <div
+                    id="storyDate"
+                    class="story-date"
+                >
+                    05/12/2022
+                </div>
+
+            </header>
+
+
+
+            <!-- ==================================================
+                 BỘ ĐẾM
+            =================================================== -->
+
+            <div class="glass-card story-card">
+
+                <h2 class="counter-title">
+                    Chúng ta đã bên nhau
+                </h2>
+
+
+                <p class="counter-description">
+                    Và thời gian vẫn đang tiếp tục... ❤️
+                </p>
+
+
+                <div class="counter-grid">
+
+
+                    <!-- NĂM -->
+
+                    <div class="counter-box">
+
+                        <div
+                            id="years"
+                            class="counter-number"
+                        >
+                            0
+                        </div>
+
+                        <div class="counter-label">
+                            Năm
+                        </div>
+
+                    </div>
+
+
+                    <!-- THÁNG -->
+
+                    <div class="counter-box">
+
+                        <div
+                            id="months"
+                            class="counter-number"
+                        >
+                            0
+                        </div>
+
+                        <div class="counter-label">
+                            Tháng
+                        </div>
+
+                    </div>
+
+
+                    <!-- NGÀY -->
+
+                    <div class="counter-box">
+
+                        <div
+                            id="days"
+                            class="counter-number"
+                        >
+                            0
+                        </div>
+
+                        <div class="counter-label">
+                            Ngày
+                        </div>
+
+                    </div>
+
+
+                    <!-- GIỜ -->
+
+                    <div class="counter-box">
+
+                        <div
+                            id="hours"
+                            class="counter-number"
+                        >
+                            0
+                        </div>
+
+                        <div class="counter-label">
+                            Giờ
+                        </div>
+
+                    </div>
+
+
+                    <!-- PHÚT -->
+
+                    <div class="counter-box">
+
+                        <div
+                            id="minutes"
+                            class="counter-number"
+                        >
+                            00
+                        </div>
+
+                        <div class="counter-label">
+                            Phút
+                        </div>
+
+                    </div>
+
+
+                    <!-- GIÂY -->
+
+                    <div class="counter-box">
+
+                        <div
+                            id="seconds"
+                            class="counter-number"
+                        >
+                            00
+                        </div>
+
+                        <div class="counter-label">
+                            Giây
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 QUOTE
+            =================================================== -->
+
+            <div class="glass-card story-card quote-card">
+
+                <p>
+                    “Có những người xuất hiện
+                    trong cuộc đời ta không phải
+                    là tình cờ.”
+                </p>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 YOUTUBE
+            =================================================== -->
+
+            <div
+                id="musicCard"
+                class="glass-card story-card music-card"
+            >
+
+                <h2>
+                    🎵 Bài hát của chúng ta
+                </h2>
+
+
+                <div class="youtube-container">
+
+                    <iframe
+                        id="youtubeFrame"
+                        title="Bài hát của chúng ta"
+                        src=""
+                        allow="
+                            autoplay;
+                            encrypted-media;
+                            picture-in-picture
+                        "
+                        allowfullscreen
+                    ></iframe>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 LỜI NHẮN
+            =================================================== -->
+
+            <div class="glass-card story-card">
+
+                <h2>
+                    💌 Điều anh muốn nói
+                </h2>
+
+
+                <div
+                    id="storyLetter"
+                    class="story-letter"
                 ></div>
 
 
                 <div
-                    class="qr-wrap"
-                    id="qrWrap"
+                    id="signature"
+                    class="signature"
                 >
-
-                    <img
-                        id="qrCode"
-                        alt="QR Code món quà"
-                    >
-
-                </div>
-
-
-                <div class="qr-note">
-                    Quét mã QR để mở món quà
-                </div>
-
-
-                <div class="button-row"
-                     style="margin-top:20px">
-
-                    <button
-                        class="secondary-button"
-                        type="button"
-                        onclick="copyLink()"
-                    >
-                        📋 Sao chép link
-                    </button>
-
-                    <button
-                        class="secondary-button"
-                        type="button"
-                        onclick="openGift()"
-                    >
-                        💌 Mở thử
-                    </button>
-
+                    — Anh ❤️
                 </div>
 
             </div>
+
+
+
+            <!-- ==================================================
+                 FOOTER
+            =================================================== -->
+
+            <footer class="footer">
+
+                Made with ❤️ for someone special
+
+            </footer>
 
         </div>
 
-    </div>
+    </section>
 
-</section>
 
 
-<!-- =========================================================
-     OPENING PAGE
-========================================================= -->
+    <!-- ==================================================
+         JAVASCRIPT
+    =================================================== -->
 
-<section
-    class="page"
-    id="openingPage"
->
+    <script src="js/common.js"></script>
 
-    <div class="container">
-
-        <div class="card opening">
-
-            <div class="opening-small">
-                Một món quà đặc biệt
-            </div>
-
-
-            <div class="opening-heart">
-                💝
-            </div>
-
-
-            <h1 class="opening-title">
-                Dành cho
-            </h1>
-
-
-            <div
-                class="opening-to"
-                id="openingReceiver"
-            >
-                Em
-            </div>
-
-
-            <p class="opening-message">
-                Có một câu chuyện anh muốn kể lại cho em...
-                <br>
-                Một câu chuyện về chúng ta ❤️
-            </p>
-
-
-            <button
-                class="opening-button"
-                type="button"
-                onclick="openStory()"
-            >
-                Mở món quà ❤️
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     STORY PAGE
-========================================================= -->
-
-<section
-    class="page"
-    id="storyPage"
->
-
-    <div class="container">
-
-
-        <!-- HEADER -->
-
-        <header class="story-header">
-
-            <div class="story-label">
-                Our Love Story
-            </div>
-
-            <h1
-                class="story-title"
-                id="storyCouple"
-            >
-                Trung & Trang
-            </h1>
-
-            <p
-                class="story-date"
-                id="storyDate"
-            >
-                05/12/2022
-            </p>
-
-        </header>
-
-
-        <!-- =================================================
-             COUNTER
-        ================================================= -->
-
-        <div class="card story-card">
-
-            <h2 class="counter-heading">
-                Chúng ta đã bên nhau
-            </h2>
-
-            <p class="counter-subtitle">
-                Và thời gian vẫn đang tiếp tục... ❤️
-            </p>
-
-
-            <div class="counter-grid">
-
-
-                <div class="counter-box">
-
-                    <span
-                        class="counter-number"
-                        id="years"
-                    >
-                        0
-                    </span>
-
-                    <span class="counter-label">
-                        Năm
-                    </span>
-
-                </div>
-
-
-                <div class="counter-box">
-
-                    <span
-                        class="counter-number"
-                        id="months"
-                    >
-                        0
-                    </span>
-
-                    <span class="counter-label">
-                        Tháng
-                    </span>
-
-                </div>
-
-
-                <div class="counter-box">
-
-                    <span
-                        class="counter-number"
-                        id="days"
-                    >
-                        0
-                    </span>
-
-                    <span class="counter-label">
-                        Ngày
-                    </span>
-
-                </div>
-
-
-                <div class="counter-box">
-
-                    <span
-                        class="counter-number"
-                        id="hours"
-                    >
-                        0
-                    </span>
-
-                    <span class="counter-label">
-                        Giờ
-                    </span>
-
-                </div>
-
-
-                <div class="counter-box">
-
-                    <span
-                        class="counter-number"
-                        id="minutes"
-                    >
-                        0
-                    </span>
-
-                    <span class="counter-label">
-                        0 phút
-                    </span>
-
-                </div>
-
-
-                <div class="counter-box">
-
-                    <span
-                        class="counter-number"
-                        id="seconds"
-                    >
-                        0
-                    </span>
-
-                    <span class="counter-label">
-                        Giây
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- =================================================
-             QUOTE
-        ================================================= -->
-
-        <div
-            class="card story-card quote-card"
-        >
-
-            <p class="quote">
-                “Có những người xuất hiện trong cuộc đời ta
-                không phải là tình cờ.”
-            </p>
-
-        </div>
-
-
-        <!-- =================================================
-             MUSIC
-        ================================================= -->
-
-        <div
-            class="card story-card youtube-card"
-            id="musicCard"
-        >
-
-            <h2 class="story-heading">
-                🎵 Bài hát của chúng ta
-            </h2>
-
-
-            <div class="youtube-wrap">
-
-                <iframe
-                    id="youtubeFrame"
-                    src=""
-                    title="Bài hát của chúng ta"
-                    allow="
-                        autoplay;
-                        encrypted-media;
-                        picture-in-picture
-                    "
-                    allowfullscreen
-                ></iframe>
-
-            </div>
-
-        </div>
-
-
-        <!-- =================================================
-             LETTER
-        ================================================= -->
-
-        <div class="card story-card">
-
-            <h2 class="story-heading">
-                💌 Điều anh muốn nói
-            </h2>
-
-
-            <div
-                class="letter"
-                id="storyLetter"
-            ></div>
-
-
-            <div
-                class="signature"
-                id="signature"
-            >
-                — Anh ❤️
-            </div>
-
-        </div>
-
-
-        <!-- FOOTER -->
-
-        <div class="footer">
-            Made with ❤️ for someone special
-        </div>
-
-    </div>
-
-</section>
-
-
-<script>
-
-/* =========================================================
-   CONFIGURATION
-========================================================= */
-
-const QR_API =
-    "https://api.qrserver.com/v1/create-qr-code/";
-
-let counterTimer = null;
-
-
-/* =========================================================
-   DEFAULT LETTER
-========================================================= */
-
-const DEFAULT_LETTER =
-`Có lẽ anh không phải là người giỏi nói những lời ngọt ngào.
-
-Nhưng anh muốn em biết rằng, từ ngày chúng ta gặp nhau,
-cuộc sống của anh đã có thêm một điều thật đặc biệt.
-
-Cảm ơn em vì đã xuất hiện.
-Cảm ơn em vì đã ở bên anh.
-
-Mong rằng chúng ta sẽ còn thật nhiều ngày,
-nhiều tháng và nhiều năm nữa cùng nhau.
-
-Anh yêu em. ❤️`;
-
-
-/* =========================================================
-   FLOATING HEARTS
-========================================================= */
-
-function createHearts() {
-
-    const container =
-        document.getElementById("hearts");
-
-    if (!container) return;
-
-    container.innerHTML = "";
-
-    const symbols = [
-        "♥",
-        "♡",
-        "❤",
-        "💗",
-        "💖"
-    ];
-
-
-    for (let i = 0; i < 22; i++) {
-
-        const heart =
-            document.createElement("div");
-
-        heart.className =
-            "heart";
-
-        heart.textContent =
-            symbols[
-                Math.floor(
-                    Math.random() *
-                    symbols.length
-                )
-            ];
-
-        heart.style.left =
-            Math.random() * 100 + "%";
-
-        heart.style.fontSize =
-            (12 + Math.random() * 20) + "px";
-
-        heart.style.animationDuration =
-            (10 + Math.random() * 16) + "s";
-
-        heart.style.animationDelay =
-            (-Math.random() * 22) + "s";
-
-        container.appendChild(
-            heart
-        );
-    }
-}
-
-
-/* =========================================================
-   THEME
-========================================================= */
-
-const validThemes = [
-    "pink",
-    "midnight",
-    "rose",
-    "gold",
-    "green",
-    "pastel"
-];
-
-
-function setTheme(theme) {
-
-    if (
-        !validThemes.includes(theme)
-    ) {
-        theme = "pink";
-    }
-
-    document.body.className =
-        "theme-" + theme;
-
-    createHearts();
-}
-
-
-/* =========================================================
-   LIVE THEME PREVIEW
-========================================================= */
-
-document
-    .querySelectorAll(
-        'input[name="theme"]'
-    )
-    .forEach(function(input) {
-
-        input.addEventListener(
-            "change",
-            function() {
-
-                setTheme(
-                    this.value
-                );
-
-            }
-        );
-
-    });
-
-
-/* =========================================================
-   GET SELECTED THEME
-========================================================= */
-
-function getSelectedTheme() {
-
-    const selected =
-        document.querySelector(
-            'input[name="theme"]:checked'
-        );
-
-    if (!selected) {
-        return "pink";
-    }
-
-    return selected.value;
-}
-
-
-/* =========================================================
-   GET GIFT DATA
-========================================================= */
-
-function getGiftData() {
-
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
-
-
-    /*
-       Nếu URL không có dữ liệu
-       thì đây là trang tạo quà.
-    */
-
-    if (
-        !params.has("c") &&
-        !params.has("couple")
-    ) {
-        return null;
-    }
-
-
-    return {
-
-        couple:
-            params.get("c") ||
-            params.get("couple") ||
-            "Anh & Em",
-
-        receiver:
-            params.get("t") ||
-            params.get("to") ||
-            "Em",
-
-        date:
-            params.get("d") ||
-            params.get("date") ||
-            "",
-
-        music:
-            params.get("m") ||
-            params.get("music") ||
-            "",
-
-        letter:
-            params.get("l") ||
-            params.get("letter") ||
-            "",
-
-        theme:
-            params.get("theme") ||
-            "pink"
-
-    };
-}
-
-
-/* =========================================================
-   SHOW PAGE
-========================================================= */
-
-function showPage(pageId) {
-
-    document
-        .querySelectorAll(".page")
-        .forEach(function(page) {
-
-            page.classList.remove(
-                "active"
-            );
-
-        });
-
-
-    const page =
-        document.getElementById(
-            pageId
-        );
-
-
-    if (page) {
-
-        page.classList.add(
-            "active"
-        );
-
-    }
-
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-}
-
-
-/* =========================================================
-   OPENING PAGE
-========================================================= */
-
-function showOpening(data) {
-
-    setTheme(
-        data.theme
-    );
-
-
-    document.getElementById(
-        "openingReceiver"
-    ).textContent =
-        data.receiver;
-
-
-    showPage(
-        "openingPage"
-    );
-}
-
-
-/* =========================================================
-   OPEN STORY
-========================================================= */
-
-function openStory() {
-
-    const data =
-        getGiftData();
-
-
-    if (!data) {
-
-        showPage(
-            "createPage"
-        );
-
-        return;
-    }
-
-
-    loadStory(
-        data
-    );
-
-
-    showPage(
-        "storyPage"
-    );
-}
-
-
-/* =========================================================
-   YOUTUBE ID PARSER
-========================================================= */
-
-function getYoutubeId(value) {
-
-    if (!value) {
-        return "";
-    }
-
-
-    value =
-        value.trim();
-
-
-    /*
-       Cho phép nhập trực tiếp ID
-    */
-
-    if (
-        /^[a-zA-Z0-9_-]{11}$/
-            .test(value)
-    ) {
-
-        return value;
-
-    }
-
-
-    try {
-
-        const url =
-            new URL(value);
-
-        const host =
-            url.hostname
-                .replace("www.", "")
-                .toLowerCase();
-
-
-        /*
-           youtu.be/ID
-        */
-
-        if (
-            host === "youtu.be"
-        ) {
-
-            return (
-                url.pathname
-                    .split("/")
-                    .filter(Boolean)[0]
-                || ""
-            );
-
-        }
-
-
-        /*
-           youtube.com
-        */
-
-        if (
-            host === "youtube.com" ||
-            host === "m.youtube.com"
-        ) {
-
-
-            /*
-               watch?v=ID
-            */
-
-            const videoId =
-                url.searchParams.get(
-                    "v"
-                );
-
-            if (videoId) {
-                return videoId;
-            }
-
-
-            /*
-               shorts/ID
-            */
-
-            if (
-                url.pathname
-                    .startsWith("/shorts/")
-            ) {
-
-                return (
-                    url.pathname
-                        .split("/")[2]
-                    || ""
-                );
-
-            }
-
-
-            /*
-               embed/ID
-            */
-
-            if (
-                url.pathname
-                    .startsWith("/embed/")
-            ) {
-
-                return (
-                    url.pathname
-                        .split("/")[2]
-                    || ""
-                );
-
-            }
-
-
-            /*
-               live/ID
-            */
-
-            if (
-                url.pathname
-                    .startsWith("/live/")
-            ) {
-
-                return (
-                    url.pathname
-                        .split("/")[2]
-                    || ""
-                );
-
-            }
-
-        }
-
-    } catch (error) {
-
-        return "";
-
-    }
-
-
-    return "";
-}
-
-
-/* =========================================================
-   FORMAT DATE
-========================================================= */
-
-function formatDate(dateString) {
-
-    if (!dateString) {
-        return "";
-    }
-
-
-    const date =
-        new Date(
-            dateString +
-            "T00:00:00"
-        );
-
-
-    if (
-        isNaN(
-            date.getTime()
-        )
-    ) {
-
-        return "";
-
-    }
-
-
-    return date.toLocaleDateString(
-        "vi-VN",
-        {
-            day: "2-digit",
-            month: "2-digit",
-            year: "numeric"
-        }
-    );
-}
-
-
-/* =========================================================
-   LOAD STORY
-========================================================= */
-
-function loadStory(data) {
-
-    setTheme(
-        data.theme
-    );
-
-
-    /*
-       Couple
-    */
-
-    document.getElementById(
-        "storyCouple"
-    ).textContent =
-        data.couple;
-
-
-    /*
-       Date
-    */
-
-    document.getElementById(
-        "storyDate"
-    ).textContent =
-        formatDate(
-            data.date
-        );
-
-
-    /*
-       Letter
-    */
-
-    const letter =
-        data.letter &&
-        data.letter.trim()
-            ? data.letter
-            : DEFAULT_LETTER;
-
-
-    document.getElementById(
-        "storyLetter"
-    ).textContent =
-        letter;
-
-
-    /*
-       Signature
-    */
-
-    let sender =
-        data.couple
-            .split("&")[0]
-            .trim();
-
-
-    if (!sender) {
-        sender = "Anh";
-    }
-
-
-    document.getElementById(
-        "signature"
-    ).textContent =
-        "— " +
-        sender +
-        " ❤️";
-
-
-    /*
-       YouTube
-    */
-
-    const youtubeId =
-        getYoutubeId(
-            data.music
-        );
-
-
-    const musicCard =
-        document.getElementById(
-            "musicCard"
-        );
-
-
-    const frame =
-        document.getElementById(
-            "youtubeFrame"
-        );
-
-
-    if (youtubeId) {
-
-        frame.src =
-            "https://www.youtube.com/embed/" +
-            encodeURIComponent(
-                youtubeId
-            ) +
-            "?autoplay=1&rel=0";
-
-        musicCard.style.display =
-            "block";
-
-    } else {
-
-        frame.src = "";
-
-        musicCard.style.display =
-            "none";
-    }
-
-
-    /*
-       Counter
-    */
-
-    startCounter(
-        data.date
-    );
-}
-
-
-/* =========================================================
-   REAL-TIME LOVE COUNTER
-========================================================= */
-
-function startCounter(dateString) {
-
-    /*
-       Không tạo nhiều interval
-    */
-
-    if (counterTimer) {
-
-        clearInterval(
-            counterTimer
-        );
-
-        counterTimer = null;
-    }
-
-
-    function updateCounter() {
-
-        if (!dateString) {
-
-            setCounter(
-                0,
-                0,
-                0,
-                0,
-                0,
-                0
-            );
-
-            return;
-        }
-
-
-        const start =
-            new Date(
-                dateString +
-                "T00:00:00"
-            );
-
-
-        const now =
-            new Date();
-
-
-        /*
-           Ngày không hợp lệ
-        */
-
-        if (
-            isNaN(
-                start.getTime()
-            )
-        ) {
-
-            setCounter(
-                0,
-                0,
-                0,
-                0,
-                0,
-                0
-            );
-
-            return;
-        }
-
-
-        /*
-           Ngày trong tương lai
-        */
-
-        if (
-            start > now
-        ) {
-
-            setCounter(
-                0,
-                0,
-                0,
-                0,
-                0,
-                0
-            );
-
-            return;
-        }
-
-
-        /*
-           ================================================
-           TÍNH NĂM
-           ================================================
-        */
-
-        let years =
-            now.getFullYear() -
-            start.getFullYear();
-
-
-        let cursor =
-            new Date(start);
-
-
-        cursor.setFullYear(
-            cursor.getFullYear() +
-            years
-        );
-
-
-        if (cursor > now) {
-
-            years--;
-
-            cursor =
-                new Date(start);
-
-            cursor.setFullYear(
-                cursor.getFullYear() +
-                years
-            );
-        }
-
-
-        /*
-           ================================================
-           TÍNH THÁNG
-           ================================================
-        */
-
-        let months =
-            (
-                now.getFullYear() -
-                cursor.getFullYear()
-            ) * 12
-            +
-            (
-                now.getMonth() -
-                cursor.getMonth()
-            );
-
-
-        let monthCursor =
-            new Date(cursor);
-
-
-        monthCursor.setMonth(
-            monthCursor.getMonth() +
-            months
-        );
-
-
-        if (
-            monthCursor > now
-        ) {
-
-            months--;
-
-            monthCursor =
-                new Date(cursor);
-
-            monthCursor.setMonth(
-                monthCursor.getMonth() +
-                months
-            );
-        }
-
-
-        cursor =
-            monthCursor;
-
-
-        /*
-           ================================================
-           THỜI GIAN CÒN LẠI
-           ================================================
-        */
-
-        let remaining =
-            now.getTime() -
-            cursor.getTime();
-
-
-        const DAY =
-            24 * 60 * 60 * 1000;
-
-        const HOUR =
-            60 * 60 * 1000;
-
-        const MINUTE =
-            60 * 1000;
-
-        const SECOND =
-            1000;
-
-
-        /*
-           Ngày
-        */
-
-        const days =
-            Math.floor(
-                remaining / DAY
-            );
-
-
-        remaining =
-            remaining % DAY;
-
-
-        /*
-           Giờ
-        */
-
-        const hours =
-            Math.floor(
-                remaining / HOUR
-            );
-
-
-        remaining =
-            remaining % HOUR;
-
-
-        /*
-           Phút
-        */
-
-        const minutes =
-            Math.floor(
-                remaining / MINUTE
-            );
-
-
-        remaining =
-            remaining % MINUTE;
-
-
-        /*
-           Giây
-        */
-
-        const seconds =
-            Math.floor(
-                remaining / SECOND
-            );
-
-
-        /*
-           Cập nhật giao diện
-        */
-
-        setCounter(
-            years,
-            months,
-            days,
-            hours,
-            minutes,
-            seconds
-        );
-    }
-
-
-    /*
-       Chạy ngay lập tức
-    */
-
-    updateCounter();
-
-
-    /*
-       Sau đó cập nhật mỗi giây
-    */
-
-    counterTimer =
-        setInterval(
-            updateCounter,
-            1000
-        );
-}
-
-
-/* =========================================================
-   SET COUNTER VALUES
-========================================================= */
-
-function setCounter(
-    years,
-    months,
-    days,
-    hours,
-    minutes,
-    seconds
-) {
-
-    document.getElementById(
-        "years"
-    ).textContent =
-        years;
-
-
-    document.getElementById(
-        "months"
-    ).textContent =
-        months;
-
-
-    document.getElementById(
-        "days"
-    ).textContent =
-        days;
-
-
-    document.getElementById(
-        "hours"
-    ).textContent =
-        hours;
-
-
-    document.getElementById(
-        "minutes"
-    ).textContent =
-        String(minutes)
-            .padStart(2, "0");
-
-
-    document.getElementById(
-        "seconds"
-    ).textContent =
-        String(seconds)
-            .padStart(2, "0");
-}
-
-
-/* =========================================================
-   CREATE GIFT
-========================================================= */
-
-function createGift() {
-
-    const couple =
-        document.getElementById(
-            "couple"
-        ).value.trim();
-
-
-    const receiver =
-        document.getElementById(
-            "receiver"
-        ).value.trim();
-
-
-    const date =
-        document.getElementById(
-            "date"
-        ).value;
-
-
-    const music =
-        document.getElementById(
-            "music"
-        ).value.trim();
-
-
-    const letter =
-        document.getElementById(
-            "letter"
-        ).value.trim();
-
-
-    const theme =
-        getSelectedTheme();
-
-
-    /*
-       ================================================
-       VALIDATION
-       ================================================
-    */
-
-    if (!couple) {
-
-        alert(
-            "Vui lòng nhập tên hai người."
-        );
-
-        document.getElementById(
-            "couple"
-        ).focus();
-
-        return;
-    }
-
-
-    if (!receiver) {
-
-        alert(
-            "Vui lòng nhập tên người nhận."
-        );
-
-        document.getElementById(
-            "receiver"
-        ).focus();
-
-        return;
-    }
-
-
-    if (!date) {
-
-        alert(
-            "Vui lòng chọn ngày bắt đầu câu chuyện."
-        );
-
-        document.getElementById(
-            "date"
-        ).focus();
-
-        return;
-    }
-
-
-    const selectedDate =
-        new Date(
-            date +
-            "T00:00:00"
-        );
-
-
-    if (
-        isNaN(
-            selectedDate.getTime()
-        )
-    ) {
-
-        alert(
-            "Ngày bắt đầu không hợp lệ."
-        );
-
-        return;
-    }
-
-
-    if (
-        selectedDate >
-        new Date()
-    ) {
-
-        alert(
-            "Ngày bắt đầu không thể ở tương lai."
-        );
-
-        return;
-    }
-
-
-    /*
-       Kiểm tra YouTube
-    */
-
-    if (
-        music &&
-        !getYoutubeId(music)
-    ) {
-
-        alert(
-            "Link YouTube chưa đúng.\n\n" +
-            "Bạn có thể dán link YouTube thông thường."
-        );
-
-        document.getElementById(
-            "music"
-        ).focus();
-
-        return;
-    }
-
-
-    /*
-       ================================================
-       TẠO URL
-       ================================================
-    */
-
-    const baseUrl =
-        window.location.origin +
-        window.location.pathname;
-
-
-    const params =
-        new URLSearchParams();
-
-
-    params.set(
-        "c",
-        couple
-    );
-
-
-    params.set(
-        "t",
-        receiver
-    );
-
-
-    params.set(
-        "d",
-        date
-    );
-
-
-    if (music) {
-
-        params.set(
-            "m",
-            music
-        );
-    }
-
-
-    if (letter) {
-
-        params.set(
-            "l",
-            letter
-        );
-    }
-
-
-    /*
-       Lưu giao diện
-    */
-
-    params.set(
-        "theme",
-        theme
-    );
-
-
-    const giftUrl =
-        baseUrl +
-        "?" +
-        params.toString();
-
-
-    /*
-       ================================================
-       HIỂN THỊ LINK
-       ================================================
-    */
-
-    document.getElementById(
-        "generatedLink"
-    ).textContent =
-        giftUrl;
-
-
-    /*
-       ================================================
-       TẠO QR
-       ================================================
-    */
-
-    const qrCode =
-        document.getElementById(
-            "qrCode"
-        );
-
-
-    qrCode.src =
-        QR_API +
-        "?size=700x700" +
-        "&margin=25" +
-        "&data=" +
-        encodeURIComponent(
-            giftUrl
-        );
-
-
-    /*
-       Hiện kết quả
-    */
-
-    document.getElementById(
-        "result"
-    ).classList.add(
-        "show"
-    );
-
-
-    /*
-       Cuộn xuống kết quả
-    */
-
-    setTimeout(
-        function() {
-
-            document.getElementById(
-                "result"
-            ).scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-
-        },
-        100
-    );
-}
-
-
-/* =========================================================
-   COPY LINK
-========================================================= */
-
-async function copyLink() {
-
-    const link =
-        document.getElementById(
-            "generatedLink"
-        ).textContent;
-
-
-    if (!link) {
-        return;
-    }
-
-
-    try {
-
-        await navigator.clipboard.writeText(
-            link
-        );
-
-
-        alert(
-            "Đã sao chép link món quà ❤️"
-        );
-
-    } catch (error) {
-
-        fallbackCopy(
-            link
-        );
-
-    }
-}
-
-
-/* =========================================================
-   FALLBACK COPY
-========================================================= */
-
-function fallbackCopy(text) {
-
-    const textarea =
-        document.createElement(
-            "textarea"
-        );
-
-
-    textarea.value =
-        text;
-
-
-    textarea.style.position =
-        "fixed";
-
-
-    textarea.style.left =
-        "-9999px";
-
-
-    document.body.appendChild(
-        textarea
-    );
-
-
-    textarea.select();
-
-
-    try {
-
-        document.execCommand(
-            "copy"
-        );
-
-
-        alert(
-            "Đã sao chép link món quà ❤️"
-        );
-
-    } catch (error) {
-
-        alert(
-            "Không thể tự động sao chép.\n" +
-            "Hãy nhấn giữ vào link để sao chép."
-        );
-
-    }
-
-
-    document.body.removeChild(
-        textarea
-    );
-}
-
-
-/* =========================================================
-   OPEN GIFT
-========================================================= */
-
-function openGift() {
-
-    const link =
-        document.getElementById(
-            "generatedLink"
-        ).textContent;
-
-
-    if (!link) {
-        return;
-    }
-
-
-    window.open(
-        link,
-        "_blank"
-    );
-}
-
-
-/* =========================================================
-   INITIALIZATION
-========================================================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function() {
-
-        createHearts();
-
-
-        const data =
-            getGiftData();
-
-
-        /*
-           Có dữ liệu trong URL
-           → Đây là link quà
-           → Hiện trang mở quà
-        */
-
-        if (data) {
-
-            showOpening(
-                data
-            );
-
-        } else {
-
-            /*
-               Không có dữ liệu
-               → Trang tạo quà
-            */
-
-            setTheme(
-                "pink"
-            );
-
-            showPage(
-                "createPage"
-            );
-
-        }
-
-    }
-);
-
-</script>
+    <script src="js/story.js"></script>
 
 </body>
+
 </html>
