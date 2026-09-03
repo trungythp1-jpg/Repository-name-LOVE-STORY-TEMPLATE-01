@@ -2,8 +2,12 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>LOVE STORY ❤️</title>
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<title>Love Story ❤️</title>
+
+<meta name="theme-color" content="#13060d">
 
 <style>
 *{
@@ -20,245 +24,278 @@ body{
   min-height:100vh;
   min-height:100svh;
   overflow-x:hidden;
-  background:#080509;
-  color:white;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-}
-
-body:before{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-2;
+  overflow-y:auto;
   background:
-    radial-gradient(circle at 50% 10%,#8d2143 0%,transparent 35%),
-    radial-gradient(circle at 0% 80%,#53152e 0%,transparent 30%),
-    linear-gradient(145deg,#160711,#050307 75%);
+    radial-gradient(circle at 50% 15%, #65152e 0%, #250914 35%, #080308 78%);
+  color:white;
+  font-family:Arial, Helvetica, sans-serif;
 }
 
-body:after{
+body::before{
   content:"";
   position:fixed;
   inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,50,120,.16), transparent 30%),
+    radial-gradient(circle at 80% 70%, rgba(255,0,100,.12), transparent 35%);
   z-index:-1;
-  background:radial-gradient(circle,transparent 35%,rgba(0,0,0,.45));
+}
+
+.container{
+  width:100%;
+  min-height:100svh;
+  padding:
+    24px
+    18px
+    calc(90px + env(safe-area-inset-bottom));
+
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+}
+
+.card{
+  width:100%;
+  max-width:650px;
+  margin:20px auto;
+  padding:38px 22px 44px;
+
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:32px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.10),
+      rgba(255,255,255,.035)
+    );
+
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+
+  box-shadow:
+    0 30px 100px rgba(0,0,0,.55),
+    inset 0 1px 0 rgba(255,255,255,.08);
+
+  position:relative;
+  overflow:hidden;
+}
+
+.card::before{
+  content:"";
+  position:absolute;
+  width:280px;
+  height:280px;
+  top:-130px;
+  right:-100px;
+
+  background:#ff1764;
+  filter:blur(100px);
+  opacity:.18;
   pointer-events:none;
 }
 
 /* =========================
-   OPEN SCREEN
+   OPENING
 ========================= */
 
-.open-screen{
-  position:fixed;
-  inset:0;
-  z-index:100;
+.opening{
+  min-height:calc(100svh - 48px);
+
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:25px;
-  background:
-    radial-gradient(circle at 50% 35%,#751b39,#170711 65%,#050307);
-  transition:opacity .8s,visibility .8s;
 }
 
-.open-screen.hide{
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
-}
-
-.open-box{
-  width:100%;
-  max-width:380px;
+.opening-card{
   text-align:center;
-  padding:42px 25px;
-  border:1px solid rgba(255,255,255,.14);
-  border-radius:30px;
-  background:rgba(255,255,255,.07);
-  backdrop-filter:blur(20px);
-  -webkit-backdrop-filter:blur(20px);
-  box-shadow:0 30px 80px rgba(0,0,0,.5);
+  padding:55px 25px;
 }
 
-.open-heart{
-  font-size:72px;
-  animation:pulse 1.7s infinite;
+.big-heart{
+  font-size:82px;
+  line-height:1;
+  margin-bottom:32px;
+
+  filter:
+    drop-shadow(0 10px 25px rgba(255,0,80,.35));
+
+  animation:heartbeat 1.8s infinite;
+}
+
+.small-title{
+  letter-spacing:5px;
+  font-size:13px;
+  color:#efb7ca;
+  margin-bottom:18px;
+}
+
+.opening h1{
+  font-family:Georgia,serif;
+  font-size:46px;
+  line-height:1.1;
   margin-bottom:20px;
 }
 
-.open-small{
-  color:#e7b4c2;
-  font-size:11px;
-  letter-spacing:3px;
-  margin-bottom:14px;
-}
-
-.open-title{
-  font-family:Georgia,serif;
-  font-size:40px;
-  font-weight:400;
-  margin-bottom:10px;
-}
-
-.open-text{
-  color:#d8aeb9;
-  font-size:14px;
+.opening p{
+  color:#efcbd7;
+  font-size:18px;
   line-height:1.7;
-  margin-bottom:28px;
+  margin-bottom:35px;
 }
 
-.open-button{
-  border:0;
-  padding:15px 28px;
-  border-radius:999px;
+.open-btn{
+  border:none;
   color:white;
-  background:linear-gradient(135deg,#d93668,#8e183e);
-  font-size:13px;
-  font-weight:600;
+
+  padding:18px 35px;
+
+  border-radius:50px;
+
+  font-size:16px;
+  font-weight:bold;
   letter-spacing:1px;
-  box-shadow:0 12px 30px rgba(214,45,100,.3);
+
+  background:
+    linear-gradient(135deg,#ff1970,#c91652);
+
+  box-shadow:
+    0 15px 40px rgba(255,0,100,.28);
+
+  cursor:pointer;
 }
 
-@keyframes pulse{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.13)}
+.open-btn:active{
+  transform:scale(.96);
 }
 
 /* =========================
    MAIN
 ========================= */
 
-.container{
-  width:100%;
-  max-width:620px;
-  margin:auto;
-  padding:24px 18px 100px;
+#mainContent{
+  display:none;
 }
-
-.card{
-  padding:38px 22px 42px;
-  border-radius:30px;
-  text-align:center;
-  background:linear-gradient(
-    145deg,
-    rgba(255,255,255,.12),
-    rgba(255,255,255,.035)
-  );
-  border:1px solid rgba(255,255,255,.13);
-  box-shadow:0 30px 80px rgba(0,0,0,.45);
-  backdrop-filter:blur(20px);
-  -webkit-backdrop-filter:blur(20px);
-  animation:cardIn 1s ease;
-}
-
-@keyframes cardIn{
-  from{
-    opacity:0;
-    transform:translateY(25px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-/* =========================
-   HEADER
-========================= */
 
 .badge{
   display:inline-block;
-  padding:7px 14px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.12);
-  background:rgba(255,255,255,.06);
-  color:#f0becb;
-  font-size:10px;
-  letter-spacing:2px;
-  margin-bottom:20px;
-}
 
-.main-heart{
-  font-size:50px;
-  animation:pulse 1.8s infinite;
-  margin-bottom:12px;
-}
+  padding:10px 20px;
 
-h1{
-  font-family:Georgia,"Times New Roman",serif;
-  font-weight:400;
-  font-size:47px;
-  line-height:1.1;
-  letter-spacing:-1px;
-}
+  border-radius:30px;
 
-.subtitle{
-  margin-top:10px;
-  color:#dcaab8;
-  font-size:13px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-}
+  border:1px solid rgba(255,255,255,.16);
 
-.date{
-  margin-top:28px;
-  color:#f1a9bd;
+  background:rgba(255,255,255,.05);
+
+  color:#eab5c8;
+
   font-size:12px;
-  letter-spacing:3px;
+  letter-spacing:4px;
+}
+
+.hero{
+  text-align:center;
+  padding:20px 0 35px;
+}
+
+.hero-heart{
+  font-size:70px;
+  margin:30px 0 25px;
+
+  filter:
+    drop-shadow(0 10px 25px rgba(255,0,80,.4));
+
+  animation:heartbeat 1.8s infinite;
+}
+
+.hero h2{
+  font-family:Georgia,serif;
+  font-size:48px;
+  line-height:1.15;
+  margin-bottom:18px;
+}
+
+.hero-subtitle{
+  font-size:15px;
+  letter-spacing:4px;
+  color:#e7aabd;
+  margin-bottom:45px;
+}
+
+.start-date{
+  font-size:13px;
+  letter-spacing:4px;
+  color:#efaac1;
 }
 
 /* =========================
    COUNTER
 ========================= */
 
-.total{
-  margin-top:28px;
-  padding:20px;
-  border-radius:20px;
-  background:rgba(255,75,120,.08);
-  border:1px solid rgba(255,100,140,.12);
+.counter-main{
+  text-align:center;
+
+  padding:30px 15px;
+
+  margin-bottom:15px;
+
+  border-radius:25px;
+
+  border:1px solid rgba(255,80,140,.25);
+
+  background:rgba(255,30,100,.055);
 }
 
-.total-number{
-  display:block;
-  font-size:34px;
-  font-weight:600;
+.days{
+  font-size:58px;
+  font-weight:bold;
+  line-height:1;
 }
 
-.total-label{
-  color:#b98291;
-  font-size:10px;
-  letter-spacing:2px;
-}
-
-.counter{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
+.days-label{
   margin-top:12px;
+
+  color:#d99caf;
+
+  letter-spacing:4px;
+  font-size:12px;
 }
 
-.box{
-  padding:16px 8px;
-  border-radius:17px;
-  background:rgba(255,255,255,.055);
-  border:1px solid rgba(255,255,255,.08);
+.counter-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+
+  margin-bottom:30px;
 }
 
-.number{
-  display:block;
-  font-size:23px;
-  font-weight:600;
+.counter-box{
+  text-align:center;
+
+  padding:25px 10px;
+
+  border-radius:24px;
+
+  border:1px solid rgba(255,255,255,.12);
+
+  background:rgba(255,255,255,.035);
 }
 
-.label{
-  display:block;
-  margin-top:4px;
-  color:#a97886;
-  font-size:9px;
-  letter-spacing:1px;
-  text-transform:uppercase;
+.counter-number{
+  font-size:34px;
+  font-weight:bold;
+}
+
+.counter-label{
+  margin-top:8px;
+
+  color:#cf9aaa;
+
+  font-size:11px;
+
+  letter-spacing:3px;
 }
 
 /* =========================
@@ -266,20 +303,19 @@ h1{
 ========================= */
 
 .quote{
-  margin:28px auto;
-  max-width:480px;
-  color:#e8c2cc;
-  font-family:Georgia,serif;
-  font-size:16px;
-  line-height:1.8;
-  font-style:italic;
-}
+  text-align:center;
 
-.divider{
-  width:55px;
-  height:1px;
-  margin:25px auto;
-  background:rgba(255,255,255,.3);
+  padding:15px 10px 35px;
+
+  color:#e9c3cf;
+
+  font-family:Georgia,serif;
+
+  font-size:19px;
+
+  line-height:1.8;
+
+  font-style:italic;
 }
 
 /* =========================
@@ -287,28 +323,44 @@ h1{
 ========================= */
 
 .section-title{
-  margin-bottom:13px;
-  color:#e4b3bf;
-  font-size:10px;
-  letter-spacing:2px;
-  text-transform:uppercase;
+  font-family:Georgia,serif;
+
+  font-size:28px;
+
+  text-align:center;
+
+  margin-bottom:20px;
+}
+
+.music{
+  margin-bottom:35px;
 }
 
 .youtube{
   position:relative;
+
   width:100%;
-  aspect-ratio:16/9;
+
+  padding-bottom:56.25%;
+
   overflow:hidden;
-  border-radius:18px;
+
+  border-radius:22px;
+
   background:#000;
-  box-shadow:0 15px 40px rgba(0,0,0,.35);
+
+  box-shadow:
+    0 15px 40px rgba(0,0,0,.35);
 }
 
 .youtube iframe{
   position:absolute;
+
   inset:0;
+
   width:100%;
   height:100%;
+
   border:0;
 }
 
@@ -317,35 +369,54 @@ h1{
 ========================= */
 
 .letter{
-  margin-top:30px;
-  padding:24px;
-  text-align:left;
-  border-radius:22px;
-  background:rgba(255,255,255,.055);
-  border:1px solid rgba(255,255,255,.08);
+  padding:30px 25px;
+
+  border-radius:27px;
+
+  border:1px solid rgba(255,255,255,.16);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.08),
+      rgba(255,255,255,.025)
+    );
+
+  margin-bottom:30px;
 }
 
-.letter-title{
+.letter h3{
   text-align:center;
+
   font-family:Georgia,serif;
-  font-size:22px;
-  margin-bottom:18px;
+
+  font-size:28px;
+
+  margin-bottom:30px;
 }
 
 .letter p{
-  color:#dfbec7;
+  color:#e8c7d1;
+
   font-family:Georgia,serif;
-  font-size:15px;
-  line-height:1.8;
-  margin-bottom:12px;
+
+  font-size:18px;
+
+  line-height:1.9;
+
+  margin-bottom:22px;
 }
 
 .signature{
-  margin-top:18px;
   text-align:right;
-  color:#ffc4d1;
+
+  color:#f2a7bf;
+
   font-family:Georgia,serif;
-  font-size:17px;
+
+  font-size:20px;
+
+  margin-top:30px;
 }
 
 /* =========================
@@ -353,35 +424,76 @@ h1{
 ========================= */
 
 .footer{
-  margin-top:30px;
-  color:#825564;
-  font-size:9px;
-  letter-spacing:2px;
+  text-align:center;
+
+  color:#a97988;
+
+  letter-spacing:4px;
+
+  font-size:10px;
+
+  padding-top:10px;
 }
 
 /* =========================
    FLOATING HEARTS
 ========================= */
 
-.float-heart{
+.heart{
   position:fixed;
-  bottom:-40px;
-  z-index:5;
+
+  bottom:-50px;
+
   pointer-events:none;
+
   animation:floatUp linear forwards;
+
+  z-index:20;
+
+  opacity:.75;
 }
 
 @keyframes floatUp{
+
   0%{
+    transform:
+      translateY(0)
+      scale(.7)
+      rotate(0deg);
+
     opacity:0;
-    transform:translateY(0) scale(.7) rotate(0);
   }
-  15%{
-    opacity:.65;
+
+  10%{
+    opacity:.8;
   }
+
   100%{
+    transform:
+      translateY(-115vh)
+      scale(1.3)
+      rotate(25deg);
+
     opacity:0;
-    transform:translateY(-110vh) scale(1.4) rotate(25deg);
+  }
+}
+
+@keyframes heartbeat{
+
+  0%,100%{
+    transform:scale(1);
+  }
+
+  15%{
+    transform:scale(1.08);
+  }
+
+  30%{
+    transform:scale(1);
+  }
+
+  45%{
+    transform:scale(1.05);
   }
 }
 
@@ -391,36 +503,37 @@ h1{
 
 @media(max-width:480px){
 
-  .container{
-    padding:
-      18px
-      14px
-      calc(100px + env(safe-area-inset-bottom));
-  }
-
   .card{
-    padding:34px 17px 38px;
-    border-radius:26px;
+    border-radius:28px;
+    padding:30px 16px 38px;
   }
 
-  h1{
-    font-size:41px;
+  .opening h1{
+    font-size:39px;
   }
 
-  .open-title{
-    font-size:36px;
+  .hero h2{
+    font-size:39px;
   }
 
-  .open-heart{
-    font-size:62px;
+  .hero-heart{
+    font-size:60px;
   }
 
-  .quote{
-    font-size:15px;
+  .days{
+    font-size:52px;
+  }
+
+  .counter-number{
+    font-size:30px;
   }
 
   .letter{
-    padding:20px;
+    padding:25px 20px;
+  }
+
+  .letter p{
+    font-size:17px;
   }
 }
 </style>
@@ -429,34 +542,30 @@ h1{
 <body>
 
 <!-- =========================
-     MÀN HÌNH MỞ QUÀ
+     OPENING
 ========================= -->
 
-<div class="open-screen" id="openScreen">
+<div class="container opening" id="opening">
 
-  <div class="open-box">
+  <div class="card opening-card">
 
-    <div class="open-heart">❤️</div>
+    <div class="big-heart">❤️</div>
 
-    <div class="open-small">
+    <div class="small-title">
       MỘT MÓN QUÀ ĐẶC BIỆT
     </div>
 
-    <div class="open-title">
+    <h1 id="openingRecipient">
       Dành cho em
-    </div>
+    </h1>
 
-    <div class="open-text">
-      Có một câu chuyện anh muốn
-      kể lại cho em...
+    <p>
+      Có một câu chuyện anh muốn kể lại cho em...
       <br>
       Hãy mở nó nhé ❤️
-    </div>
+    </p>
 
-    <button
-      class="open-button"
-      onclick="openStory()"
-    >
+    <button class="open-btn" onclick="openStory()">
       MỞ CÂU CHUYỆN ❤️
     </button>
 
@@ -466,292 +575,425 @@ h1{
 
 
 <!-- =========================
-     MAIN
+     MAIN CONTENT
 ========================= -->
 
-<main class="container">
+<div class="container" id="mainContent">
 
-<div class="card">
+  <div class="card">
 
-  <div class="badge">
-    OUR LOVE STORY
-  </div>
+    <section class="hero">
 
-  <div class="main-heart">
-    ❤️
-  </div>
+      <div class="badge">
+        OUR LOVE STORY
+      </div>
 
-  <h1 id="couple">
-    CHUN ❤️ CHAN
-  </h1>
+      <div class="hero-heart">
+        ❤️
+      </div>
 
-  <div class="subtitle">
-    Câu chuyện của chúng ta
-  </div>
+      <h2 id="coupleName">
+        CHUN ❤️ CHAN
+      </h2>
 
-  <div class="date" id="date">
-    BẮT ĐẦU TỪ 05 • 12 • 2022
-  </div>
+      <div class="hero-subtitle">
+        CÂU CHUYỆN CỦA CHÚNG TA
+      </div>
 
+      <div class="start-date" id="dateText">
+        BẮT ĐẦU TỪ 05 • 12 • 2022
+      </div>
 
-  <!-- TOTAL DAYS -->
-
-  <div class="total">
-
-    <span
-      class="total-number"
-      id="days"
-    >
-      0
-    </span>
-
-    <span class="total-label">
-      NGÀY BÊN NHAU
-    </span>
-
-  </div>
+    </section>
 
 
-  <!-- COUNTER -->
+    <!-- COUNTER -->
 
-  <div class="counter">
+    <div class="counter-main">
 
-    <div class="box">
-      <span
-        class="number"
-        id="years"
-      >0</span>
+      <div class="days" id="days">
+        0
+      </div>
 
-      <span class="label">
-        Năm
-      </span>
+      <div class="days-label">
+        NGÀY BÊN NHAU
+      </div>
+
     </div>
 
 
-    <div class="box">
-      <span
-        class="number"
-        id="months"
-      >0</span>
+    <div class="counter-grid">
 
-      <span class="label">
-        Tháng
-      </span>
+      <div class="counter-box">
+        <div class="counter-number" id="years">
+          0
+        </div>
+
+        <div class="counter-label">
+          NĂM
+        </div>
+      </div>
+
+
+      <div class="counter-box">
+        <div class="counter-number" id="months">
+          0
+        </div>
+
+        <div class="counter-label">
+          THÁNG
+        </div>
+      </div>
+
+
+      <div class="counter-box">
+        <div class="counter-number" id="hours">
+          0
+        </div>
+
+        <div class="counter-label">
+          GIỜ
+        </div>
+      </div>
+
+
+      <div class="counter-box">
+        <div class="counter-number" id="minutes">
+          0
+        </div>
+
+        <div class="counter-label">
+          PHÚT
+        </div>
+      </div>
+
     </div>
 
 
-    <div class="box">
-      <span
-        class="number"
-        id="hours"
-      >0</span>
+    <!-- QUOTE -->
 
-      <span class="label">
-        Giờ
-      </span>
+    <div class="quote" id="quote">
+      “Mỗi ngày bên em đều là một ngày đáng nhớ.
+      Và anh muốn câu chuyện này kéo dài mãi mãi.” ❤️
     </div>
 
 
-    <div class="box">
-      <span
-        class="number"
-        id="minutes"
-      >0</span>
+    <!-- MUSIC -->
 
-      <span class="label">
-        Phút
-      </span>
+    <div class="music">
+
+      <div class="section-title">
+        🎵 Bài hát của chúng ta
+      </div>
+
+      <div class="youtube">
+
+        <iframe
+          id="youtubeFrame"
+          src=""
+          title="Love Story"
+          allow="
+            accelerometer;
+            autoplay;
+            clipboard-write;
+            encrypted-media;
+            gyroscope;
+            picture-in-picture;
+            web-share
+          "
+          allowfullscreen>
+        </iframe>
+
+      </div>
+
     </div>
 
-  </div>
 
+    <!-- LETTER -->
 
-  <!-- QUOTE -->
+    <div class="letter">
 
-  <div class="quote">
-    “Mỗi ngày bên em đều là một ngày
-    đáng nhớ. Và anh muốn câu chuyện
-    này kéo dài mãi mãi.” ❤️
-  </div>
+      <h3>
+        💌 Gửi người anh yêu
+      </h3>
 
+      <div id="letterContent">
 
-  <div class="divider"></div>
+        <p>
+          Có những người bước vào cuộc đời chúng ta
+          rất nhẹ nhàng...
+        </p>
 
+        <p>
+          Nhưng rồi chẳng biết từ lúc nào,
+          họ trở thành một phần không thể thiếu
+          trong mỗi ngày.
+        </p>
 
-  <!-- MUSIC -->
+        <p>
+          Cảm ơn em vì đã xuất hiện,
+          vì đã ở lại và cùng anh viết tiếp
+          câu chuyện này.
+        </p>
 
-  <div class="section-title">
-    🎵 Bài hát của chúng ta
-  </div>
+        <p>
+          Anh không biết tương lai sẽ có bao nhiêu
+          ngày nữa...
+          nhưng anh biết mình muốn những ngày đó
+          có em.
+        </p>
 
-  <div class="youtube">
+      </div>
 
-    <iframe
-      src="https://www.youtube.com/embed/QCr4Wf_eJHo?rel=0"
-      title="Bài hát của chúng ta"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen>
-    </iframe>
+      <div class="signature">
+        Mãi bên em ❤️
+      </div>
 
-  </div>
-
-
-  <!-- LETTER -->
-
-  <div class="letter">
-
-    <div class="letter-title">
-      💌 Gửi người anh yêu
     </div>
 
-    <p>
-      Có những người bước vào cuộc đời
-      chúng ta rất nhẹ nhàng...
-    </p>
 
-    <p>
-      Nhưng rồi chẳng biết từ lúc nào,
-      họ trở thành một phần không thể
-      thiếu trong mỗi ngày.
-    </p>
-
-    <p>
-      Cảm ơn em vì đã xuất hiện,
-      vì đã ở lại và cùng anh viết tiếp
-      câu chuyện này.
-    </p>
-
-    <p>
-      Anh không biết tương lai sẽ có
-      bao nhiêu ngày nữa...
-      nhưng anh biết mình muốn những
-      ngày đó có em.
-    </p>
-
-    <div class="signature">
-      Mãi bên em ❤️
+    <div class="footer">
+      ❤️ LOVE STORY • DIGITAL GIFT ❤️
     </div>
 
-  </div>
-
-
-  <div class="footer">
-    LOVE STORY • DIGITAL GIFT
   </div>
 
 </div>
 
-</main>
-
 
 <script>
 
-/* ==========================================
-   ⭐ PHẦN CẤU HÌNH
-   SAU NÀY CHỈ CẦN SỬA PHẦN NÀY
-========================================== */
+/* ==================================================
+   TEMPLATE ENGINE
+   ================================================== */
 
-const CONFIG = {
+const DEFAULT_CONFIG = {
 
-  couple:
-    "CHUN ❤️ CHAN",
+  couple: "CHUN ❤️ CHAN",
 
-  startDate:
-    new Date(2022,11,5,0,0,0),
+  recipient: "em",
 
-  dateText:
-    "BẮT ĐẦU TỪ 05 • 12 • 2022"
+  startDate: "2022-12-05",
+
+  quote:
+    "“Mỗi ngày bên em đều là một ngày đáng nhớ. Và anh muốn câu chuyện này kéo dài mãi mãi.” ❤️",
+
+  music:
+    "https://www.youtube.com/watch?v=QCr4Wf_eJHo",
+
+  letter: [
+    "Có những người bước vào cuộc đời chúng ta rất nhẹ nhàng...",
+
+    "Nhưng rồi chẳng biết từ lúc nào, họ trở thành một phần không thể thiếu trong mỗi ngày.",
+
+    "Cảm ơn em vì đã xuất hiện, vì đã ở lại và cùng anh viết tiếp câu chuyện này.",
+
+    "Anh không biết tương lai sẽ có bao nhiêu ngày nữa... nhưng anh biết mình muốn những ngày đó có em."
+  ]
 
 };
 
 
-/* ==========================================
-   HIỂN THỊ THÔNG TIN
-========================================== */
+/* ==================================================
+   READ DATA FROM URL
+   ================================================== */
 
-document.getElementById("couple")
-  .textContent = CONFIG.couple;
+const params = new URLSearchParams(window.location.search);
 
-document.getElementById("date")
-  .textContent = CONFIG.dateText;
+const CONFIG = {
+
+  couple:
+    params.get("couple") ||
+    DEFAULT_CONFIG.couple,
+
+  recipient:
+    params.get("to") ||
+    DEFAULT_CONFIG.recipient,
+
+  startDate:
+    params.get("date") ||
+    DEFAULT_CONFIG.startDate,
+
+  quote:
+    params.get("quote") ||
+    DEFAULT_CONFIG.quote,
+
+  music:
+    params.get("music") ||
+    DEFAULT_CONFIG.music,
+
+  letter:
+    params.get("letter")
+      ? params.get("letter").split("|")
+      : DEFAULT_CONFIG.letter
+
+};
 
 
-/* ==========================================
-   ĐẾM THỜI GIAN
-========================================== */
+/* ==================================================
+   YOUTUBE
+   ================================================== */
+
+function getYoutubeId(url){
+
+  try{
+
+    const parsed = new URL(url);
+
+    if(parsed.hostname.includes("youtu.be")){
+      return parsed.pathname.substring(1);
+    }
+
+    if(parsed.searchParams.get("v")){
+      return parsed.searchParams.get("v");
+    }
+
+    if(parsed.pathname.includes("/embed/")){
+      return parsed.pathname.split("/embed/")[1];
+    }
+
+  }catch(e){}
+
+  return "QCr4Wf_eJHo";
+}
+
+
+/* ==================================================
+   LOAD CONTENT
+   ================================================== */
+
+document.getElementById("coupleName").textContent =
+  CONFIG.couple;
+
+document.getElementById("openingRecipient").textContent =
+  "Dành cho " + CONFIG.recipient;
+
+document.getElementById("quote").textContent =
+  CONFIG.quote;
+
+
+/* DATE */
+
+const start = new Date(CONFIG.startDate + "T00:00:00");
+
+const formattedDate = start.toLocaleDateString(
+  "vi-VN",
+  {
+    day:"2-digit",
+    month:"2-digit",
+    year:"numeric"
+  }
+).replaceAll("/"," • ");
+
+document.getElementById("dateText").textContent =
+  "BẮT ĐẦU TỪ " + formattedDate;
+
+
+/* LETTER */
+
+const letterHTML =
+  CONFIG.letter.map(text => {
+
+    return `<p>${escapeHTML(text)}</p>`;
+
+  }).join("");
+
+document.getElementById("letterContent").innerHTML =
+  letterHTML;
+
+
+/* MUSIC */
+
+const youtubeId = getYoutubeId(CONFIG.music);
+
+document.getElementById("youtubeFrame").src =
+  "https://www.youtube.com/embed/" +
+  youtubeId +
+  "?rel=0";
+
+
+/* ==================================================
+   ESCAPE HTML
+   ================================================== */
+
+function escapeHTML(text){
+
+  return text
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+/* ==================================================
+   COUNTER
+   ================================================== */
 
 function updateCounter(){
 
   const now = new Date();
 
   let years =
-    now.getFullYear()
-    - CONFIG.startDate.getFullYear();
+    now.getFullYear() -
+    start.getFullYear();
 
   let months =
-    now.getMonth()
-    - CONFIG.startDate.getMonth();
+    now.getMonth() -
+    start.getMonth();
 
-  if(
-    now.getDate()
-    < CONFIG.startDate.getDate()
-  ){
+  let days =
+    now.getDate() -
+    start.getDate();
+
+  if(days < 0){
+
     months--;
+
   }
 
   if(months < 0){
+
     years--;
+
     months += 12;
+
   }
 
 
-  const difference =
-    now.getTime()
-    - CONFIG.startDate.getTime();
-
+  const diff =
+    now.getTime() -
+    start.getTime();
 
   const totalDays =
     Math.floor(
-      difference /
-      (1000*60*60*24)
+      diff /
+      (1000 * 60 * 60 * 24)
     );
 
+  const hours =
+    now.getHours();
 
-  const totalHours =
-    Math.floor(
-      difference /
-      (1000*60*60)
-    );
-
-
-  const totalMinutes =
-    Math.floor(
-      difference /
-      (1000*60)
-    );
+  const minutes =
+    now.getMinutes();
 
 
-  document.getElementById("years")
-    .textContent = years;
+  document.getElementById("days").textContent =
+    totalDays.toLocaleString("vi-VN");
 
+  document.getElementById("years").textContent =
+    years;
 
-  document.getElementById("months")
-    .textContent = months;
+  document.getElementById("months").textContent =
+    months;
 
+  document.getElementById("hours").textContent =
+    hours;
 
-  document.getElementById("hours")
-    .textContent =
-      totalHours % 24;
-
-
-  document.getElementById("minutes")
-    .textContent =
-      totalMinutes % 60;
-
-
-  document.getElementById("days")
-    .textContent =
-      totalDays.toLocaleString("vi-VN");
+  document.getElementById("minutes").textContent =
+    minutes;
 
 }
 
@@ -764,66 +1006,71 @@ setInterval(
 );
 
 
-/* ==========================================
-   MỞ CÂU CHUYỆN
-========================================== */
+/* ==================================================
+   OPEN STORY
+   ================================================== */
 
 function openStory(){
 
-  document
-    .getElementById("openScreen")
-    .classList.add("hide");
+  document.getElementById("opening").style.display =
+    "none";
+
+  document.getElementById("mainContent").style.display =
+    "flex";
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 
 }
 
 
-/* ==========================================
-   TIM BAY
-========================================== */
+/* ==================================================
+   FLOATING HEARTS
+   ================================================== */
+
+const hearts = [
+  "❤️",
+  "💕",
+  "💗",
+  "💖",
+  "💘",
+  "💞"
+];
 
 function createHeart(){
 
   const heart =
     document.createElement("div");
 
-  heart.className =
-    "float-heart";
-
-  const hearts = [
-    "❤️",
-    "💗",
-    "💕",
-    "💖",
-    "💓"
-  ];
+  heart.className = "heart";
 
   heart.textContent =
     hearts[
       Math.floor(
-        Math.random()
-        * hearts.length
+        Math.random() * hearts.length
       )
     ];
 
   heart.style.left =
-    Math.random()*100 + "%";
+    Math.random() * 100 + "vw";
 
   heart.style.fontSize =
-    (12 + Math.random()*18)
-    + "px";
+    (15 + Math.random() * 25) + "px";
 
   heart.style.animationDuration =
-    (6 + Math.random()*6)
-    + "s";
+    (5 + Math.random() * 6) + "s";
 
   document.body.appendChild(heart);
 
   setTimeout(
     () => heart.remove(),
-    13000
+    12000
   );
 
 }
+
 
 setInterval(
   createHeart,
