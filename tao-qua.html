@@ -1,606 +1,384 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
 
-<meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
-
-<title>Tạo món quà ❤️</title>
-
-<style>
-
-*{
-  box-sizing:border-box;
-}
-
-body{
-  margin:0;
-  min-height:100vh;
-
-  font-family:Arial,Helvetica,sans-serif;
-
-  color:white;
-
-  background:
-    radial-gradient(
-      circle at top,
-      #68162f,
-      #210914 45%,
-      #080308 100%
-    );
-
-  padding:25px 16px 60px;
-}
-
-.container{
-  max-width:600px;
-  margin:auto;
-}
-
-.card{
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.10),
-      rgba(255,255,255,.035)
-    );
-
-  border:1px solid rgba(255,255,255,.18);
-
-  border-radius:30px;
-
-  padding:30px 22px;
-
-  box-shadow:
-    0 30px 80px rgba(0,0,0,.5);
-}
-
-h1{
-  text-align:center;
-
-  font-family:Georgia,serif;
-
-  font-size:38px;
-
-  margin:10px 0 8px;
-}
-
-.subtitle{
-  text-align:center;
-
-  color:#e7b3c3;
-
-  line-height:1.6;
-
-  margin-bottom:30px;
-}
-
-.heart{
-  text-align:center;
-
-  font-size:65px;
-
-  margin-bottom:10px;
-}
-
-label{
-  display:block;
-
-  margin:
-    18px 0 8px;
-
-  color:#efb4c6;
-
-  font-size:13px;
-
-  letter-spacing:1px;
-}
-
-input,
-textarea{
-  width:100%;
-
-  padding:15px;
-
-  border-radius:15px;
-
-  border:1px solid
-    rgba(255,255,255,.15);
-
-  background:
-    rgba(0,0,0,.25);
-
-  color:white;
-
-  font-size:16px;
-
-  outline:none;
-}
-
-input:focus,
-textarea:focus{
-  border-color:#ff3b78;
-}
-
-textarea{
-  min-height:150px;
-
-  resize:vertical;
-
-  line-height:1.6;
-}
-
-button{
-  width:100%;
-
-  margin-top:28px;
-
-  padding:17px;
-
-  border:0;
-
-  border-radius:50px;
-
-  color:white;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ff1970,
-      #c91652
-    );
-
-  font-size:17px;
-
-  font-weight:bold;
-
-  cursor:pointer;
-
-  box-shadow:
-    0 15px 35px
-    rgba(255,0,100,.25);
-}
-
-.result{
-  display:none;
-
-  margin-top:30px;
-
-  padding:22px;
-
-  border-radius:22px;
-
-  background:
-    rgba(255,255,255,.06);
-
-  border:
-    1px solid
-    rgba(255,255,255,.15);
-}
-
-.result h2{
-  font-family:Georgia,serif;
-
-  text-align:center;
-
-  margin-top:0;
-}
-
-.link-box{
-  word-break:break-all;
-
-  padding:15px;
-
-  border-radius:14px;
-
-  background:
-    rgba(0,0,0,.3);
-
-  color:#ffbfd2;
-
-  font-size:14px;
-
-  line-height:1.6;
-}
-
-.copy{
-  margin-top:12px;
-
-  background:
-    rgba(255,255,255,.10);
-
-  box-shadow:none;
-
-  font-size:15px;
-}
-
-.open{
-  display:block;
-
-  text-align:center;
-
-  text-decoration:none;
-
-  margin-top:12px;
-
-  padding:15px;
-
-  border-radius:50px;
-
-  background:
-    rgba(255,255,255,.08);
-
-  color:white;
-}
-
-.note{
-  text-align:center;
-
-  margin-top:25px;
-
-  color:#9f7886;
-
-  font-size:12px;
-
-  line-height:1.6;
-}
-
-</style>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#180c18"
+    >
+
+    <title>Tạo món quà • Love Story</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/tao-qua.css"
+    >
 
 </head>
 
 
 <body>
 
-
-<div class="container">
-
-  <div class="card">
-
-    <div class="heart">
-      ❤️
-    </div>
-
-    <h1>
-      Tạo món quà
-    </h1>
-
-    <div class="subtitle">
-      Tạo một Love Story riêng dành cho người bạn yêu.
-    </div>
-
-
-    <!-- COUPLE -->
-
-    <label>
-      TÊN HAI NGƯỜI
-    </label>
-
-    <input
-      id="couple"
-      type="text"
-      placeholder="Ví dụ: MINH ❤️ LAN"
-    >
-
-
-    <!-- RECIPIENT -->
-
-    <label>
-      TÊN NGƯỜI NHẬN
-    </label>
-
-    <input
-      id="recipient"
-      type="text"
-      placeholder="Ví dụ: Lan"
-    >
-
-
-    <!-- DATE -->
-
-    <label>
-      NGÀY BẮT ĐẦU YÊU
-    </label>
-
-    <input
-      id="date"
-      type="date"
-    >
-
-
-    <!-- MUSIC -->
-
-    <label>
-      LINK BÀI HÁT YOUTUBE
-    </label>
-
-    <input
-      id="music"
-      type="url"
-      placeholder="https://youtu.be/..."
-    >
-
-
-    <!-- LETTER -->
-
-    <label>
-      LỜI NHẮN TÌNH YÊU
-    </label>
-
-    <textarea
-      id="letter"
-      placeholder="Viết lời nhắn dành riêng cho người ấy...
-
-Mỗi đoạn cách nhau bằng một dòng trống."
-    ></textarea>
-
-
-    <button
-      onclick="createGift()"
-    >
-      TẠO MÓN QUÀ ❤️
-    </button>
-
-
-    <!-- RESULT -->
-
     <div
-      class="result"
-      id="result"
-    >
+        id="hearts"
+        class="hearts"
+    ></div>
 
-      <h2>
-        🎁 Đã tạo món quà
-      </h2>
 
-      <div
-        class="link-box"
-        id="generatedLink"
-      ></div>
+    <main class="page active">
 
+        <div class="container">
 
-      <button
-        class="copy"
-        onclick="copyLink()"
-      >
-        📋 SAO CHÉP LINK
-      </button>
+            <div class="glass-card create-card">
 
 
-      <a
-        id="openLink"
-        class="open"
-        href="#"
-        target="_blank"
-      >
-        ❤️ MỞ TRANG QUÀ
-      </a>
+                <div class="logo">
+                    LOVE STORY • DIGITAL GIFT
+                </div>
 
-    </div>
 
+                <h1>
+                    Tạo một món quà
+                </h1>
 
-    <div class="note">
-      Mỗi lần tạo sẽ sinh một đường link riêng
-      dựa trên thông tin bạn nhập.
-    </div>
 
-  </div>
+                <p class="subtitle">
+                    Tạo một câu chuyện nhỏ
+                    dành riêng cho người bạn yêu ❤️
+                </p>
 
-</div>
 
 
-<script>
+                <!-- TÊN -->
 
+                <div class="form-group">
 
-function createGift(){
+                    <label for="couple">
+                        Tên hai người
+                    </label>
 
-  const couple =
-    document
-      .getElementById("couple")
-      .value
-      .trim();
+                    <input
+                        id="couple"
+                        type="text"
+                        maxlength="80"
+                        placeholder="Ví dụ: Trung & Trang"
+                    >
 
+                </div>
 
-  const recipient =
-    document
-      .getElementById("recipient")
-      .value
-      .trim();
 
 
-  const date =
-    document
-      .getElementById("date")
-      .value;
+                <!-- NGƯỜI NHẬN -->
 
+                <div class="form-group">
 
-  const music =
-    document
-      .getElementById("music")
-      .value
-      .trim();
+                    <label for="receiver">
+                        Món quà dành cho
+                    </label>
 
+                    <input
+                        id="receiver"
+                        type="text"
+                        maxlength="60"
+                        placeholder="Ví dụ: Trang"
+                    >
 
-  const letter =
-    document
-      .getElementById("letter")
-      .value
-      .trim();
+                </div>
 
 
-  if(
-    !couple ||
-    !recipient ||
-    !date
-  ){
 
-    alert(
-      "Vui lòng nhập tên hai người, tên người nhận và ngày bắt đầu yêu."
-    );
+                <!-- NGÀY -->
 
-    return;
+                <div class="form-group">
 
-  }
+                    <label for="date">
+                        Ngày bắt đầu câu chuyện
+                    </label>
 
+                    <input
+                        id="date"
+                        type="date"
+                    >
 
-  /*
-    Tách các đoạn thư.
-    Mỗi đoạn cách nhau bằng dòng trống.
-  */
+                </div>
 
-  const paragraphs =
-    letter
-      .split(/\n\s*\n/)
-      .map(
-        p => p.trim()
-      )
-      .filter(Boolean);
 
 
-  /*
-    URL website chính
-  */
+                <!-- NHẠC -->
 
-  const baseURL =
-    window.location.href
-      .replace(
-        /tao-qua\.html.*$/,
-        ""
-      );
+                <div class="form-group">
 
+                    <label for="music">
+                        Bài hát YouTube
+                        <span>(không bắt buộc)</span>
+                    </label>
 
-  /*
-    Tạo tham số URL
-  */
+                    <input
+                        id="music"
+                        type="text"
+                        placeholder="Dán link YouTube..."
+                    >
 
-  const params =
-    new URLSearchParams();
+                </div>
 
 
-  params.set(
-    "couple",
-    couple
-  );
 
+                <!-- GIAO DIỆN -->
 
-  params.set(
-    "to",
-    recipient
-  );
+                <div class="form-group">
 
+                    <label>
+                        Chọn giao diện quà tặng
+                    </label>
 
-  params.set(
-    "date",
-    date
-  );
 
+                    <div class="theme-grid">
 
-  if(music){
 
-    params.set(
-      "music",
-      music
-    );
+                        <label class="theme-option">
 
-  }
+                            <input
+                                type="radio"
+                                name="theme"
+                                value="pink"
+                                checked
+                            >
 
+                            <div class="theme-preview pink">
 
-  if(paragraphs.length){
+                                <strong>💗</strong>
 
-    params.set(
-      "letter",
-      paragraphs.join("|")
-    );
+                                <span>
+                                    Romantic Pink
+                                </span>
 
-  }
+                            </div>
 
+                        </label>
 
-  /*
-    Link tới index.html
-  */
 
-  const giftURL =
-    baseURL +
-    "?" +
-    params.toString();
 
+                        <label class="theme-option">
 
-  /*
-    Hiển thị kết quả
-  */
+                            <input
+                                type="radio"
+                                name="theme"
+                                value="midnight"
+                            >
 
-  document
-    .getElementById(
-      "generatedLink"
-    )
-    .textContent =
-    giftURL;
+                            <div class="theme-preview midnight">
 
+                                <strong>🌌</strong>
 
-  document
-    .getElementById(
-      "openLink"
-    )
-    .href =
-    giftURL;
+                                <span>
+                                    Midnight Love
+                                </span>
 
+                            </div>
 
-  document
-    .getElementById(
-      "result"
-    )
-    .style.display =
-    "block";
+                        </label>
 
 
-  /*
-    Cuộn xuống kết quả
-  */
 
-  document
-    .getElementById(
-      "result"
-    )
-    .scrollIntoView({
-      behavior:"smooth"
-    });
+                        <label class="theme-option">
 
-}
+                            <input
+                                type="radio"
+                                name="theme"
+                                value="rose"
+                            >
 
+                            <div class="theme-preview rose">
 
-async function copyLink(){
+                                <strong>🌹</strong>
 
-  const link =
-    document
-      .getElementById(
-        "generatedLink"
-      )
-      .textContent;
+                                <span>
+                                    Rose Red
+                                </span>
 
+                            </div>
 
-  try{
+                        </label>
 
-    await navigator.clipboard.writeText(
-      link
-    );
 
-    alert(
-      "Đã sao chép link ❤️"
-    );
 
-  }catch(e){
+                        <label class="theme-option">
 
-    alert(
-      "Không thể sao chép tự động. Hãy nhấn giữ vào link để sao chép."
-    );
+                            <input
+                                type="radio"
+                                name="theme"
+                                value="gold"
+                            >
 
-  }
+                            <div class="theme-preview gold">
 
-}
+                                <strong>✨</strong>
 
-</script>
+                                <span>
+                                    Elegant Gold
+                                </span>
+
+                            </div>
+
+                        </label>
+
+
+
+                        <label class="theme-option">
+
+                            <input
+                                type="radio"
+                                name="theme"
+                                value="green"
+                            >
+
+                            <div class="theme-preview green">
+
+                                <strong>🌿</strong>
+
+                                <span>
+                                    Dreamy Green
+                                </span>
+
+                            </div>
+
+                        </label>
+
+
+
+                        <label class="theme-option">
+
+                            <input
+                                type="radio"
+                                name="theme"
+                                value="pastel"
+                            >
+
+                            <div class="theme-preview pastel">
+
+                                <strong>🌸</strong>
+
+                                <span>
+                                    Pastel Love
+                                </span>
+
+                            </div>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- LỜI NHẮN -->
+
+                <div class="form-group">
+
+                    <label for="letter">
+                        Lời nhắn dành cho người ấy
+                    </label>
+
+                    <textarea
+                        id="letter"
+                        maxlength="3000"
+                        placeholder="Viết những điều bạn muốn nói..."
+                    ></textarea>
+
+                </div>
+
+
+
+                <!-- BUTTON -->
+
+                <button
+                    id="createButton"
+                    class="primary-button"
+                >
+                    💝 Tạo món quà
+                </button>
+
+
+
+                <!-- KẾT QUẢ -->
+
+                <div
+                    id="result"
+                    class="result"
+                >
+
+                    <h2>
+                        🎁 Món quà đã sẵn sàng
+                    </h2>
+
+
+                    <div
+                        id="generatedLink"
+                        class="generated-link"
+                    ></div>
+
+
+                    <div class="qr-container">
+
+                        <img
+                            id="qrCode"
+                            alt="QR Code"
+                        >
+
+                    </div>
+
+
+                    <p class="qr-description">
+                        Quét mã QR để mở món quà
+                    </p>
+
+
+                    <div class="result-buttons">
+
+                        <button
+                            id="copyButton"
+                            class="secondary-button"
+                        >
+                            📋 Sao chép link
+                        </button>
+
+
+                        <button
+                            id="openButton"
+                            class="secondary-button"
+                        >
+                            💌 Mở thử
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script src="js/common.js"></script>
+
+    <script src="js/tao-qua.js"></script>
 
 </body>
+
 </html>
